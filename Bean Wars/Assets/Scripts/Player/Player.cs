@@ -83,7 +83,7 @@ public class Player : NetworkBehaviour
 
     private void Jump()
     {
-        body.velocity = new Vector2(body.velocity.x, 5);
+        body.velocity = new Vector2(body.velocity.x, 10);
         grounded = false;
     }
 
