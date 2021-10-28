@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Foot
+  - Head
+  - Body
   layers:
   - Default
   - TransparentFX

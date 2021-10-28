@@ -4,10 +4,7 @@ using Mirror;
 
 public class Player : NetworkBehaviour
 {
-    [SerializeField] private float speed;
-    private Rigidbody2D body;
     private SpriteRenderer spriteRenderer;
-    private bool grounded;
 
     public Text playerNameText;
     public GameObject playerInfo;
@@ -54,42 +51,15 @@ public class Player : NetworkBehaviour
 
     private void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        if (!isLocalPlayer) return;
-        
-
-            //horizantalInput is always 0, if click the right button, it should be 1, and -1
-
-            /* if (horizantalInput > 0.01f)
-                transform.localScale = Vector3.one;
-            else if (horizantalInput < -0.01f)
-                transform.localScale = new Vector3(-1, 1, 1); */
-
-
-            float horizantalInput = Input.GetAxis("Horizontal");
-            body.velocity = new Vector2(horizantalInput * speed, body.velocity.y);
-
-
-
-            if (Input.GetKey(KeyCode.Space) && grounded)
-                Jump();
+        if (!isLocalPlayer) return;      
 
     }
 
-    private void Jump()
-    {
-        body.velocity = new Vector2(body.velocity.x, 5);
-        grounded = false;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-            grounded = true;
-    }
+  
 }
