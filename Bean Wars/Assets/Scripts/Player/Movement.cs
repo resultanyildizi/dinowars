@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
 
     [SerializeField] private float speed;
+    [SerializeField] private float jumpFactor;
     private Rigidbody2D rigidBody;
     private bool grounded;
 
@@ -30,25 +31,41 @@ public class Movement : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1); */
 
 
-        if (Input.GetKey(KeyCode.Space) && grounded)
+        if (Input.GetKeyDown(KeyCode.Space))
             Jump();
 
     }
 
     private void Jump()
-    {   
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, 12);
-        grounded = false;
+    {
+        if(grounded)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpFactor);
+            grounded = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+
+        if(!collision.otherCollider.CompareTag("Foot"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
+            return;
+        }
+
         if (collision.gameObject.CompareTag("Ground"))
             grounded = true;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if (!collision.otherCollider.CompareTag("Foot"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
+            return;
+        }
         if (collision.gameObject.CompareTag("Ground"))
             grounded = false;
     }
