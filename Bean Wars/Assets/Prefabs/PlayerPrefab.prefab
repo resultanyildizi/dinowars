@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 2755799165852654403}
   - component: {fileID: 4325631478687562105}
   - component: {fileID: 7694264065926984138}
+  - component: {fileID: 5703321607797838133}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -335,6 +336,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpFactor: 12
+--- !u!114 &5703321607797838133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920710836554502912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754afd80d8a488f44a8dde75749354ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunPrefab: {fileID: 6305097062682017498, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
 --- !u!1 &3294862295092549426
 GameObject:
   m_ObjectHideFlags: 0
