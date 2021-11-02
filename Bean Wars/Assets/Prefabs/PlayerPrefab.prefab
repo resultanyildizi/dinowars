@@ -152,12 +152,12 @@ GameObject:
   - component: {fileID: 6454801895293152686}
   - component: {fileID: 2920710836554502913}
   - component: {fileID: -5621341633008855358}
-  - component: {fileID: -6101900796227430703}
   - component: {fileID: 4422123038030238295}
   - component: {fileID: 2755799165852654403}
+  - component: {fileID: 4325631478687562105}
   m_Layer: 0
   m_Name: PlayerPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,27 +253,6 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 25d56fed8b8fd414abe0fbf7c34292e6
   hasSpawned: 0
---- !u!50 &-6101900796227430703
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2920710836554502912}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &4422123038030238295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,8 +270,6 @@ MonoBehaviour:
   speed: 5
   playerNameText: {fileID: 8909910724663379277}
   playerInfo: {fileID: 8959825676323865257}
-  playerName: 
-  playerColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &2755799165852654403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +299,27 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+--- !u!50 &4325631478687562105
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920710836554502912}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 3
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4694795260958226115
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +484,7 @@ GameObject:
   - component: {fileID: 2118265373459796793}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: PlayerBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

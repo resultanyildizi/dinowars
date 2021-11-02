@@ -4,19 +4,22 @@ using Mirror;
 
 public class Player : NetworkBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] 
+    private float speed;
     private Rigidbody2D body;
     private SpriteRenderer spriteRenderer;
     private bool grounded;
+
+    private double health;
 
     public Text playerNameText;
     public GameObject playerInfo;
 
     [SyncVar(hook = nameof(OnNameChanged))]
-    public string playerName;
+    private string playerName;
 
     [SyncVar(hook = nameof(OnColorChanged))]
-    public Color playerColor = Color.white;
+    private Color playerColor = Color.white;
 
 
     private void OnNameChanged(string oldName, string newName)
@@ -30,8 +33,8 @@ public class Player : NetworkBehaviour
         spriteRenderer.color = playerColor;
     }
 
-
-    public override void OnStartLocalPlayer()
+    
+    public override void OnStartClient()
     {
         playerName = GenerateRandomName();
         playerColor = GenerateRandomColor();
@@ -56,6 +59,17 @@ public class Player : NetworkBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        health = 50.0;
+
+        HealthKit.healthKitDestroyedEvent += OnHealthCollected;
+    }
+
+    private void OnHealthCollected(double healingAmount)
+    {
+        this.health += healingAmount;
+        Debug.Log(string.Format("My new health is {0}", health));
+
     }
 
     private void Update()
