@@ -11,20 +11,24 @@ public class Movement : MonoBehaviour
     private bool grounded;
 
 
-    // Start is called before the first frame update
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float horizantalInput = Input.GetAxis("Horizontal");
         rigidBody.velocity = new Vector2(horizantalInput * speed, rigidBody.velocity.y);
 
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
+        if (mousePos.x >= transform.position.x)       
+             transform.localScale = Vector3.one;
+        else
+            transform.localScale = new Vector3(-1, 1, 1);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && grounded)
             Jump();
 
     }
@@ -40,8 +44,6 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-
         if(!collision.otherCollider.CompareTag("Foot"))
         {
             Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
