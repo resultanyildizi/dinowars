@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GunHolder : MonoBehaviour
 {
     [SerializeField] GameObject gunPrefab;
@@ -14,9 +15,6 @@ public class GunHolder : MonoBehaviour
 
     private void Awake()
     {
-        gunOffsetX = +0.4f;
-        gunOffsetY = -0.1f;
-
         rb = GetComponent<Rigidbody2D>();
         gun = Instantiate<GameObject>(gunPrefab, rb.transform.position, Quaternion.identity);
     }
