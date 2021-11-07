@@ -6,14 +6,16 @@ public class Player : NetworkBehaviour
 {
     private SpriteRenderer spriteRenderer;
 
+    private double health;
+
     public Text playerNameText;
     public GameObject playerInfo;
 
     [SyncVar(hook = nameof(OnNameChanged))]
-    public string playerName;
+    private string playerName;
 
     [SyncVar(hook = nameof(OnColorChanged))]
-    public Color playerColor = Color.white;
+    private Color playerColor = Color.white;
 
 
     private void OnNameChanged(string oldName, string newName)
@@ -27,8 +29,8 @@ public class Player : NetworkBehaviour
         spriteRenderer.color = playerColor;
     }
 
-
-    public override void OnStartLocalPlayer()
+    
+    public override void OnStartClient()
     {
         playerName = GenerateRandomName();
         playerColor = GenerateRandomColor();
@@ -53,6 +55,17 @@ public class Player : NetworkBehaviour
     {
         
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        health = 50.0;
+
+        HealthKit.healthKitDestroyedEvent += OnHealthCollected;
+    }
+
+    private void OnHealthCollected(double healingAmount)
+    {
+        this.health += healingAmount;
+        Debug.Log(string.Format("My new health is {0}", health));
+
     }
 
     private void Update()
