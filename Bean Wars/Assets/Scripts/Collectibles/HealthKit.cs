@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class HealthKit : CollectibleInterface
 {
-    public delegate void HealthKitDestroyed(double healingAmount);
-    public static event HealthKitDestroyed healthKitDestroyedEvent;
+    public static event System.Action<double> OnHealthKitDestroyedEvent;
 
     [SerializeField]
     private double healingAmount;
-
     public static bool kitJustPickedUp = false;
-
     private Rigidbody2D body;
 
     private void Awake()
@@ -19,14 +16,10 @@ public class HealthKit : CollectibleInterface
         body = GetComponent<Rigidbody2D>();
     }
 
-
-
-
     private void Update()
     {
         Osciliate(body);
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,11 +32,7 @@ public class HealthKit : CollectibleInterface
         {
             Destroy(gameObject);
             kitJustPickedUp = true;
-
-            if (healthKitDestroyedEvent != null)
-            {
-                healthKitDestroyedEvent(this.healingAmount);
-            }
+            OnHealthKitDestroyedEvent?.Invoke(this.healingAmount);
         }
     }
 }

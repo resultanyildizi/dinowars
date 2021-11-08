@@ -7,7 +7,7 @@
     <key>CFBundleExecutable</key>
     <string>Bean Wars</string>
     <key>CFBundleGetInfoString</key>
-    <string>Unity Player version 2020.3.20f1 (41c4e627c95f). (c) 2021 Unity Technologies ApS. All rights reserved.</string>
+    <string>Unity Player version 2020.3.19f1 (68f137dc9bbe). (c) 2021 Unity Technologies ApS. All rights reserved.</string>
     <key>CFBundleIconFile</key>
     <string>PlayerIcon.icns</string>
     <key>CFBundleIdentifier</key>
@@ -40,6 +40,6 @@
     <key>NSPrincipalClass</key>
     <string>PlayerApplication</string>
     <key>UnityBuildNumber</key>
-    <string>41c4e627c95f</string>
+    <string>68f137dc9bbe</string>
   </dict>
 </plist>
