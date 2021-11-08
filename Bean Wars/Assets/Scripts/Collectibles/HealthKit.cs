@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthKit : MonoBehaviour
+public class HealthKit : CollectibleInterface
 {
     public static event System.Action<double> OnHealthKitDestroyedEvent;
 
@@ -13,19 +13,26 @@ public class HealthKit : MonoBehaviour
 
     private void Awake()
     {
-        body = new Rigidbody2D();
+        body = GetComponent<Rigidbody2D>();
     }
 
+    private void Update()
+    {
+        Osciliate(body);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("PlayerBody"))
+        PickedUp(collision);
+    }
+
+    public override void PickedUp(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerBody"))
         {
             Destroy(gameObject);
             kitJustPickedUp = true;
-
             OnHealthKitDestroyedEvent?.Invoke(this.healingAmount);
         }
     }
-
 }
