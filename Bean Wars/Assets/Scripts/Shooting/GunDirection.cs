@@ -22,7 +22,6 @@ public class GunDirection : MonoBehaviour
         }
         else
         {
-            Debug.Log(angle);
             if (angle - Mathf.Sign(angle) * 180 <= -MAX_ANGLE) angle = 180 - MAX_ANGLE;
             //if (angle - Mathf.Sign(angle) * 180 > MAX_ANGLE) angle = -180 + MAX_ANGLE;
             transform.rotation = Quaternion.Euler(new Vector3(180f, 0f, -angle));

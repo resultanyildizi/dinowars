@@ -18,15 +18,9 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        // Move character
         float horizantalInput = Input.GetAxis("Horizontal");
         rigidBody.velocity = new Vector2(horizantalInput * speed, rigidBody.velocity.y);
-
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
-        if (mousePos.x >= transform.position.x)       
-             transform.localScale = Vector3.one;
-        else
-            transform.localScale = new Vector3(-1, 1, 1);
 
         if (Input.GetKey(KeyCode.Space) && grounded)
             Jump();

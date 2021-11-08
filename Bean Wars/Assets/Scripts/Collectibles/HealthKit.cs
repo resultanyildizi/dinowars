@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class HealthKit : MonoBehaviour
 {
-    public delegate void HealthKitDestroyed(double healingAmount);
-    public static event HealthKitDestroyed healthKitDestroyedEvent;
+    public static event System.Action<double> OnHealthKitDestroyedEvent;
 
     [SerializeField]
     private double healingAmount;
-
-    public static bool kitJustPickedUp=false;
-
+    public static bool kitJustPickedUp = false;
     private Rigidbody2D body;
 
     private void Awake()
@@ -27,10 +24,7 @@ public class HealthKit : MonoBehaviour
             Destroy(gameObject);
             kitJustPickedUp = true;
 
-            if(healthKitDestroyedEvent != null)
-            {
-                healthKitDestroyedEvent(this.healingAmount);
-            }
+            OnHealthKitDestroyedEvent?.Invoke(this.healingAmount);
         }
     }
 

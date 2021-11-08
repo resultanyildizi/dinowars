@@ -18,17 +18,9 @@ public class GunHolder : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gun = Instantiate<GameObject>(gunPrefab, rb.transform.position, Quaternion.identity);
     }
-    // Start is called before the first frame update
     void Start()
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        gun.transform.position = new Vector3(rb.transform.position.x,
-                                             rb.transform.position.y,
-                                             rb.transform.position.z);
+        gun.transform.SetParent(parent: this.transform, worldPositionStays: true);
     }
 
     private void OnDestroy()
