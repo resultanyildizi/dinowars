@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KitSpawnScript : MonoBehaviour
+public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField]
     private Transform[] spawners;
     [SerializeField]
-    private GameObject healthKitPrefab;
+    private GameObject objectPrefab;
     [SerializeField]
     private int spawnInterval;
 
@@ -42,7 +42,8 @@ public class KitSpawnScript : MonoBehaviour
             int randomSlotIndex = Random.Range(0, avaliableSlots.Count - 1);
             int randomPointIndex = avaliableSlots[randomSlotIndex];
             Transform randomPoint = spawners[randomPointIndex];
-            GameObject healthKit = Instantiate(healthKitPrefab, randomPoint);
+            GameObject healthKit = Instantiate(objectPrefab, randomPoint);
+            Debug.Log( randomPoint);
             healthKitMap[randomPointIndex] = healthKit;
         }
     }
