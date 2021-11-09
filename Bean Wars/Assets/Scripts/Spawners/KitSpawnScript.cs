@@ -11,56 +11,76 @@ public class KitSpawnScript : MonoBehaviour
     [SerializeField]
     private int spawnInterval;
 
+    private Dictionary<int, GameObject> healthKitMap;
 
+    private GameObject healthKit;
 
-    private int randomIndex;
-
-
-
-    public void Start()
+    private void Awake()
     {
-
-        StartCoroutine(SpawnCoroutine());
-
-
+        InitHealthKitMap();
     }
 
-
-    IEnumerator SpawnCoroutine()
+    private void Start()
     {
+        StartCoroutine(SpawnCoroutine());
+    }
 
-        if (HealthKit.kitJustPickedUp)
-        {
-            HealthKit.kitJustPickedUp = false;
-
-        }
-        else if (GameObject.FindWithTag("HealthKit") == null)
-        {
-            SpawnKit();
-        }
-
-
+    private IEnumerator SpawnCoroutine()
+    {
         yield return new WaitForSeconds(spawnInterval);
+        SpawnKit();
+        PrintMap();
         StartCoroutine(SpawnCoroutine());
     }
 
-    public void SpawnKit()
+    private void SpawnKit()
+    { 
+        List<int> avaliableSlots = FindEmptySlots();
+
+        if(avaliableSlots.Count > 0)
+        {
+            int randomSlotIndex = Random.Range(0, avaliableSlots.Count - 1);
+            int randomPointIndex = avaliableSlots[randomSlotIndex];
+            Transform randomPoint = spawners[randomPointIndex];
+            GameObject healthKit = Instantiate(healthKitPrefab, randomPoint);
+            healthKitMap[randomPointIndex] = healthKit;
+        }
+    }
+
+    private List<int> FindEmptySlots()
     {
+        List<int> emptySlots = new List<int>();
 
+        foreach(int key in healthKitMap.Keys)
+        {
+            if (healthKitMap[key] == null)
+                emptySlots.Add(key);
+        }
 
-        int spawnerCount = spawners.Length;
+        return emptySlots;
+    }
 
+    private void InitHealthKitMap()
+    {
+        healthKitMap = new Dictionary<int, GameObject>();
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            healthKitMap[i] = null;
+        }
+    }
 
-        randomIndex = Random.Range(0, spawnerCount);
+    private void PrintMap()
+    {
+        string message = "";
 
-        Transform randomPoint = spawners[randomIndex];
+        message =  message + "Values =====================\n";
+        foreach(var key in healthKitMap.Keys)
+        {
+            message = message + string.Format("{0} - {1}", key, healthKitMap[key]) + "\n"; 
+        }
+        message = message + "=============================";
 
-        Instantiate(healthKitPrefab, randomPoint);
-
-       
-        // GameObject chld = GameObject.Find("KitPrefab (Clone)");
-
-
+        Debug.Log(message);
     }
 
 

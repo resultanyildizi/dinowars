@@ -28,7 +28,7 @@ public class HealthKit : CollectibleInterface
 
     public override void PickedUp(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerBody"))
+        if (collision.CompareTag("Body"))
         {
             Destroy(gameObject);
             kitJustPickedUp = true;
