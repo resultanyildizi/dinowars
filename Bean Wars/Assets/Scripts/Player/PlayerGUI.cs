@@ -14,8 +14,6 @@ public class PlayerGUI : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<Player>();
-        //playerSprite = GetComponent<SpriteRenderer>();
-
         player.OnNameChangedEvent += SetPlayerNameText;
         player.OnColorChangedEvent+= SetPlayerColor;
     }

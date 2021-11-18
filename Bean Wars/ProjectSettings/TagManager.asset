@@ -8,6 +8,7 @@ TagManager:
   - Foot
   - Head
   - Body
+  - HealthKit
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: 1
+    uniqueID: 2539831755
+    locked: 0
+  - name: 2
+    uniqueID: 1328766141
     locked: 0

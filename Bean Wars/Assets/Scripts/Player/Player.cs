@@ -18,7 +18,7 @@ public class Player : NetworkBehaviour
     public override void OnStartClient()
     {
         // Fill player's data
-        health = 100.0;
+        health = 20.0;
         PlayerName = Utils.GenerateRandomName("Player");
         PlayerColor = Utils.GenerateRandomColor();
 
