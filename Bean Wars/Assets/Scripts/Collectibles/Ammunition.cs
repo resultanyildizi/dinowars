@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthKit : MonoBehaviour
+public class Ammunition : MonoBehaviour
 {
     public static event System.Action<double> OnHealthKitDestroyedEvent;
 
     [SerializeField]
     private double healingAmount;
-    
+   
     private Rigidbody2D body;
 
     private void Awake()
@@ -16,7 +16,7 @@ public class HealthKit : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
-    
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,7 +28,7 @@ public class HealthKit : MonoBehaviour
         if (collision.CompareTag("Body"))
         {
             Destroy(gameObject);
-           
+            
             OnHealthKitDestroyedEvent?.Invoke(this.healingAmount);
         }
     }
