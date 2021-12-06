@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3814668351278567203}
   - component: {fileID: 8289812616568471321}
   - component: {fileID: 413371327626523474}
+  - component: {fileID: 3867950804521231136}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -92,7 +93,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5036787392607733086}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6542417f6dfc83846b4b866a59876870, type: 3}
   m_Name: 
@@ -111,6 +112,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ef2b2f62c09b4a96363bc34d3cbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3867950804521231136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5036787392607733086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d158ef8dd5e48144c8a13358c1dc9db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  timeBetweenShooting: 0.05
+  range: 10000
+  reloadTime: 1
+  timeBetweenShots: 0
+  magazineSize: 100
+  bulletsPerTap: 1
+  allowButtonHold: 1
+  bulletPrefab: {fileID: 358572308464033840, guid: 1462d9d7fa26c4649bbe5f39c04b0abc, type: 3}
+  firePoint: {fileID: 8807253653502234776}
 --- !u!1 &9023238196424187277
 GameObject:
   m_ObjectHideFlags: 0
