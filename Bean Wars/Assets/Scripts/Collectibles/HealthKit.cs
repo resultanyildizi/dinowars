@@ -27,8 +27,7 @@ public class HealthKit : MonoBehaviour
     {
         if (collision.CompareTag("Body"))
         {
-            Destroy(gameObject);
-           
+            gameObject.SetActive(false);
             OnHealthKitDestroyedEvent?.Invoke(this.healingAmount);
         }
     }

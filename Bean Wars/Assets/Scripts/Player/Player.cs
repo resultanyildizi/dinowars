@@ -19,7 +19,7 @@ public class Player : NetworkBehaviour
     {
         // Fill player's data
         health = 100.0;
-        PlayerName = Utils.GenerateRandomName("Player");
+        PlayerName = Utils.GenerateRandomName("Resul");
         PlayerColor = Utils.GenerateRandomColor();
 
         // Tell all listeners the player is created

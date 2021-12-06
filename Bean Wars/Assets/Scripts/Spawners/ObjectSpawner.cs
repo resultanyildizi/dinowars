@@ -17,13 +17,21 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Awake()
     {
-        InitHealthKitMap();
+        Player.OnPlayerCreatedEvent += InitHealthKitMap;
     }
 
-    private void Start()
+    private void InitHealthKitMap(Player _)
     {
+        healthKitMap = new Dictionary<int, GameObject>();
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            healthKitMap[i] = Instantiate(objectPrefab, spawners[i].transform);
+            healthKitMap[i].SetActive(false);
+        }
+
         StartCoroutine(SpawnCoroutine());
     }
+
 
     private IEnumerator SpawnCoroutine()
     {
@@ -41,10 +49,7 @@ public class ObjectSpawner : MonoBehaviour
         {
             int randomSlotIndex = Random.Range(0, avaliableSlots.Count - 1);
             int randomPointIndex = avaliableSlots[randomSlotIndex];
-            Transform randomPoint = spawners[randomPointIndex];
-            GameObject healthKit = Instantiate(objectPrefab, randomPoint);
-            Debug.Log( randomPoint);
-            healthKitMap[randomPointIndex] = healthKit;
+            healthKitMap[randomPointIndex].SetActive(true);
         }
     }
 
@@ -54,20 +59,11 @@ public class ObjectSpawner : MonoBehaviour
 
         foreach(int key in healthKitMap.Keys)
         {
-            if (healthKitMap[key] == null)
+            if (!healthKitMap[key].activeSelf)
                 emptySlots.Add(key);
         }
 
         return emptySlots;
-    }
-
-    private void InitHealthKitMap()
-    {
-        healthKitMap = new Dictionary<int, GameObject>();
-        for (int i = 0; i < spawners.Length; i++)
-        {
-            healthKitMap[i] = null;
-        }
     }
 
     private void PrintMap()

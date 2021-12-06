@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 574436121483772956}
   - component: {fileID: 6048050022422155776}
-  - component: {fileID: 4954627883190229846}
   - component: {fileID: 749469166699844542}
   - component: {fileID: 9179888315258990535}
   - component: {fileID: 7467679235969835361}
   - component: {fileID: 6291332477234007894}
+  - component: {fileID: 5202708873120445619}
   m_Layer: 0
   m_Name: HealthKitPrefab
   m_TagString: HealthKit
@@ -87,23 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4954627883190229846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7591861740679962128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 0
-  visible: 0
-  m_AssetId: b29b3bc8e45d36d4580473f5bfd5f173
-  hasSpawned: 0
 --- !u!114 &749469166699844542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,3 +192,20 @@ MonoBehaviour:
     m_PreInfinity: 1
     m_PostInfinity: 1
     m_RotationOrder: 4
+--- !u!114 &5202708873120445619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7591861740679962128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  visible: 0
+  m_AssetId: b29b3bc8e45d36d4580473f5bfd5f173
+  hasSpawned: 0

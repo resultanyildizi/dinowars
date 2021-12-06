@@ -2,35 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Osciliator : MonoBehaviour
 {
 
     [SerializeField]
     AnimationCurve curve;
-
-    Rigidbody2D rigidbody;
     Vector3 initialPosition;
 
 
-    private void Awake()
+    Rigidbody2D rigidbody2d;
+    private void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
-        initialPosition = rigidbody.transform.position;
+        rigidbody2d = GetComponent<Rigidbody2D>();
+        initialPosition = rigidbody2d.transform.position;
     }
 
     private void Update()
     {
-        Osciliate();
-    }
-
-    private void Osciliate() {
-
         transform.position = new Vector2(initialPosition.x, initialPosition.y + curve.Evaluate((Time.time % curve.length)));
-
-
     }
-
-
-
 
 }
