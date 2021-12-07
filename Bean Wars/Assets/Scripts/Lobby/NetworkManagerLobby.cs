@@ -145,7 +145,7 @@ using UnityEngine.SceneManagement;
         {
             // From menu to game
             if (SceneManager.GetActiveScene().name == menuScene && newSceneName.StartsWith("Scene_Map"))
-            {
+            {q
                 for (int i = RoomPlayers.Count - 1; i >= 0; i--)
                 {
                     var conn = RoomPlayers[i].connectionToClient;
