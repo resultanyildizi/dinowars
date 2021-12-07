@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealthKit : MonoBehaviour
 {
     [SerializeField]
-    private double healingAmount;
+    private float healingAmount;
     
     private Rigidbody2D body;
 
@@ -16,7 +16,7 @@ public class HealthKit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Body") || collision.CompareTag("Foot"))
+        if (collision.CompareTag("Body"))
         {
             Player player = collision.GetComponentInParent<Player>();
             PickedUp(player);
