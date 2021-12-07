@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class HealthKit : MonoBehaviour
 {
-    public static event System.Action<double> OnHealthKitDestroyedEvent;
-
     [SerializeField]
     private double healingAmount;
     
@@ -16,19 +14,18 @@ public class HealthKit : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
-    
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PickedUp(collision);
+        if (collision.CompareTag("Body") || collision.CompareTag("Foot"))
+        {
+            Player player = collision.GetComponentInParent<Player>();
+            PickedUp(player);
+        }
     }
 
-    public void PickedUp(Collider2D collision)
+    private void PickedUp(Player player)
     {
-        if (collision.CompareTag("Body"))
-        {
-            gameObject.SetActive(false);
-            OnHealthKitDestroyedEvent?.Invoke(this.healingAmount);
-        }
+        gameObject.SetActive(false);
+        player.Heal(healingAmount);
     }
 }

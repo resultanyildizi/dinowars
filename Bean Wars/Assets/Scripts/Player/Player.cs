@@ -24,9 +24,6 @@ public class Player : NetworkBehaviour
 
         // Tell all listeners the player is created
         OnPlayerCreatedEvent?.Invoke(this);
-
-        // Bind all events
-        BindPlayerEvents();
     }
 
     // Private ===================================================================
@@ -41,16 +38,10 @@ public class Player : NetworkBehaviour
     private void OnColorChanged(Color _, Color newColor)     { OnColorChangedEvent?.Invoke(newColor);   }
     private void OnHealthChanged(double _, double newHealth) { OnHealthChangedEvent?.Invoke(newHealth); }
 
-
-    private void BindPlayerEvents()
-    {
-        HealthKit.OnHealthKitDestroyedEvent += OnHealthCollected;
-    }
-
-    private void OnHealthCollected(double healingAmount)
+    public void Heal(double healingAmount)
     {
         this.health += healingAmount;
-        Debug.Log(string.Format("My new health is {0}", health));
+        Debug.Log(string.Format("My name is {0} - My new health is {1}", playerName, health));
     }
 
 
