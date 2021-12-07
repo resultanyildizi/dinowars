@@ -18,7 +18,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (playerToFollow != null)
         {
-            cinemachine.LookAt = playerToFollow.transform;
+            //cinemachine.LookAt = playerToFollow.transform;
             cinemachine.Follow = playerToFollow.transform;
         }
     }

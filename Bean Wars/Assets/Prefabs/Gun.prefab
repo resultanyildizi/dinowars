@@ -127,16 +127,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84f01aeab2ab4147a758bac463f16f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 358572308464033840, guid: 1462d9d7fa26c4649bbe5f39c04b0abc, type: 3}
+  firePoint: {fileID: 8807253653502234776}
   magazineSize: 20
   damage: 15
+  bulletsPerTap: 3
   timeBetweenShooting: 0.5
   range: 0
   reloadTime: 0.8
   timeBetweenShots: 0.05
-  bulletsPerTap: 3
   allowButtonHold: 0
-  bulletPrefab: {fileID: 358572308464033840, guid: 1462d9d7fa26c4649bbe5f39c04b0abc, type: 3}
-  firePoint: {fileID: 8807253653502234776}
 --- !u!1 &9023238196424187277
 GameObject:
   m_ObjectHideFlags: 0
