@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class JoinLobbyMenu : MonoBehaviour
 {
-    [SerializeField] private NetworkManagerLobby networkManager = null;
+    [SerializeField] private NetworkManager networkManager = null;
 
     [Header("UI")]
     [SerializeField] private GameObject landingPagePanel = null;
@@ -29,7 +30,10 @@ public class JoinLobbyMenu : MonoBehaviour
         string ipAddress = ipAddressInputField.text;
 
         networkManager.networkAddress = ipAddress;
+
         networkManager.StartClient();
+
+        Debug.Log("Client started");
 
         joinButton.interactable = false;
     }
