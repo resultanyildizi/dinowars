@@ -21,6 +21,7 @@ public class DinowarsNetworkManager : NetworkManager
 
     public override void OnClientConnect(NetworkConnection conn)
     {
+        Debug.Log("Number of players:" + this.numPlayers);
         Debug.Log("Client is connected: " + conn.connectionId);
     }
 }

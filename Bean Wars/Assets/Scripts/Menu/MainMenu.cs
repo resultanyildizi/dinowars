@@ -13,7 +13,8 @@ public class MainMenu : MonoBehaviour
     public void HostLobby()
     {
         networkManagerLobby?.StartHost();
-        Debug.Log("Host started");
+        Debug.Log("Host started on: " + networkManagerLobby.networkAddress);
+
         landingPanelUI.SetActive(false);
     }
 }
