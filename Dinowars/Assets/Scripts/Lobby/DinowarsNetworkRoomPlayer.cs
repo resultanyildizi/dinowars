@@ -5,8 +5,18 @@ using UnityEngine;
 
 public class DinowarsNetworkRoomPlayer : NetworkBehaviour
 {
+
+    public enum Team {TeamA, TeamB, None}
+
     public bool IsLeader { get; set; } = false;
     public bool IsReady { get; set; } = false;
+    public Team PlayerTeam { get; set; } = Team.None;
+    public string DisplayName { get; set; }
+
+    private void Awake()
+    {
+         DisplayName = PlayerPrefs.GetString(PlayerInputMenu.PlayerPrefsNameKey);
+    }
 
     public void HandleReadyToStart(bool isReadyToStart)
     {

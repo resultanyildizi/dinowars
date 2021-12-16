@@ -10,8 +10,7 @@ public class PlayerInputMenu : MonoBehaviour
     [SerializeField] private InputField usernameInputField;
     [SerializeField] private Button continueButton;
 
-    private const string PlayerPrefsNameKey = "PlayerUsername";
-    public static string DisplayName { get; private set; }
+    public const string PlayerPrefsNameKey = "PlayerUsername";
 
     private void Start() => SetUpInputField();
 
@@ -32,8 +31,6 @@ public class PlayerInputMenu : MonoBehaviour
 
     public void SavePlayerName()
     {
-        DisplayName = usernameInputField.text;
-
-        PlayerPrefs.SetString(PlayerPrefsNameKey, DisplayName);
+        PlayerPrefs.SetString(PlayerPrefsNameKey, usernameInputField.text);
     }
 }
