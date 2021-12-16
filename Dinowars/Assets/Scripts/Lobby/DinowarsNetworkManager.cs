@@ -20,7 +20,12 @@ public class DinowarsNetworkManager : NetworkManager
     public static event Action OnClientDisconnected;
     public static event Action OnPlayersUpdated;
 
-    public List<DinowarsNetworkRoomPlayer> RoomPlayers { get; } = new List<DinowarsNetworkRoomPlayer>();
+
+    public List<DinowarsNetworkRoomPlayer> TeamBPlayers { get; } = new List<DinowarsNetworkRoomPlayer>();
+    public List<DinowarsNetworkRoomPlayer> TeamAPlayers { get; } = new List<DinowarsNetworkRoomPlayer>();
+
+    private int maxTeamAPlayerCount;
+    private int maxTeamBPlayerCount;
 
     public override void OnStartServer()
     {
@@ -60,8 +65,12 @@ public class DinowarsNetworkManager : NetworkManager
         if (SceneManager.GetActiveScene().name.Equals(menuscene))
         {
             DinowarsNetworkRoomPlayer roomPlayerInstance = Instantiate(roomPlayerPrefab);
-            roomPlayerInstance.IsLeader = RoomPlayers.Count == 0;
-            NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);
+            roomPlayerInstance.IsLeader = TeamAPlayers.Count == 0 && TeamBPlayers.Count== 0;
+
+            bool successful = AddPlayerToTeam(roomPlayerInstance);
+
+            if(successful)
+                NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);
         }
     }
 
@@ -77,7 +86,10 @@ public class DinowarsNetworkManager : NetworkManager
         if (conn.identity != null)
         {
             DinowarsNetworkRoomPlayer player = conn.identity.GetComponent<DinowarsNetworkRoomPlayer>();
-            RoomPlayers.Remove(player);
+            if(player.PlayerTeam == DinowarsNetworkRoomPlayer.Team.TeamA)
+                TeamAPlayers.Remove(player);
+            else if(player.PlayerTeam == DinowarsNetworkRoomPlayer.Team.TeamB) 
+                TeamAPlayers.Remove(player);
 
             // NotifyPlayersReadyState
         }
@@ -86,12 +98,17 @@ public class DinowarsNetworkManager : NetworkManager
 
     public override void OnStopServer()
     {
-        RoomPlayers.Clear();
+        TeamAPlayers.Clear();
+        TeamBPlayers.Clear();
     }
 
     public void NotifyPlayersReadyState()
     {
-        foreach(var player in RoomPlayers) {
+        foreach(var player in TeamAPlayers) {
+            player.HandleReadyToStart(IsReadyToStart());
+        }
+        foreach (var player in TeamBPlayers)
+        {
             player.HandleReadyToStart(IsReadyToStart());
         }
     }
@@ -100,11 +117,39 @@ public class DinowarsNetworkManager : NetworkManager
     {
         if (numPlayers < minPlayers) return false;
 
-        foreach (var player in RoomPlayers) {
+        foreach (var player in TeamAPlayers) {
+            if (!player.IsReady) return false;
+        }
+
+        foreach (var player in TeamBPlayers)
+        {
             if (!player.IsReady) return false;
         }
 
         return true;
+    }
+
+    private bool AddPlayerToTeam(DinowarsNetworkRoomPlayer player)
+    {
+        maxTeamAPlayerCount = (int)Math.Ceiling((decimal)maxConnections / 2);
+        maxTeamBPlayerCount = maxConnections - maxTeamAPlayerCount;
+
+        if (TeamAPlayers.Count < maxTeamAPlayerCount)
+        {
+            TeamAPlayers.Add(player);
+            player.PlayerTeam = DinowarsNetworkRoomPlayer.Team.TeamA;
+            return true;
+        }
+
+        if (TeamBPlayers.Count < maxTeamBPlayerCount)
+        {
+            TeamBPlayers.Add(player);
+            player.PlayerTeam = DinowarsNetworkRoomPlayer.Team.TeamB;
+            return true;
+        }
+
+        return false;
+
     }
 
 

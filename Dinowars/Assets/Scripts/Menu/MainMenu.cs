@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     public void HostLobby()
     {
         dinowarsNetworkManager.StartHost();
+        dinowarsNetworkManager.maxConnections = 5;
         landingPanelUI.SetActive(false);
     }
 }
