@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 173149958}
   - component: {fileID: 173149957}
   m_Layer: 0
-  m_Name: DinoSpeedBar3
+  m_Name: SanyaSpeedBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,16 +244,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173149955}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 25
+  m_Father: {fileID: 497408861}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 191.41443, y: -120}
+  m_AnchoredPosition: {x: -200.67603, y: -346.1408}
   m_SizeDelta: {x: 61.2781, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &173149957
@@ -498,7 +498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -640,7 +640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 248402811}
   - component: {fileID: 248402810}
   m_Layer: 0
-  m_Name: DinoDetails2
+  m_Name: UxgylDesc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,16 +750,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248402808}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 22
+  m_Father: {fileID: 538380639}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.5855713, y: -175.14203}
+  m_AnchoredPosition: {x: 3.9484248, y: -483.45667}
   m_SizeDelta: {x: 226.4493, y: 54.2899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &248402810
@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 345038829}
   - component: {fileID: 345038828}
   m_Layer: 0
-  m_Name: DinoImage3
+  m_Name: SanyaImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1131,16 +1131,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345038826}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 11
+  m_Father: {fileID: 497408861}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 270, y: 123}
+  m_AnchoredPosition: {x: -4.980438, y: 258.98303}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &345038828
@@ -1237,7 +1237,7 @@ GameObject:
   - component: {fileID: 360815779}
   - component: {fileID: 360815778}
   m_Layer: 0
-  m_Name: DinoSpeedBar2
+  m_Name: UxgylSpeedBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1250,16 +1250,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360815776}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 21
+  m_Father: {fileID: 538380639}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75, y: -120}
+  m_AnchoredPosition: {x: -201.70798, y: -346.1408}
   m_SizeDelta: {x: 61.2781, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &360815778
@@ -1316,7 +1316,7 @@ GameObject:
   - component: {fileID: 361876786}
   - component: {fileID: 361876785}
   m_Layer: 0
-  m_Name: DinoHealthBar1
+  m_Name: RexTHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1329,16 +1329,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361876783}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 15
+  m_Father: {fileID: 529211574}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -340, y: -40}
+  m_AnchoredPosition: {x: -199.84036, y: -146.92297}
   m_SizeDelta: {x: 61.2781, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &361876785
@@ -1395,7 +1395,7 @@ GameObject:
   - component: {fileID: 369027320}
   - component: {fileID: 369027319}
   m_Layer: 0
-  m_Name: Dino1Name
+  m_Name: RexTName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1408,16 +1408,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369027317}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 12
+  m_Father: {fileID: 529211574}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -259, y: 10}
+  m_AnchoredPosition: {x: 1.8675842, y: -22.412098}
   m_SizeDelta: {x: 256, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &369027319
@@ -1453,7 +1453,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Dino Name
+  m_Text: Rex-T
 --- !u!222 &369027320
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1474,7 +1474,7 @@ GameObject:
   - component: {fileID: 380529507}
   - component: {fileID: 380529506}
   m_Layer: 0
-  m_Name: DinoHealthBar3
+  m_Name: SanyaHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1487,16 +1487,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380529504}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 23
+  m_Father: {fileID: 497408861}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 191.41443, y: -40}
+  m_AnchoredPosition: {x: -200.67603, y: -146.92297}
   m_SizeDelta: {x: 61.2781, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &380529506
@@ -1738,7 +1738,7 @@ GameObject:
   - component: {fileID: 451006667}
   - component: {fileID: 451006666}
   m_Layer: 0
-  m_Name: DinoHealthBar2
+  m_Name: UxgylHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1751,16 +1751,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451006664}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 19
+  m_Father: {fileID: 538380639}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75, y: -40}
+  m_AnchoredPosition: {x: -201.70798, y: -146.92297}
   m_SizeDelta: {x: 61.2781, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &451006666
@@ -1817,7 +1817,7 @@ GameObject:
   - component: {fileID: 497408863}
   - component: {fileID: 497408862}
   m_Layer: 5
-  m_Name: DinoBackground3
+  m_Name: SanyaLobbyCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1833,9 +1833,15 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.40157068, y: 0.40157068, z: 0.40157068}
-  m_Children: []
+  m_Children:
+  - {fileID: 345038827}
+  - {fileID: 1896170996}
+  - {fileID: 380529505}
+  - {fileID: 993071393}
+  - {fileID: 173149956}
+  - {fileID: 1302068000}
   m_Father: {fileID: 2086824008}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1892,7 +1898,7 @@ GameObject:
   - component: {fileID: 504961310}
   - component: {fileID: 504961309}
   m_Layer: 0
-  m_Name: DinoAttackBar1
+  m_Name: RexTAttackBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1905,16 +1911,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504961307}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 16
+  m_Father: {fileID: 529211574}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -340, y: -80}
+  m_AnchoredPosition: {x: -199.84036, y: -246.5319}
   m_SizeDelta: {x: 61.2781, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &504961309
@@ -1971,7 +1977,7 @@ GameObject:
   - component: {fileID: 529211576}
   - component: {fileID: 529211575}
   m_Layer: 5
-  m_Name: DinoBackground1
+  m_Name: RexTLobbyCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1987,9 +1993,15 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.40157068, y: 0.40157068, z: 0.40157068}
-  m_Children: []
+  m_Children:
+  - {fileID: 1785855955}
+  - {fileID: 369027318}
+  - {fileID: 361876784}
+  - {fileID: 504961308}
+  - {fileID: 1585665494}
+  - {fileID: 676001486}
   m_Father: {fileID: 2086824008}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2046,7 +2058,7 @@ GameObject:
   - component: {fileID: 538380641}
   - component: {fileID: 538380640}
   m_Layer: 5
-  m_Name: DinoBackground2
+  m_Name: UxgylLobbyCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2062,9 +2074,15 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.40157068, y: 0.40157068, z: 0.40157068}
-  m_Children: []
+  m_Children:
+  - {fileID: 1078122819}
+  - {fileID: 2067139629}
+  - {fileID: 2064648073}
+  - {fileID: 451006665}
+  - {fileID: 360815777}
+  - {fileID: 248402809}
   m_Father: {fileID: 2086824008}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2166,7 +2184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2597,7 +2615,7 @@ GameObject:
   - component: {fileID: 676001488}
   - component: {fileID: 676001487}
   m_Layer: 0
-  m_Name: DinoDetails1
+  m_Name: RexTDesc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2610,16 +2628,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676001485}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 18
+  m_Father: {fileID: 529211574}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -257.41443, y: -175.14203}
+  m_AnchoredPosition: {x: 5.8160095, y: -483.45667}
   m_SizeDelta: {x: 226.4493, y: 54.2899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &676001487
@@ -2645,7 +2663,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 15
-    m_FontStyle: 0
+    m_FontStyle: 3
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
@@ -2655,8 +2673,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Dino a\xE7\u0131klamas\u0131 Dino a\xE7\u0131klamas\u0131 Dino a\xE7\u0131klamas\u0131
-    Dino a\xE7\u0131klamas\u0131 Dino a\xE7\u0131klamas\u0131 Dino a\xE7\u0131klamas\u0131"
+  m_Text: '"My passion is my strongest weapon"'
 --- !u!222 &676001488
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3111,7 +3128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3257,7 +3274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3511,7 +3528,7 @@ GameObject:
   - component: {fileID: 993071395}
   - component: {fileID: 993071394}
   m_Layer: 0
-  m_Name: DinoAttackBar3
+  m_Name: SanyaAttackBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3524,16 +3541,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993071392}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 24
+  m_Father: {fileID: 497408861}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 191.41443, y: -80}
+  m_AnchoredPosition: {x: -200.67603, y: -246.5319}
   m_SizeDelta: {x: 61.2781, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &993071394
@@ -3791,7 +3808,7 @@ GameObject:
   - component: {fileID: 1078122821}
   - component: {fileID: 1078122820}
   m_Layer: 0
-  m_Name: DinoImage2
+  m_Name: UxgylImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3804,16 +3821,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078122818}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 10
+  m_Father: {fileID: 538380639}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 123}
+  m_AnchoredPosition: {x: 0, y: 258.98306}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1078122820
@@ -4040,7 +4057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4295,7 +4312,7 @@ GameObject:
   - component: {fileID: 1302068002}
   - component: {fileID: 1302068001}
   m_Layer: 0
-  m_Name: DinoDetails3
+  m_Name: SanyaDesc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4308,16 +4325,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302067999}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 26
+  m_Father: {fileID: 497408861}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 274, y: -175.14203}
+  m_AnchoredPosition: {x: 4.9803467, y: -483.45667}
   m_SizeDelta: {x: 226.4493, y: 54.2899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1302068001
@@ -4476,7 +4493,7 @@ RectTransform:
   m_Children:
   - {fileID: 385787606}
   m_Father: {fileID: 2086824008}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -4626,7 +4643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4881,7 +4898,7 @@ GameObject:
   - component: {fileID: 1585665496}
   - component: {fileID: 1585665495}
   m_Layer: 0
-  m_Name: DinoSpeedBar1
+  m_Name: RexTSpeedBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4894,16 +4911,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585665493}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 17
+  m_Father: {fileID: 529211574}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -340, y: -120}
+  m_AnchoredPosition: {x: -199.84036, y: -346.1408}
   m_SizeDelta: {x: 61.2781, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1585665495
@@ -5009,7 +5026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6035037786832381450, guid: 40d0167cf506d4ceb9b78dd95f49622c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5472,7 +5489,7 @@ GameObject:
   - component: {fileID: 1785855957}
   - component: {fileID: 1785855956}
   m_Layer: 0
-  m_Name: DinoImage1
+  m_Name: RexTImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5485,16 +5502,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785855954}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 9
+  m_Father: {fileID: 529211574}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -259, y: 123}
+  m_AnchoredPosition: {x: 1.8675842, y: 258.98306}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1785855956
@@ -5670,7 +5687,7 @@ GameObject:
   - component: {fileID: 1896170998}
   - component: {fileID: 1896170997}
   m_Layer: 0
-  m_Name: Dino3Name
+  m_Name: SanyaName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5683,16 +5700,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896170995}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 14
+  m_Father: {fileID: 497408861}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 271, y: 10}
+  m_AnchoredPosition: {x: -2.4902954, y: -22.412098}
   m_SizeDelta: {x: 256, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1896170997
@@ -5877,7 +5894,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2086824008}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6437,7 +6454,7 @@ GameObject:
   - component: {fileID: 2064648075}
   - component: {fileID: 2064648074}
   m_Layer: 0
-  m_Name: DinoAttackBar2
+  m_Name: UxgylAttackBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6450,16 +6467,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064648072}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 20
+  m_Father: {fileID: 538380639}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75, y: -80}
+  m_AnchoredPosition: {x: -201.70798, y: -246.5319}
   m_SizeDelta: {x: 61.2781, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2064648074
@@ -6516,7 +6533,7 @@ GameObject:
   - component: {fileID: 2067139631}
   - component: {fileID: 2067139630}
   m_Layer: 0
-  m_Name: Dino2Name
+  m_Name: UxgylName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6529,16 +6546,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067139628}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4902217, y: 2.4902217, z: 2.4902217}
   m_Children: []
-  m_Father: {fileID: 2086824008}
-  m_RootOrder: 13
+  m_Father: {fileID: 538380639}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 10}
+  m_AnchoredPosition: {x: 0, y: -22.412098}
   m_SizeDelta: {x: 256, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2067139630
@@ -6614,32 +6631,14 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1755832086}
+  - {fileID: 529211574}
   - {fileID: 538380639}
   - {fileID: 497408861}
   - {fileID: 1910521957}
   - {fileID: 1383201284}
   - {fileID: 237934257}
-  - {fileID: 529211574}
   - {fileID: 1013347513}
   - {fileID: 713249211}
-  - {fileID: 1785855955}
-  - {fileID: 1078122819}
-  - {fileID: 345038827}
-  - {fileID: 369027318}
-  - {fileID: 2067139629}
-  - {fileID: 1896170996}
-  - {fileID: 361876784}
-  - {fileID: 504961308}
-  - {fileID: 1585665494}
-  - {fileID: 676001486}
-  - {fileID: 451006665}
-  - {fileID: 2064648073}
-  - {fileID: 360815777}
-  - {fileID: 248402809}
-  - {fileID: 380529505}
-  - {fileID: 993071393}
-  - {fileID: 173149956}
-  - {fileID: 1302068000}
   - {fileID: 559739453}
   - {fileID: 207837462}
   - {fileID: 874121874}
