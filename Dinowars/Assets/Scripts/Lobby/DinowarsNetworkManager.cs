@@ -70,7 +70,7 @@ public class DinowarsNetworkManager : NetworkManager
         if (SceneManager.GetActiveScene().name.Equals(menuscene))
         {
             DinowarsNetworkRoomPlayer roomPlayerInstance = Instantiate(roomPlayerPrefab);
-            roomPlayerInstance.IsLeader = TeamAPlayers.Count == 0 && TeamBPlayers.Count== 0;
+            roomPlayerInstance.IsLeader = TeamAPlayers.Count == 0 && TeamBPlayers.Count == 0;
             NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);
         }
     }
@@ -87,9 +87,9 @@ public class DinowarsNetworkManager : NetworkManager
         if (conn.identity != null)
         {
             DinowarsNetworkRoomPlayer player = conn.identity.GetComponent<DinowarsNetworkRoomPlayer>();
-            if(player.PlayerTeam == DinowarsNetworkRoomPlayer.Team.TeamA)
+            if (player.PlayerTeam == DinowarsNetworkRoomPlayer.Team.TeamA)
                 TeamAPlayers.Remove(player);
-            else if(player.PlayerTeam == DinowarsNetworkRoomPlayer.Team.TeamB) 
+            else if (player.PlayerTeam == DinowarsNetworkRoomPlayer.Team.TeamB)
                 TeamAPlayers.Remove(player);
 
             NotifyPlayersReadyState();
@@ -107,7 +107,8 @@ public class DinowarsNetworkManager : NetworkManager
 
     public void NotifyPlayersReadyState()
     {
-        foreach(var player in TeamAPlayers) {
+        foreach (var player in TeamAPlayers)
+        {
             player.HandleReadyToStart(IsReadyToStart());
         }
         foreach (var player in TeamBPlayers)
@@ -120,7 +121,8 @@ public class DinowarsNetworkManager : NetworkManager
     {
         if (numPlayers < minPlayers) return false;
 
-        foreach (var player in TeamAPlayers) {
+        foreach (var player in TeamAPlayers)
+        {
             if (!player.IsReady) return false;
         }
 
@@ -176,5 +178,21 @@ public class DinowarsNetworkManager : NetworkManager
         }
     }
 
+    public DinowarsNetworkRoomPlayer GetAuthorizedPlayer()
+    {
+        foreach (var player in DinowarsNetworkManager.Instance.TeamBPlayers)
+        {
+            if (player.hasAuthority)
+                return player;
+        }
 
+        foreach (var player in DinowarsNetworkManager.Instance.TeamAPlayers)
+        {
+            if (player.hasAuthority)
+                return player;
+        }
+
+        return null;
+    }
 }
+

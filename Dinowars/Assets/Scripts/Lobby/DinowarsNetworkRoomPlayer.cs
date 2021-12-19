@@ -7,7 +7,7 @@ using UnityEngine;
 public class DinowarsNetworkRoomPlayer : NetworkBehaviour
 {
     public enum Team { TeamA, TeamB, None }
-    [SyncVar(hook = nameof(OnIsLeaderChanged))]
+    [SyncVar()]
     private bool isLeader = false;
     [SyncVar(hook = nameof(OnIsReadyChanged))]
     private bool isReady = false;
@@ -16,12 +16,13 @@ public class DinowarsNetworkRoomPlayer : NetworkBehaviour
     [SyncVar(hook = nameof(OnDisplayNameChanged))]
     private string displayname = null;
 
-    public event Action OnDisplayNameChangedEvent;
-
     public Team PlayerTeam { get { return playerTeam; } set { playerTeam = value; } }
     public string DisplayName { get { return displayname; } set { displayname = value; } }
     public bool IsLeader { get { return isLeader; } set { isLeader = value; } }
     public bool IsReady { get { return isReady; } set { isReady = value; } }
+
+    public event Action OnRoomPlayerChanged;
+
 
     public override void OnStartAuthority()
     {
@@ -36,39 +37,30 @@ public class DinowarsNetworkRoomPlayer : NetworkBehaviour
     public void HandleReadyToStart(bool isReadyToStart)
     {
         if (!isLeader) return;
-
     }
 
+    private void OnIsReadyChanged(bool oldValue, bool newValue) => OnRoomPlayerChanged?.Invoke();
 
-    private void OnIsLeaderChanged(bool oldValue, bool newValue) {}
-    private void OnIsReadyChanged(bool oldValue, bool newValue) {}
+    private void OnDisplayNameChanged(string oldValue, string newValue) => OnRoomPlayerChanged?.Invoke();
 
-    private void OnPlayerTeamChanged(Team oldValue, Team newValue) {
+    private void OnPlayerTeamChanged(Team oldValue, Team newValue)
+    {
         if (oldValue == Team.None) return;
         if (oldValue == newValue) return;
-
-        Debug.Log(oldValue + " - " + newValue);
 
         if (newValue == Team.TeamA)
             DinowarsNetworkManager.Instance.ChangeTeamToA(this);
         else if (newValue == Team.TeamB)
             DinowarsNetworkManager.Instance.ChangeTeamToB(this);
-                
-    }
-    private void OnDisplayNameChanged(string oldValue, string newValue)
-    {
-        OnDisplayNameChangedEvent?.Invoke();
     }
 
     [Command]
-    public void CmdChangeName(string name)
-    {
-        DisplayName = name;
-    }
-
+    public void CmdChangeName(string name) => DisplayName = name;
+    
     [Command]
-    public void CmdChangeTeam(Team team)
-    {
-        PlayerTeam = team;
-    }
+    public void CmdChangeTeam(Team team) => PlayerTeam = team;
+    
+    [Command]
+    public void CmdChangeReady(bool ready) => IsReady = ready;
+    
 }

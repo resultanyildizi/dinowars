@@ -10,10 +10,6 @@ public class TeamPlayerCard : MonoBehaviour
     [SerializeField] private Text NameText;
     [SerializeField] private Text StatusText;
 
-    private void Awake()
-    {
-        
-    }
 
     public DinowarsNetworkRoomPlayer RoomPlayer {
         set
@@ -26,14 +22,17 @@ public class TeamPlayerCard : MonoBehaviour
                 StatusText.color = Color.gray;
             } else
             {
-                roomPlayer.OnDisplayNameChangedEvent += () => NameText.text = roomPlayer.DisplayName;
-                NameText.text = roomPlayer.DisplayName;
-                StatusText.text = roomPlayer.IsReady ? "Ready" : "Not ready";
-                StatusText.color = roomPlayer.IsReady ? Color.green : Color.red;
+                UpdateUI();
+                roomPlayer.OnRoomPlayerChanged += UpdateUI;
             }
         }
+    }
 
-
+    private void UpdateUI()
+    {
+        NameText.text = roomPlayer.DisplayName;
+        StatusText.text = roomPlayer.IsReady ? "Ready" : "Not ready";
+        StatusText.color = roomPlayer.IsReady ? Color.green : Color.red;
     }
 
     
