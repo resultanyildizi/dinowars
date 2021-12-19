@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private DinowarsNetworkManager dinowarsNetworkManager;
     [Header("Menu UI")]
     [SerializeField] private GameObject landingPanelUI;
-
+    [SerializeField] private GameObject lobbyPanelUI;
 
     public void HostLobby()
     {
-        dinowarsNetworkManager.StartHost();
-        dinowarsNetworkManager.maxConnections = 5;
+        DinowarsNetworkManager.Instance.StartHost();
+        DinowarsNetworkManager.Instance.maxConnections = 5;
         landingPanelUI.SetActive(false);
+        lobbyPanelUI.SetActive(true);
     }
 }

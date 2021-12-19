@@ -9,7 +9,8 @@ public class JoinLobbyMenu : MonoBehaviour
     [SerializeField] private DinowarsNetworkManager dinowarsNetworkManager = null;
 
     [Header("UI")]
-    [SerializeField] private GameObject landingPagePanel = null;
+    [SerializeField] private GameObject landingPanelUI = null;
+    [SerializeField] private GameObject loobyPanelUI = null;
     [SerializeField] private InputField ipAddressInputField = null;
     [SerializeField] private Button joinButton = null;
 
@@ -41,7 +42,9 @@ public class JoinLobbyMenu : MonoBehaviour
         joinButton.interactable = true;
 
         gameObject.SetActive(false);
-        landingPagePanel.SetActive(false);
+
+        landingPanelUI.SetActive(false);
+        loobyPanelUI.SetActive(true);
     }
 
     private void HandleClientDisconnected()

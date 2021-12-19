@@ -11,10 +11,15 @@ using System.Collections.Generic;
 
 public class DinowarsNetworkManager : NetworkManager
 {
+    public static DinowarsNetworkManager Instance { get { return NetworkManager.singleton as DinowarsNetworkManager; } }
+
+
     [SerializeField] private int minPlayers = 2;
     [SerializeField] private string menuscene = string.Empty;
     [Header("Room")]
     [SerializeField] private DinowarsNetworkRoomPlayer roomPlayerPrefab;
+
+
 
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
@@ -66,11 +71,7 @@ public class DinowarsNetworkManager : NetworkManager
         {
             DinowarsNetworkRoomPlayer roomPlayerInstance = Instantiate(roomPlayerPrefab);
             roomPlayerInstance.IsLeader = TeamAPlayers.Count == 0 && TeamBPlayers.Count== 0;
-
-            bool successful = AddPlayerToTeam(roomPlayerInstance);
-
-            if(successful)
-                NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);
+            NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);
         }
     }
 
@@ -91,7 +92,8 @@ public class DinowarsNetworkManager : NetworkManager
             else if(player.PlayerTeam == DinowarsNetworkRoomPlayer.Team.TeamB) 
                 TeamAPlayers.Remove(player);
 
-            // NotifyPlayersReadyState
+            NotifyPlayersReadyState();
+            OnPlayersUpdated?.Invoke();
         }
         base.OnServerDisconnect(conn);
     }
@@ -100,6 +102,7 @@ public class DinowarsNetworkManager : NetworkManager
     {
         TeamAPlayers.Clear();
         TeamBPlayers.Clear();
+        OnPlayersUpdated?.Invoke();
     }
 
     public void NotifyPlayersReadyState()
@@ -129,7 +132,7 @@ public class DinowarsNetworkManager : NetworkManager
         return true;
     }
 
-    private bool AddPlayerToTeam(DinowarsNetworkRoomPlayer player)
+    public bool AddPlayerToTeam(DinowarsNetworkRoomPlayer player)
     {
         maxTeamAPlayerCount = (int)Math.Ceiling((decimal)maxConnections / 2);
         maxTeamBPlayerCount = maxConnections - maxTeamAPlayerCount;
@@ -138,6 +141,7 @@ public class DinowarsNetworkManager : NetworkManager
         {
             TeamAPlayers.Add(player);
             player.PlayerTeam = DinowarsNetworkRoomPlayer.Team.TeamA;
+            OnPlayersUpdated?.Invoke();
             return true;
         }
 
@@ -145,11 +149,11 @@ public class DinowarsNetworkManager : NetworkManager
         {
             TeamBPlayers.Add(player);
             player.PlayerTeam = DinowarsNetworkRoomPlayer.Team.TeamB;
+            OnPlayersUpdated?.Invoke();
             return true;
         }
 
         return false;
-
     }
 
 

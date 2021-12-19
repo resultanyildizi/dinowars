@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
@@ -5,22 +6,51 @@ using UnityEngine;
 
 public class DinowarsNetworkRoomPlayer : NetworkBehaviour
 {
+    public enum Team { TeamA, TeamB, None }
+    [SyncVar(hook = nameof(OnIsLeaderChanged))]
+    private bool isLeader = false;
+    [SyncVar(hook = nameof(OnIsReadyChanged))]
+    private bool isReady = false;
+    [SyncVar(hook = nameof(OnPlayerTeamChanged))]
+    private Team playerTeam = Team.None;
+    [SyncVar(hook = nameof(OnDisplayNameChanged))]
+    private string displayname = null;
 
-    public enum Team {TeamA, TeamB, None}
+    public event Action OnDisplayNameChangedEvent;
 
-    public bool IsLeader { get; set; } = false;
-    public bool IsReady { get; set; } = false;
-    public Team PlayerTeam { get; set; } = Team.None;
-    public string DisplayName { get; set; }
+    public Team PlayerTeam { get { return playerTeam; } set { playerTeam = value; } }
+    public string DisplayName { get { return displayname; } set { displayname = value; } }
+    public bool IsLeader { get { return isLeader; } set { isLeader = value; } }
+    public bool IsReady { get { return isReady; } set { isReady = value; } }
 
-    private void Awake()
+    public override void OnStartAuthority()
     {
-         DisplayName = PlayerPrefs.GetString(PlayerInputMenu.PlayerPrefsNameKey);
+        CmdChangeName(PlayerInputMenu.DisplayName);
+    }
+
+    public override void OnStartClient()
+    {
+        DinowarsNetworkManager.Instance.AddPlayerToTeam(this);
     }
 
     public void HandleReadyToStart(bool isReadyToStart)
     {
-        if (!IsLeader) return;
+        if (!isLeader) return;
 
+    }
+
+
+    private void OnIsLeaderChanged(bool oldValue, bool newValue) {}
+    private void OnIsReadyChanged(bool oldValue, bool newValue) {}
+    private void OnPlayerTeamChanged(Team oldValue, Team newValue) {}
+    private void OnDisplayNameChanged(string oldValue, string newValue)
+    {
+        OnDisplayNameChangedEvent?.Invoke();
+    }
+
+    [Command]
+    private void CmdChangeName(string name)
+    {
+        DisplayName = name;
     }
 }
