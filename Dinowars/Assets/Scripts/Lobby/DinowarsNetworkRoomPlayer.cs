@@ -42,15 +42,33 @@ public class DinowarsNetworkRoomPlayer : NetworkBehaviour
 
     private void OnIsLeaderChanged(bool oldValue, bool newValue) {}
     private void OnIsReadyChanged(bool oldValue, bool newValue) {}
-    private void OnPlayerTeamChanged(Team oldValue, Team newValue) {}
+
+    private void OnPlayerTeamChanged(Team oldValue, Team newValue) {
+        if (oldValue == Team.None) return;
+        if (oldValue == newValue) return;
+
+        Debug.Log(oldValue + " - " + newValue);
+
+        if (newValue == Team.TeamA)
+            DinowarsNetworkManager.Instance.ChangeTeamToA(this);
+        else if (newValue == Team.TeamB)
+            DinowarsNetworkManager.Instance.ChangeTeamToB(this);
+                
+    }
     private void OnDisplayNameChanged(string oldValue, string newValue)
     {
         OnDisplayNameChangedEvent?.Invoke();
     }
 
     [Command]
-    private void CmdChangeName(string name)
+    public void CmdChangeName(string name)
     {
         DisplayName = name;
+    }
+
+    [Command]
+    public void CmdChangeTeam(Team team)
+    {
+        PlayerTeam = team;
     }
 }

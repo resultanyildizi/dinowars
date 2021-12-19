@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,22 +25,24 @@ public class DinowarsLobbyPanel : MonoBehaviour
 
         for (int i = 0; i < DinowarsNetworkManager.Instance.TeamAPlayers.Count; i++)
         {
+            Debug.Log("A: " + i);
             teamARoomPlayers[i].RoomPlayer = DinowarsNetworkManager.Instance.TeamAPlayers[i];
         }
 
         for (int i = 0; i < DinowarsNetworkManager.Instance.TeamBPlayers.Count; i++)
         {
-            teamBRoomPlayers[i].RoomPlayer = DinowarsNetworkManager.Instance.TeamAPlayers[i];
+            Debug.Log("B: " + i);
+            teamBRoomPlayers[i].RoomPlayer = DinowarsNetworkManager.Instance.TeamBPlayers[i];
         }
     }
 
     private void ResetCards()
     {
-        foreach(var card in teamARoomPlayers)
+        foreach (var card in teamARoomPlayers)
         {
             card.RoomPlayer = null;
         }
-        foreach(var card in teamBRoomPlayers)
+        foreach (var card in teamBRoomPlayers)
         {
             card.RoomPlayer = null;
         }
@@ -49,19 +52,29 @@ public class DinowarsLobbyPanel : MonoBehaviour
 
     public void ChangeTeamToB()
     {
-        DinowarsNetworkRoomPlayer roomPlayer = null;
-        for (int i = DinowarsNetworkManager.Instance.TeamAPlayers.Count - 1; i >= 0; i--)
+        foreach (var player in DinowarsNetworkManager.Instance.TeamAPlayers)
         {
-            roomPlayer = DinowarsNetworkManager.Instance.TeamAPlayers[i];
-            if (roomPlayer.hasAuthority) break;
+            if (player.hasAuthority)
+            {
+                Debug.Log(player);
+                player.CmdChangeTeam(DinowarsNetworkRoomPlayer.Team.TeamB);
+                return;
+            }       
         }
+    }
 
-        if (roomPlayer != null)
+    public void ChangeTeamToA()
+    {
+        foreach (var player in DinowarsNetworkManager.Instance.TeamBPlayers)
         {
-            roomPlayer.PlayerTeam = DinowarsNetworkRoomPlayer.Team.TeamB;
-            DinowarsNetworkManager.Instance.TeamAPlayers.Remove(roomPlayer);
-            DinowarsNetworkManager.Instance.TeamBPlayers.Add(roomPlayer);
-            OnPlayersUpdated();
+            if (player.hasAuthority)
+            {
+                Debug.Log(player);
+                player.CmdChangeTeam(DinowarsNetworkRoomPlayer.Team.TeamA);
+                return;
+            }
         }
     }
 }
+
+

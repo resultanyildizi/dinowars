@@ -156,5 +156,25 @@ public class DinowarsNetworkManager : NetworkManager
         return false;
     }
 
+    public void ChangeTeamToB(DinowarsNetworkRoomPlayer roomPlayer)
+    {
+        if (roomPlayer != null)
+        {
+            TeamAPlayers.Remove(roomPlayer);
+            TeamBPlayers.Add(roomPlayer);
+            OnPlayersUpdated?.Invoke();
+        }
+    }
+
+    public void ChangeTeamToA(DinowarsNetworkRoomPlayer roomPlayer)
+    {
+        if (roomPlayer != null)
+        {
+            TeamBPlayers.Remove(roomPlayer);
+            TeamAPlayers.Add(roomPlayer);
+            OnPlayersUpdated?.Invoke();
+        }
+    }
+
 
 }
