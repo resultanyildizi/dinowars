@@ -30,9 +30,12 @@ public class TeamPlayerCard : MonoBehaviour
 
     private void UpdateUI()
     {
-        NameText.text = roomPlayer.DisplayName;
-        StatusText.text = roomPlayer.IsReady ? "Ready" : "Not ready";
-        StatusText.color = roomPlayer.IsReady ? Color.green : Color.red;
+        if(roomPlayer != null)
+        {
+            NameText.text = roomPlayer.DisplayName;
+            StatusText.text = roomPlayer.IsReady ? "Ready" : "Not ready";
+            StatusText.color = roomPlayer.IsReady ? Color.green : Color.red;
+        }
     }
 
     

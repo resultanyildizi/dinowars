@@ -13,9 +13,8 @@ public class DinowarsLobbyPanel : MonoBehaviour
     [SerializeField] private TeamPlayerCard[] teamBRoomPlayers;
 
     [Header("UI")]
-    [SerializeField] private Button teamASelectButton;
-    [SerializeField] private Button teamBSelectButton;
-    [SerializeField] private Button toggleReadyButton;
+    [SerializeField] private Button toggleButton;
+    [SerializeField] private Button startGameButton;
 
     public DinowarsNetworkRoomPlayer RoomPlayer
     {
@@ -27,9 +26,16 @@ public class DinowarsLobbyPanel : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        DinowarsNetworkManager.OnPlayersUpdated += OnPlayersUpdated;
+        DinowarsNetworkManager.OnReadyStateChanged += OnReadyStateChanged;
+    }
 
-
-    private void Awake() => DinowarsNetworkManager.OnPlayersUpdated += OnPlayersUpdated;
+    private void OnReadyStateChanged(bool ready)
+    {
+        startGameButton.gameObject.SetActive(RoomPlayer.IsLeader && ready);
+    }
 
     private void OnPlayersUpdated()
     {
@@ -55,13 +61,24 @@ public class DinowarsLobbyPanel : MonoBehaviour
 
     public void ChangeTeamToA()
     {
-        
         RoomPlayer.CmdChangeTeam(DinowarsNetworkRoomPlayer.Team.TeamA);
     }
 
     public void ToggleReady()
     {
-        RoomPlayer.IsReady = !RoomPlayer.IsReady;
+        bool isReady = RoomPlayer.IsReady;
+        RoomPlayer.CmdChangeReady(!isReady);
+        if(!isReady)
+        {
+            toggleButton.GetComponentInChildren<Text>().text = "Ready";
+            toggleButton.GetComponent<Image>().color = Color.green;
+        } else
+        {
+            Color color;
+            toggleButton.GetComponentInChildren<Text>().text = "Not Ready";
+            ColorUtility.TryParseHtmlString("#6F153B", out color);
+            toggleButton.GetComponent<Image>().color = color;
+        }
     }
 }
 

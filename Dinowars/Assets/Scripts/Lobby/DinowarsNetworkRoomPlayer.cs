@@ -23,7 +23,6 @@ public class DinowarsNetworkRoomPlayer : NetworkBehaviour
 
     public event Action OnRoomPlayerChanged;
 
-
     public override void OnStartAuthority()
     {
         CmdChangeName(PlayerInputMenu.DisplayName);
@@ -34,12 +33,11 @@ public class DinowarsNetworkRoomPlayer : NetworkBehaviour
         DinowarsNetworkManager.Instance.AddPlayerToTeam(this);
     }
 
-    public void HandleReadyToStart(bool isReadyToStart)
+    private void OnIsReadyChanged(bool oldValue, bool newValue)
     {
-        if (!isLeader) return;
+        OnRoomPlayerChanged?.Invoke();
+        DinowarsNetworkManager.Instance.IsReadyToStart();
     }
-
-    private void OnIsReadyChanged(bool oldValue, bool newValue) => OnRoomPlayerChanged?.Invoke();
 
     private void OnDisplayNameChanged(string oldValue, string newValue) => OnRoomPlayerChanged?.Invoke();
 

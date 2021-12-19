@@ -14,7 +14,7 @@ public class DinowarsNetworkManager : NetworkManager
     public static DinowarsNetworkManager Instance { get { return NetworkManager.singleton as DinowarsNetworkManager; } }
 
 
-    [SerializeField] private int minPlayers = 2;
+    [SerializeField] private int minPlayers = 1;
     [SerializeField] private string menuscene = string.Empty;
     [Header("Room")]
     [SerializeField] private DinowarsNetworkRoomPlayer roomPlayerPrefab;
@@ -24,6 +24,7 @@ public class DinowarsNetworkManager : NetworkManager
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
     public static event Action OnPlayersUpdated;
+    public static event Action<bool> OnReadyStateChanged;
 
 
     public List<DinowarsNetworkRoomPlayer> TeamBPlayers { get; } = new List<DinowarsNetworkRoomPlayer>();
@@ -92,7 +93,6 @@ public class DinowarsNetworkManager : NetworkManager
             else if (player.PlayerTeam == DinowarsNetworkRoomPlayer.Team.TeamB)
                 TeamAPlayers.Remove(player);
 
-            NotifyPlayersReadyState();
             OnPlayersUpdated?.Invoke();
         }
         base.OnServerDisconnect(conn);
@@ -105,33 +105,35 @@ public class DinowarsNetworkManager : NetworkManager
         OnPlayersUpdated?.Invoke();
     }
 
-    public void NotifyPlayersReadyState()
-    {
-        foreach (var player in TeamAPlayers)
-        {
-            player.HandleReadyToStart(IsReadyToStart());
-        }
-        foreach (var player in TeamBPlayers)
-        {
-            player.HandleReadyToStart(IsReadyToStart());
-        }
-    }
+  
 
-    public bool IsReadyToStart()
+    public void IsReadyToStart()
     {
-        if (numPlayers < minPlayers) return false;
+        if (numPlayers < minPlayers)
+        {
+            OnReadyStateChanged?.Invoke(false);
+            return;
+        }
 
         foreach (var player in TeamAPlayers)
         {
-            if (!player.IsReady) return false;
+            if (!player.IsReady)
+            {
+                OnReadyStateChanged?.Invoke(false);
+                return;
+            }
         }
 
         foreach (var player in TeamBPlayers)
         {
-            if (!player.IsReady) return false;
+            if (!player.IsReady)
+            {
+                OnReadyStateChanged?.Invoke(false);
+                return;
+            }
         }
 
-        return true;
+        OnReadyStateChanged?.Invoke(true);
     }
 
     public bool AddPlayerToTeam(DinowarsNetworkRoomPlayer player)
@@ -180,17 +182,11 @@ public class DinowarsNetworkManager : NetworkManager
 
     public DinowarsNetworkRoomPlayer GetAuthorizedPlayer()
     {
-        foreach (var player in DinowarsNetworkManager.Instance.TeamBPlayers)
-        {
-            if (player.hasAuthority)
-                return player;
-        }
+        foreach (var player in TeamBPlayers)
+            if (player.hasAuthority) return player;
 
-        foreach (var player in DinowarsNetworkManager.Instance.TeamAPlayers)
-        {
-            if (player.hasAuthority)
-                return player;
-        }
+        foreach (var player in TeamAPlayers)
+            if (player.hasAuthority) return player;
 
         return null;
     }
