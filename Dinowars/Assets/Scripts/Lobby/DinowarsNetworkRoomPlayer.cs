@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 
-public enum Team { TeamA, TeamB, None }
-public enum Dino { RexT, Uxgyl, Sanya, None }
-
 public class DinowarsNetworkRoomPlayer : NetworkBehaviour
 {
+    public enum Team { TeamA, TeamB, None }
+    public enum Dino { RexT, Uxgyl, Sanya, None }
     [SyncVar()]
     private bool isLeader = false;
     [SyncVar(hook = nameof(OnIsReadyChanged))]

@@ -48,11 +48,11 @@ public class TeamPlayerCard : MonoBehaviour
 
         switch (roomPlayer.PlayerDino)
         {
-            case Dino.RexT:
+            case DinowarsNetworkRoomPlayer.Dino.RexT:
                 return "Rext";
-            case Dino.Uxgyl:
+            case DinowarsNetworkRoomPlayer.Dino.Uxgyl:
                 return "Uxgyl";
-            case Dino.Sanya:
+            case DinowarsNetworkRoomPlayer.Dino.Sanya:
                 return "Sanya";
             default:
                 return "";
@@ -65,13 +65,13 @@ public class TeamPlayerCard : MonoBehaviour
 
         switch (roomPlayer.PlayerDino)
         {
-            case Dino.RexT:
+            case DinowarsNetworkRoomPlayer.Dino.RexT:
                 ColorUtility.TryParseHtmlString("#EC6339", out color);
                 return color;
-            case Dino.Uxgyl:
+            case DinowarsNetworkRoomPlayer.Dino.Uxgyl:
                 ColorUtility.TryParseHtmlString("#56BCA6", out color);
                 return color;
-            case Dino.Sanya:
+            case DinowarsNetworkRoomPlayer.Dino.Sanya:
                 ColorUtility.TryParseHtmlString("#DF6B92", out color);
                 return color;
             default:
