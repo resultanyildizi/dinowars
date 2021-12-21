@@ -88,9 +88,9 @@ public class DinowarsNetworkManager : NetworkManager
         if (conn.identity != null)
         {
             DinowarsNetworkRoomPlayer player = conn.identity.GetComponent<DinowarsNetworkRoomPlayer>();
-            if (player.PlayerTeam == DinowarsNetworkRoomPlayer.Team.TeamA)
+            if (player.PlayerTeam == Team.TeamA)
                 TeamAPlayers.Remove(player);
-            else if (player.PlayerTeam == DinowarsNetworkRoomPlayer.Team.TeamB)
+            else if (player.PlayerTeam == Team.TeamB)
                 TeamAPlayers.Remove(player);
 
             OnPlayersUpdated?.Invoke();
@@ -144,7 +144,7 @@ public class DinowarsNetworkManager : NetworkManager
         if (TeamAPlayers.Count < maxTeamAPlayerCount)
         {
             TeamAPlayers.Add(player);
-            player.PlayerTeam = DinowarsNetworkRoomPlayer.Team.TeamA;
+            player.PlayerTeam = Team.TeamA;
             OnPlayersUpdated?.Invoke();
             return true;
         }
@@ -152,7 +152,7 @@ public class DinowarsNetworkManager : NetworkManager
         if (TeamBPlayers.Count < maxTeamBPlayerCount)
         {
             TeamBPlayers.Add(player);
-            player.PlayerTeam = DinowarsNetworkRoomPlayer.Team.TeamB;
+            player.PlayerTeam = Team.TeamB;
             OnPlayersUpdated?.Invoke();
             return true;
         }

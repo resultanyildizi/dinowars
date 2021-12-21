@@ -59,17 +59,17 @@ public class DinowarsLobbyPanel : MonoBehaviour
 
     public void ChangeTeamToB()
     {
-        RoomPlayer.CmdChangeTeam(DinowarsNetworkRoomPlayer.Team.TeamB);
+        RoomPlayer.CmdChangeTeam(Team.TeamB);
     }
 
     public void ChangeTeamToA()
     {
-        RoomPlayer.CmdChangeTeam(DinowarsNetworkRoomPlayer.Team.TeamA);
+        RoomPlayer.CmdChangeTeam(Team.TeamA);
     }
 
     public void SelectRexTDino()
     {
-        RoomPlayer.CmdChangeDino(DinowarsNetworkRoomPlayer.Dino.RexT);
+        RoomPlayer.CmdChangeDino(Dino.RexT);
         Color temp;
         ColorUtility.TryParseHtmlString("#000000", out temp);
         temp.a = 0;
@@ -81,7 +81,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
 
     public void SelectUxgylDino()
     {
-        RoomPlayer.CmdChangeDino(DinowarsNetworkRoomPlayer.Dino.Uxgyl);
+        RoomPlayer.CmdChangeDino(Dino.Uxgyl);
         Color temp;
         ColorUtility.TryParseHtmlString("#000000", out temp);
         temp.a = 0;
@@ -93,7 +93,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
 
     public void SelectSanyaDino()
     {
-        RoomPlayer.CmdChangeDino(DinowarsNetworkRoomPlayer.Dino.Sanya);
+        RoomPlayer.CmdChangeDino(Dino.Sanya);
         Color temp;
         ColorUtility.TryParseHtmlString("#000000", out temp);
         temp.a = 0;
@@ -106,6 +106,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
 
     public void ToggleReady()
     {
+        if (RoomPlayer.PlayerDino == Dino.None) return;
         bool isReady = RoomPlayer.IsReady;
         RoomPlayer.CmdChangeReady(!isReady);
         if(!isReady)
