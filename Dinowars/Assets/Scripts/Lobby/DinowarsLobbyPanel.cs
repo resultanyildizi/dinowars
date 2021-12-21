@@ -103,6 +103,8 @@ public class DinowarsLobbyPanel : MonoBehaviour
 
     public void ToggleReady()
     {
+        if (RoomPlayer.PlayerDino == DinowarsNetworkRoomPlayer.Dino.None)
+            return;
         bool isReady = RoomPlayer.IsReady;
         RoomPlayer.CmdChangeReady(!isReady);
         if(!isReady)
