@@ -20,7 +20,6 @@ public class DinowarsNetworkManager : NetworkManager
     [SerializeField] private DinowarsNetworkRoomPlayer roomPlayerPrefab;
 
 
-
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
     public static event Action OnPlayersUpdated;
@@ -29,6 +28,7 @@ public class DinowarsNetworkManager : NetworkManager
 
     public List<DinowarsNetworkRoomPlayer> TeamBPlayers { get; } = new List<DinowarsNetworkRoomPlayer>();
     public List<DinowarsNetworkRoomPlayer> TeamAPlayers { get; } = new List<DinowarsNetworkRoomPlayer>();
+
 
     private int maxTeamAPlayerCount;
     private int maxTeamBPlayerCount;

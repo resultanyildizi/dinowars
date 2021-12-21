@@ -15,6 +15,9 @@ public class DinowarsLobbyPanel : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Button toggleButton;
     [SerializeField] private Button startGameButton;
+    [SerializeField] private Button rexTButton;
+    [SerializeField] private Button uxgylButton;
+    [SerializeField] private Button sanyaButton;
 
     public DinowarsNetworkRoomPlayer RoomPlayer
     {
@@ -62,6 +65,43 @@ public class DinowarsLobbyPanel : MonoBehaviour
     public void ChangeTeamToA()
     {
         RoomPlayer.CmdChangeTeam(DinowarsNetworkRoomPlayer.Team.TeamA);
+    }
+
+    public void SelectRexTDino()
+    {
+        RoomPlayer.CmdChangeDino(DinowarsNetworkRoomPlayer.Dino.RexT);
+        Color temp;
+        ColorUtility.TryParseHtmlString("#000000", out temp);
+        temp.a = 0;
+        rexTButton.GetComponent<Image>().color = temp;
+        temp.a = 0.5f;
+        uxgylButton.GetComponent<Image>().color = temp;
+        sanyaButton.GetComponent<Image>().color = temp;
+    }
+
+    public void SelectUxgylDino()
+    {
+        RoomPlayer.CmdChangeDino(DinowarsNetworkRoomPlayer.Dino.Uxgyl);
+        Color temp;
+        ColorUtility.TryParseHtmlString("#000000", out temp);
+        temp.a = 0;
+        uxgylButton.GetComponent<Image>().color = temp;
+        temp.a = 0.5f;
+        rexTButton.GetComponent<Image>().color = temp;
+        sanyaButton.GetComponent<Image>().color = temp;
+    }
+
+    public void SelectSanyaDino()
+    {
+        RoomPlayer.CmdChangeDino(DinowarsNetworkRoomPlayer.Dino.Sanya);
+        Color temp;
+        ColorUtility.TryParseHtmlString("#000000", out temp);
+        temp.a = 0;
+        sanyaButton.GetComponent<Image>().color = temp;
+        temp.a = 0.5f;
+        rexTButton.GetComponent<Image>().color = temp;
+        uxgylButton.GetComponent<Image>().color = temp;
+           
     }
 
     public void ToggleReady()
