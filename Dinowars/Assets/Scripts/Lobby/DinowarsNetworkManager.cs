@@ -4,11 +4,6 @@ using UnityEngine.SceneManagement;
 using Mirror;
 using System.Collections.Generic;
 
-/*
-	Documentation: https://mirror-networking.gitbook.io/docs/components/network-manager
-	API Reference: https://mirror-networking.com/docs/api/Mirror.NetworkManager.html
-*/
-
 public class DinowarsNetworkManager : NetworkManager
 {
     public static DinowarsNetworkManager Instance { get { return NetworkManager.singleton as DinowarsNetworkManager; } }
