@@ -41,17 +41,24 @@ public class DinowarsLobbyPanel : MonoBehaviour
     {
         ResetCards();
 
-        for (int i = 0; i < DinowarsNetworkManager.Instance.TeamAPlayers.Count; i++)
-            teamARoomPlayers[i].RoomPlayer = DinowarsNetworkManager.Instance.TeamAPlayers[i];
+        Debug.Log("Hello");
 
-        for (int i = 0; i < DinowarsNetworkManager.Instance.TeamBPlayers.Count; i++)
-            teamBRoomPlayers[i].RoomPlayer = DinowarsNetworkManager.Instance.TeamBPlayers[i];
+        for (int i = 0; i < DinowarsNetworkManager.Instance.TeamARoomPlayers.Count; i++)
+            teamARoomPlayers[i].RoomPlayer = DinowarsNetworkManager.Instance.TeamARoomPlayers[i];
+
+        for (int i = 0; i < DinowarsNetworkManager.Instance.TeamBRoomPlayers.Count; i++)
+            teamBRoomPlayers[i].RoomPlayer = DinowarsNetworkManager.Instance.TeamBRoomPlayers[i];
     }
 
     private void ResetCards()
     {
         foreach (var card in teamARoomPlayers) card.RoomPlayer = null;
         foreach (var card in teamBRoomPlayers) card.RoomPlayer = null;
+    }
+
+    public void StartGame()
+    {
+        DinowarsNetworkManager.Instance.StartGame();
     }
 
     public void ChangeTeamToB()

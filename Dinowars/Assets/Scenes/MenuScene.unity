@@ -884,9 +884,11 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 848577870586734163, guid: dee79c40dc73d41089d3b3225248dd7c, type: 3}
+  - {fileID: 1813658506330321230, guid: e15eeb430ab42434fb56f9822e049889, type: 3}
   minPlayers: 1
   menuscene: MenuScene
   roomPlayerPrefab: {fileID: 7096191813189871744, guid: dee79c40dc73d41089d3b3225248dd7c, type: 3}
+  gamePlayerPrefab: {fileID: 3346931993463819939, guid: e15eeb430ab42434fb56f9822e049889, type: 3}
 --- !u!4 &271759434
 Transform:
   m_ObjectHideFlags: 0
@@ -6621,7 +6623,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1920880198}
         m_TargetAssemblyTypeName: DinowarsLobbyPanel, Assembly-CSharp
-        m_MethodName: ToggleReady
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
