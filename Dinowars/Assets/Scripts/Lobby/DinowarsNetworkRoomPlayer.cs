@@ -1,5 +1,6 @@
 using System;
 using Mirror;
+using UnityEngine;
 
 public class DinowarsNetworkRoomPlayer : NetworkBehaviour
 {
@@ -34,14 +35,6 @@ public class DinowarsNetworkRoomPlayer : NetworkBehaviour
         DinowarsNetworkManager.Instance.AddPlayerToTeam(this);
     }
 
-    private void OnIsReadyChanged(bool oldValue, bool newValue)
-    {
-        OnRoomPlayerChanged?.Invoke();
-        DinowarsNetworkManager.Instance.IsReadyToStart();
-    }
-
-    private void OnDisplayNameChanged(string oldValue, string newValue) => OnRoomPlayerChanged?.Invoke();
-
     private void OnPlayerTeamChanged(Team oldValue, Team newValue)
     {
         if (oldValue == Team.None) return;
@@ -58,6 +51,16 @@ public class DinowarsNetworkRoomPlayer : NetworkBehaviour
         OnRoomPlayerChanged?.Invoke();
     }
 
+    private void OnIsReadyChanged(bool oldValue, bool newValue)
+    {
+        OnRoomPlayerChanged?.Invoke();
+    }
+
+    private void OnDisplayNameChanged(string oldValue, string newValue)
+    {
+        OnRoomPlayerChanged?.Invoke();
+    }
+
     [Command]
     public void CmdChangeName(string name) => DisplayName = name;
     
@@ -68,6 +71,9 @@ public class DinowarsNetworkRoomPlayer : NetworkBehaviour
     public void CmdChangeDino(Dino dino) => PlayerDino = dino;
 
     [Command]
-    public void CmdChangeReady(bool ready) => IsReady = ready;
-    
+    public void CmdChangeReady(bool ready)
+    {
+        IsReady = ready;
+        DinowarsNetworkManager.Instance.IsReadyToStart();
+    }
 }

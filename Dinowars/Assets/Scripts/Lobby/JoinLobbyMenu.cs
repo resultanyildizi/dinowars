@@ -16,6 +16,7 @@ public class JoinLobbyMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        ipAddressInputField.text = "localhost";
         DinowarsNetworkManager.OnClientConnected += HandleClientConnected;
         DinowarsNetworkManager.OnClientDisconnected += HandleClientDisconnected;
     }

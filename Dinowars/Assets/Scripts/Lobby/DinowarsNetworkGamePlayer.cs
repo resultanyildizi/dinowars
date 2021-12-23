@@ -5,24 +5,28 @@ using Mirror;
 
 public class DinowarsNetworkGamePlayer : NetworkBehaviour
 {
+    [SyncVar]
     private string displayName = "Loading...";
+    [SyncVar]
     private DinowarsNetworkRoomPlayer.Dino dino = DinowarsNetworkRoomPlayer.Dino.None;
+    [SyncVar]
     private DinowarsNetworkRoomPlayer.Team team = DinowarsNetworkRoomPlayer.Team.None;
 
-    public DinowarsNetworkRoomPlayer.Team Team { get => team; }
-    public DinowarsNetworkRoomPlayer.Dino Dino { get => dino; }
-    public string DisplayName { get => displayName; }
+    public DinowarsNetworkRoomPlayer.Team Team { get => team; set => team = value; }
+    public DinowarsNetworkRoomPlayer.Dino Dino { get => dino; set => dino = value; }
+    public string DisplayName { get => displayName; set => displayName = value; }
 
     public override void OnStartClient()
     {
+        DontDestroyOnLoad(this);
         DinowarsNetworkManager.Instance.AddGamePlayer(this);
-        base.OnStartClient();
     }
 
     [Server]
-    public void SetPlayer(string name, DinowarsNetworkRoomPlayer.Team team, DinowarsNetworkRoomPlayer.Dino dino)
+    public void SetPlayer(string displayName, DinowarsNetworkRoomPlayer.Team team, DinowarsNetworkRoomPlayer.Dino dino)
     {
-        this.name = name;
+        Debug.Log("Setting player");
+        this.displayName = displayName;
         this.team = team;
         this.dino = dino;
     }
