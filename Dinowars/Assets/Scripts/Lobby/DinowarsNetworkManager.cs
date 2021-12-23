@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Mirror;
 using System.Collections.Generic;
@@ -35,7 +36,14 @@ public class DinowarsNetworkManager : NetworkManager
 
     private int maxTeamAPlayerCount;
     private int maxTeamBPlayerCount;
+    public int timeValue;
+    public int roundValue;
+    public int modeIndexValue;
+    public int mapIndexValue;
+    public String roomName;
+    public String roomDesc;
 
+    
     public override void OnStartServer()
     {
         Debug.Log("Server started");
@@ -110,7 +118,7 @@ public class DinowarsNetworkManager : NetworkManager
 
     public override void ServerChangeScene(string newSceneName)
     {
-        if (SceneManager.GetActiveScene().name.Equals(menuscene) && newSceneName.StartsWith("ForestScene"))
+        if (SceneManager.GetActiveScene().name.Equals(menuscene) && newSceneName.StartsWith(getSceneName()))
         {
             for (int i = TeamARoomPlayers.Count - 1; i >= 0; i--)
                 RoomPlayerToGamePlayer(TeamARoomPlayers[i]);
@@ -128,7 +136,7 @@ public class DinowarsNetworkManager : NetworkManager
 
     public override void OnServerSceneChanged(string sceneName)
     {
-        if (sceneName.Equals("ForestScene"))
+        if (sceneName.Equals(getSceneName()))
         {
             GameObject playerSpawnSystemInstance = Instantiate(cavePlayerSpawnSystemPrefab.gameObject, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(playerSpawnSystemInstance);
@@ -179,7 +187,7 @@ public class DinowarsNetworkManager : NetworkManager
     {
         if (SceneManager.GetActiveScene().name.Equals(menuscene))
         {
-            ServerChangeScene("ForestScene");
+            ServerChangeScene(getSceneName());
         }
     }
 
@@ -263,5 +271,22 @@ public class DinowarsNetworkManager : NetworkManager
 
         OnServerReadied?.Invoke(conn);
     }
+
+    private String getSceneName()
+    {
+        if(mapIndexValue == 0)
+        {
+            return "CaveScene";
+        }
+        else if (mapIndexValue == 1)
+        {
+            return "ForestScene";
+        }else
+        {
+            return "CaveScene";
+        }
+    }
+
+   
 }
 

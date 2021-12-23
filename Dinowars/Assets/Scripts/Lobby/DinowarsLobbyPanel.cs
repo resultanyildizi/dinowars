@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,28 @@ public class DinowarsLobbyPanel : MonoBehaviour
     [SerializeField] private Button rexTButton;
     [SerializeField] private Button uxgylButton;
     [SerializeField] private Button sanyaButton;
+
+
+    [SerializeField] private Text roomNameValue;
+    [SerializeField] private Text mapTextValue;
+    [SerializeField] private Text modeTextValue;
+    [SerializeField] private Text roundTextValue;
+    [SerializeField] private Text timeTextValue;
+    [SerializeField] private Text roomDescTextValue;
+
+    private DinowarsNetworkManager instance;
+
+    private void Start()
+    {
+        instance = DinowarsNetworkManager.Instance;
+        roomNameValue.text = instance.roomName;
+        roomDescTextValue.text = instance.roomDesc;
+        mapTextValue.text = getMapName();
+        modeTextValue.text = getModeName();
+        roundTextValue.text = instance.roundValue.ToString();
+        timeTextValue.text = instance.timeValue.ToString();
+    }
+
 
     public DinowarsNetworkRoomPlayer RoomPlayer
     {
@@ -125,6 +148,41 @@ public class DinowarsLobbyPanel : MonoBehaviour
             toggleButton.GetComponent<Image>().color = color;
         }
     }
+
+
+    private String getMapName()
+    {
+        if (instance.mapIndexValue == 0)
+        {
+            return "Mikshen Cave";
+        }
+        else if (instance.mapIndexValue == 1)
+        {
+            return "Platesomya Valley";
+        }
+        else
+        {
+            return "Mikshen Cave";
+        }
+    }
+
+    private String getModeName()
+    {
+        if (instance.modeIndexValue == 0)
+        {
+            return "Death Match";
+        }
+        else if (instance.modeIndexValue == 1)
+        {
+            return "Team Match";
+        }
+        else
+        {
+            return "Death Match";
+        }
+    }
 }
+
+
 
 
