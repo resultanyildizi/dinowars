@@ -4,38 +4,42 @@ using Mirror;
 
 public class Player : NetworkBehaviour
 {
-    // Static ===================================================================
-    public static event System.Action<Player> OnPlayerCreatedEvent;
+    [SerializeField] private double maxHealth;
+    [SerializeField] private double baseDamage;
+    [SerializeField] private DinowarsNetworkRoomPlayer.Dino dino;
 
-    // Public ===================================================================
-    public event System.Action<string> OnNameChangedEvent;
-    public event System.Action<Color> OnColorChangedEvent;
-    public event System.Action<double> OnHealthChangedEvent;
+    [SyncVar]
+    private DinowarsNetworkRoomPlayer.Team team;
+    [SyncVar]
+    private Color playerColor;
+    [SyncVar]
+    private string playerName;
 
     public string PlayerName { get => playerName; set => playerName = value; }
     public Color PlayerColor { get => playerColor; set => playerColor = value; }
+    public DinowarsNetworkRoomPlayer.Team Team { get => team; set => team = value; }
+
+    [SyncVar(hook = nameof(OnHealthChanged))]
+    private double health;
+
+
+
+    // Public ===================================================================
+    public event System.Action<double> OnHealthChangedEvent;
+
+    public override void OnStartAuthority()
+    {
+        CmdChangeHealth(maxHealth);
+    }
 
     public override void OnStartClient()
     {
-        // Fill player's data
-        health = 100.0;
-        PlayerName = Utils.GenerateRandomName("Resul");
-        PlayerColor = Utils.GenerateRandomColor();
-
-        // Tell all listeners the player is created
-        OnPlayerCreatedEvent?.Invoke(this);
+        var playerCanvas = GetComponentInChildren<PlayerCanvas>();
+        playerCanvas.PlayerNameText.text = playerName;
+        playerCanvas.PlayerNameText.color = playerColor;
     }
 
-    // Private ===================================================================
-    [SyncVar(hook = nameof(OnHealthChanged))]
-    private double health;
-    [SyncVar(hook = nameof(OnNameChanged))]
-    private string playerName;
-    [SyncVar(hook = nameof(OnColorChanged))]
-    private Color playerColor = Color.white;
 
-    private void OnNameChanged(string _, string newName)     { OnNameChangedEvent?.Invoke(newName);     }
-    private void OnColorChanged(Color _, Color newColor)     { OnColorChangedEvent?.Invoke(newColor);   }
     private void OnHealthChanged(double _, double newHealth) { OnHealthChangedEvent?.Invoke(newHealth); }
 
     public void Heal(double healingAmount)
@@ -43,6 +47,14 @@ public class Player : NetworkBehaviour
         this.health += healingAmount;
         Debug.Log(string.Format("My name is {0} - My new health is {1}", playerName, health));
     }
+
+    [Command]
+    private void CmdChangeHealth(double newHealth)
+    {
+        if (newHealth > maxHealth) this.health = this.maxHealth;
+        else this.health = newHealth;
+    }
+
 
 
 }

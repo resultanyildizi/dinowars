@@ -15,26 +15,29 @@ public class TeamPlayerCard : MonoBehaviour
         set
         {
             roomPlayer = value;
-            if(value == null)
-            {
-                NameText.text = "Player Name";
-                StatusText.text = "Waiting for player...";
-                StatusText.color = Color.gray;
-                DinoNameText.text = "";
-            }
-            else
+            if(value != null)
             {
                 UpdateUI();
                 roomPlayer.OnRoomPlayerChanged += UpdateUI;
             }
+            
         }
     }
+
+    public void ResetUI()
+    {
+        roomPlayer = null;
+        NameText.text = "Player Name";
+        StatusText.text = "Waiting for player...";
+        StatusText.color = Color.gray;
+        DinoNameText.text = "";
+    }
+
 
     private void UpdateUI()
     {
         if(roomPlayer != null)
         {
-            Debug.Log("Hİİİİİİ");
             NameText.text = roomPlayer.DisplayName;
             StatusText.text = roomPlayer.IsReady ? "Ready" : "Not ready";
             StatusText.color = roomPlayer.IsReady ? Color.green : Color.red;
@@ -78,7 +81,5 @@ public class TeamPlayerCard : MonoBehaviour
                 ColorUtility.TryParseHtmlString("#FFFFFF", out color);
                 return color;
         }
-
     }
-
 }

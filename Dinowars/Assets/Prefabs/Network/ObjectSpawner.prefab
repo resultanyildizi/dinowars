@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  serverOnly: 0
+  serverOnly: 1
   visible: 0
   m_AssetId: 0d3c8c1001709fc498282bea1d009858
   hasSpawned: 0
@@ -124,12 +124,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af61a2fc452c57d40b617454469dc8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   spawners:
   - {fileID: 5653451558044723359}
   - {fileID: 5653451558176916330}
   - {fileID: 5653451557607139935}
-  objectPrefab: {fileID: 0}
-  spawnInterval: 3
+  objectPrefab: {fileID: 7591861740679962128, guid: b29b3bc8e45d36d4580473f5bfd5f173, type: 3}
+  spawnInterval: 10
 --- !u!1 &5653451558176916329
 GameObject:
   m_ObjectHideFlags: 0

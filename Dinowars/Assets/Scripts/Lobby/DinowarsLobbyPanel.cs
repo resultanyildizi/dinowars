@@ -41,8 +41,6 @@ public class DinowarsLobbyPanel : MonoBehaviour
     {
         ResetCards();
 
-        Debug.Log("Hello");
-
         for (int i = 0; i < DinowarsNetworkManager.Instance.TeamARoomPlayers.Count; i++)
             teamARoomPlayers[i].RoomPlayer = DinowarsNetworkManager.Instance.TeamARoomPlayers[i];
 
@@ -52,8 +50,8 @@ public class DinowarsLobbyPanel : MonoBehaviour
 
     private void ResetCards()
     {
-        foreach (var card in teamARoomPlayers) card.RoomPlayer = null;
-        foreach (var card in teamBRoomPlayers) card.RoomPlayer = null;
+        foreach (var card in teamARoomPlayers) card.ResetUI();
+        foreach (var card in teamBRoomPlayers) card.ResetUI();
     }
 
     public void StartGame()
@@ -112,9 +110,10 @@ public class DinowarsLobbyPanel : MonoBehaviour
     {
         if (RoomPlayer.PlayerDino == DinowarsNetworkRoomPlayer.Dino.None)
             return;
+
         bool isReady = RoomPlayer.IsReady;
         RoomPlayer.CmdChangeReady(!isReady);
-        if(!isReady)
+        if (!isReady)
         {
             toggleButton.GetComponentInChildren<Text>().text = "Ready";
             toggleButton.GetComponent<Image>().color = Color.green;

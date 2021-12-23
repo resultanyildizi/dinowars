@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class ObjectSpawner : MonoBehaviour
+public class ObjectSpawner : NetworkBehaviour
 {
     [SerializeField]
     private Transform[] spawners;
@@ -13,14 +14,13 @@ public class ObjectSpawner : MonoBehaviour
 
     private Dictionary<int, GameObject> healthKitMap;
 
-    private GameObject healthKit;
-
-    private void Awake()
+    public override void OnStartServer()
     {
-        Player.OnPlayerCreatedEvent += InitHealthKitMap;
+        InitHealthKitMap();
     }
 
-    private void InitHealthKitMap(Player _)
+
+    private void InitHealthKitMap()
     {
         healthKitMap = new Dictionary<int, GameObject>();
         for (int i = 0; i < spawners.Length; i++)
@@ -37,7 +37,6 @@ public class ObjectSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnInterval);
         SpawnKit();
-        PrintMap();
         StartCoroutine(SpawnCoroutine());
     }
 
