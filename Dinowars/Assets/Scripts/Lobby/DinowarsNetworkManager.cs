@@ -110,7 +110,7 @@ public class DinowarsNetworkManager : NetworkManager
 
     public override void ServerChangeScene(string newSceneName)
     {
-        if (SceneManager.GetActiveScene().name.Equals(menuscene) && newSceneName.StartsWith("GameScene"))
+        if (SceneManager.GetActiveScene().name.Equals(menuscene) && newSceneName.StartsWith("ForestScene"))
         {
             for (int i = TeamARoomPlayers.Count - 1; i >= 0; i--)
                 RoomPlayerToGamePlayer(TeamARoomPlayers[i]);
@@ -128,7 +128,7 @@ public class DinowarsNetworkManager : NetworkManager
 
     public override void OnServerSceneChanged(string sceneName)
     {
-        if (sceneName.Equals("GameScene"))
+        if (sceneName.Equals("ForestScene"))
         {
             GameObject playerSpawnSystemInstance = Instantiate(cavePlayerSpawnSystemPrefab.gameObject, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(playerSpawnSystemInstance);
@@ -179,7 +179,7 @@ public class DinowarsNetworkManager : NetworkManager
     {
         if (SceneManager.GetActiveScene().name.Equals(menuscene))
         {
-            ServerChangeScene("GameScene");
+            ServerChangeScene("ForestScene");
         }
     }
 

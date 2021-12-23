@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: 40c397158141946769813ac86bcac7f4
+  - enabled: 1
+    path: Assets/Scenes/CaveScene.unity
+    guid: 3d14ad001141940c99ef77634888cc1b
+  - enabled: 1
+    path: Assets/Scenes/ForestScene.unity
+    guid: 526bff8c107d24f0183e7f03b6ca9cf7
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 2a6fb99ed9c09422cb6f3abea021f45d, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 73690c606c43744c694013db6366e547, type: 2}
