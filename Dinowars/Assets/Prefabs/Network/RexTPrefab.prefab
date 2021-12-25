@@ -237,7 +237,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  healthBar: {fileID: 3923602031011481491}
   maxHealth: 1200
   baseDamage: 60
   dino: 0
@@ -257,7 +256,7 @@ MonoBehaviour:
   syncInterval: 0.1
   movementSpeed: 200
   jumpFactor: 10
-  rigidbody2D: {fileID: 856116634289043693}
+  rb: {fileID: 856116634289043693}
   animator: {fileID: 7686828697863108772}
 --- !u!114 &4108026065834182613
 MonoBehaviour:
@@ -836,17 +835,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
   m_PrefabInstance: {fileID: 3850979511724685128}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3923602031011481491 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 216738155432833243, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
-  m_PrefabInstance: {fileID: 3850979511724685128}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9906bfa67722f43aeedaed27fd33a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &3923602030586274172 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 216738155782510132, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
