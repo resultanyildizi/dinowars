@@ -1,40 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Mirror;
 
-
-public class WeaponController : MonoBehaviour
+public class WeaponController : NetworkBehaviour
 {
     [SerializeField] Weapon weaponPrefab;
 
-
     private Weapon weapon;
-    private Rigidbody2D rb;
 
     private float gunOffsetX;
     private float gunOffsetY;
 
-    private void Awake()
+    public override void OnStartClient()
     {
-        rb = GetComponent<Rigidbody2D>();
-        weapon =  Instantiate<Weapon>(weaponPrefab, rb.transform.position, Quaternion.identity);
+        weapon = Instantiate(weaponPrefab, this.transform.Find("PlayerBody").Find("Hands").transform.position, Quaternion.identity);
+        weapon.transform.parent = this.transform.Find("PlayerBody").Find("Hands").transform;
+
+        var ntChildren = transform.GetComponents<NetworkTransformChild>();
+
+        foreach(var nt in ntChildren)
+        {
+            if (nt.target == null)
+            {
+                nt.target = weapon.transform;
+            }
+        }
+
+        Debug.Log("WEAPON CREATED");
     }
 
+    [ClientCallback]
     private void Update()
     {
-        if(weapon.GetInput())
+        if (weapon == null) return;
+        if (!hasAuthority) return;
+        var lookDirection = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - new Vector3(weapon.transform.parent.position.x, weapon.transform.parent.position.y);
+       var  lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+
+        if (lookDirection.x - weapon.transform.position.x >= 0)
         {
-            weapon.Shoot();
+            // if (lookAngle >= MAX_ANGLE) lookAngle = MAX_ANGLE;
+            this.weapon.transform.rotation = Quaternion.Euler(0, 0, lookAngle);
         }
-    }
-
-    void Start()
-    {
-        weapon.transform.SetParent(parent: this.transform, worldPositionStays: true);
-    }
-
-    private void OnDestroy()
-    {
-        Object.Destroy(weapon);
+        else
+        {  // if (lookAngle - Mathf.Sign(lookAngle) * 180 <= -MAX_ANGLE && hasAuthority) lookAngle = 180 - MAX_ANGLE;
+            this.weapon.transform.rotation = Quaternion.Euler(180f, 0, -lookAngle);
+        }
     }
 }

@@ -10,7 +10,7 @@ public class DinowarsPlayerSpawnSystem : NetworkBehaviour
     [SerializeField] private Player rextPlayerPrefab = null;
     [SerializeField] private Transform teamASpawnPoint;
     [SerializeField] private Transform teamBSpawnPoint;
-
+    [SerializeField] private Weapon defaultWeapon;
     public override void OnStartServer()
     {
         DinowarsNetworkManager.OnServerReadied += SpawnPlayer;
@@ -29,6 +29,7 @@ public class DinowarsPlayerSpawnSystem : NetworkBehaviour
 
         Player playerInstance;
         Player playerPrefab = null;
+        Weapon startingWeapon;
 
         if (gamePlayer.Dino == DinowarsNetworkRoomPlayer.Dino.RexT)
             playerPrefab = rextPlayerPrefab;
@@ -41,12 +42,17 @@ public class DinowarsPlayerSpawnSystem : NetworkBehaviour
         {
             if(gamePlayer.Team == DinowarsNetworkRoomPlayer.Team.TeamA)
                 playerInstance = Instantiate(playerPrefab, teamASpawnPoint.position, teamASpawnPoint.rotation);
+                
             else
                 playerInstance = Instantiate(playerPrefab, teamBSpawnPoint.position, teamBSpawnPoint.rotation);
 
             SetPlayer(playerInstance, gamePlayer);
-
+            
             NetworkServer.Spawn(playerInstance.gameObject, conn);
+          //  startingWeapon = Instantiate(defaultWeapon, playerInstance.transform.position, playerInstance.transform.rotation);
+          //  Debug.Log("Weapon spawned at:"+playerInstance.transform.position);
+          //  startingWeapon.transform.parent = playerInstance.gameObject.transform;
+           // NetworkServer.Spawn(startingWeapon.gameObject,conn);
         }
     }
 

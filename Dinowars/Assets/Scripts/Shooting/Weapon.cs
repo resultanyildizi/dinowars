@@ -67,9 +67,10 @@ public class Weapon : MonoBehaviour
 
     private void FireABullet()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
+        /*GameObject bullet = Instantiate(bulletPrefab, new Vector2(firePoint.transform.position.x,firePoint.transform.position.y), firePoint.transform.rotation);
         Destroy(bullet, 5f);
-
+        */
+        Debug.Log("Ateþ");
     }
 
 

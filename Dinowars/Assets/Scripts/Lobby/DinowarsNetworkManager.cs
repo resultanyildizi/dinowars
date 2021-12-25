@@ -156,7 +156,7 @@ public class DinowarsNetworkManager : NetworkManager
 
     public void IsReadyToStart()
     {
-        if (numPlayers < minPlayers || TeamARoomPlayers.Count == 0 || TeamBRoomPlayers.Count == 0)
+      /*  if (numPlayers < minPlayers || TeamARoomPlayers.Count == 0 || TeamBRoomPlayers.Count == 0)
         {
             OnReadyStateChanged?.Invoke(false);
             return;
@@ -178,7 +178,7 @@ public class DinowarsNetworkManager : NetworkManager
                 OnReadyStateChanged?.Invoke(false);
                 return;
             }
-        }
+        }*/
 
         OnReadyStateChanged?.Invoke(true);
     }
@@ -274,7 +274,7 @@ public class DinowarsNetworkManager : NetworkManager
 
     private String getSceneName()
     {
-        if(mapIndexValue == 0)
+       /* if(mapIndexValue == 0)
         {
             return "CaveScene";
         }
@@ -284,7 +284,8 @@ public class DinowarsNetworkManager : NetworkManager
         }else
         {
             return "CaveScene";
-        }
+        }*/
+        return "GameScene";
     }
 
    
