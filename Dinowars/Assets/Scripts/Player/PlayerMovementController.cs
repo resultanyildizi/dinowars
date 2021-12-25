@@ -7,7 +7,7 @@ public class PlayerMovementController : NetworkBehaviour
 {
     [SerializeField] private float movementSpeed = 200f;
     [SerializeField] private float jumpFactor = 5f;
-    [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
 
 
@@ -49,7 +49,7 @@ public class PlayerMovementController : NetworkBehaviour
     [Client]
     private void Move()
     {
-        rigidbody2D.velocity = new Vector2( inputValue * movementSpeed * Time.fixedDeltaTime, rigidbody2D.velocity.y);
+        rb.velocity = new Vector2( inputValue * movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
         float horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
@@ -57,7 +57,7 @@ public class PlayerMovementController : NetworkBehaviour
     [Client]
     private void Jump()
     {
-         rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpFactor);
+         rb.velocity = new Vector2(rb.velocity.x, jumpFactor);
        
     }
 
