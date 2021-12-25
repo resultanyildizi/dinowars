@@ -8,9 +8,9 @@ public class PlayerMovementController : NetworkBehaviour
     [SerializeField] private float movementSpeed = 200f;
     [SerializeField] private float jumpFactor = 5f;
     [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] private Animator animator;
 
 
-    private bool grounded;
     private float inputValue;
 
     private Controls controls;
@@ -50,13 +50,21 @@ public class PlayerMovementController : NetworkBehaviour
     private void Move()
     {
         rigidbody2D.velocity = new Vector2( inputValue * movementSpeed * Time.fixedDeltaTime, rigidbody2D.velocity.y);
+        float horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
 
     [Client]
     private void Jump()
     {
-        //if (grounded)
-        rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpFactor);
+         rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpFactor);
+       
+    }
+
+   private bool IsGrounded()
+    {
+        
+        return transform.Find("Foot").GetComponent<GroundCheck>().isGrounded;
     }
 
 }
