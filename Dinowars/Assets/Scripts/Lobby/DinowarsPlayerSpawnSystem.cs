@@ -22,6 +22,7 @@ public class DinowarsPlayerSpawnSystem : NetworkBehaviour
         DinowarsNetworkManager.OnServerReadied -= SpawnPlayer;
     }
 
+
     [Server]
     public void SpawnPlayer(NetworkConnection conn)
     {
@@ -45,8 +46,7 @@ public class DinowarsPlayerSpawnSystem : NetworkBehaviour
                 playerInstance = Instantiate(playerPrefab, teamBSpawnPoint.position, teamBSpawnPoint.rotation);
 
             SetPlayer(playerInstance, gamePlayer);
-
-            NetworkServer.Spawn(playerInstance.gameObject, conn);
+            NetworkServer.Spawn(playerInstance.gameObject, conn);         
         }
     }
 

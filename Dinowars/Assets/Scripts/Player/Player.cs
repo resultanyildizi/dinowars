@@ -14,6 +14,7 @@ public class Player : NetworkBehaviour
     private Color playerColor;
     [SyncVar]
     private string playerName;
+    
 
     public string PlayerName { get => playerName; set => playerName = value; }
     public Color PlayerColor { get => playerColor; set => playerColor = value; }
@@ -21,8 +22,6 @@ public class Player : NetworkBehaviour
 
     [SyncVar(hook = nameof(OnHealthChanged))]
     private double health;
-
-
 
     // Public ===================================================================
     public event System.Action<double> OnHealthChangedEvent;

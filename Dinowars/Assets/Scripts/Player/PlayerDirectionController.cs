@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerDirectionController : NetworkBehaviour
 {
+    [SyncVar(hook = nameof(OnDirectionChanged)) ]
+    int playerDirection;
+
     [SerializeField] private GameObject playerBody;
 
     public override void OnStartAuthority()
@@ -19,8 +22,19 @@ public class PlayerDirectionController : NetworkBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
         if (mousePos.x - playerBody.transform.position.x >= 0)
-            playerBody.transform.localScale = new Vector3(1, 1, 1);
+            CmdChangeDirection(1);
         else
-            playerBody.transform.localScale = new Vector3(-1, 1, 1);
+            CmdChangeDirection(-1);
     }
+
+    [Command]
+    private void CmdChangeDirection(int dir)
+    {
+        playerDirection = dir;
+    }
+
+    private void OnDirectionChanged(int oldV, int newV)
+    {
+        playerBody.transform.localScale = new Vector3(newV, 1, 1);
+    } 
 }

@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 4422123038030238295}
   - component: {fileID: 5167140750946648801}
   - component: {fileID: 4108026065834182613}
-  - component: {fileID: 3540902114217716481}
+  - component: {fileID: 2022543548010214008}
   - component: {fileID: 2622298275648865014}
   m_Layer: 0
   m_Name: RexTPrefab
@@ -177,7 +177,6 @@ RectTransform:
   m_Children:
   - {fileID: 3533664592005993676}
   - {fileID: 5238047992375028035}
-  - {fileID: 3956215048284497852}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -274,7 +273,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   playerBody: {fileID: 8553954544995889256}
---- !u!114 &3540902114217716481
+--- !u!114 &2022543548010214008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,27 +282,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2920710836554502912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 462fb3abde99c4ee1b99544fee0b17ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  clientAuthority: 1
-  sendInterval: 0.05
-  syncPosition: 0
-  syncRotation: 0
-  syncScale: 1
-  interpolatePosition: 0
-  interpolateRotation: 0
-  interpolateScale: 1
-  bufferTimeMultiplier: 1
-  bufferSizeLimit: 64
-  catchupThreshold: 4
-  catchupMultiplier: 0.1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  target: {fileID: 3533664592005993676}
+  gunPrefab: {fileID: 5757259086495246514, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
 --- !u!114 &2622298275648865014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,6 +554,7 @@ RectTransform:
   - {fileID: 4841353893381027276}
   - {fileID: 1676911134434134918}
   - {fileID: 7143560672338582118}
+  - {fileID: 3956215048284497852}
   m_Father: {fileID: 6454801895293152686}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -658,7 +643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3956215048284497852}
   m_Layer: 0
-  m_Name: PlayerGunPoint
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -671,12 +656,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8852484452943599552}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6454801895293152686}
-  m_RootOrder: 2
+  m_Father: {fileID: 3533664592005993676}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -866,13 +851,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
---- !u!224 &3923602031011481489 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
-  m_PrefabInstance: {fileID: 3850979511724685128}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3923602030586274172 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 216738155782510132, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
+  m_PrefabInstance: {fileID: 3850979511724685128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &3923602031011481489 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
   m_PrefabInstance: {fileID: 3850979511724685128}
   m_PrefabAsset: {fileID: 0}

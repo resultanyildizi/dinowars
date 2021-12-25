@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8466023800696282131}
   - component: {fileID: 3814668351278567203}
-  - component: {fileID: 413371327626523474}
   - component: {fileID: 6740419442481980597}
   - component: {fileID: 5757259086495246514}
+  - component: {fileID: 1684589406100910193}
+  - component: {fileID: 1055799419692368383}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -86,18 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &413371327626523474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5036787392607733086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 080ef2b2f62c09b4a96363bc34d3cbcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6740419442481980597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84f01aeab2ab4147a758bac463f16f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 358572308464033840, guid: 1462d9d7fa26c4649bbe5f39c04b0abc, type: 3}
+  syncMode: 0
+  syncInterval: 0.1
+  Player: {fileID: 0}
+  bulletPrefab: {fileID: 1574140221129583771, guid: ae1839911513d4b61bf0c5b18efd99a0, type: 3}
   firePoint: {fileID: 8807253653502234776}
   magazineSize: 20
   damage: 15
@@ -137,6 +129,49 @@ MonoBehaviour:
   reloadTime: 0.8
   timeBetweenShots: 0.05
   allowButtonHold: 0
+--- !u!114 &1684589406100910193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5036787392607733086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  sendInterval: 0.05
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 0
+  bufferTimeMultiplier: 1
+  bufferSizeLimit: 64
+  catchupThreshold: 4
+  catchupMultiplier: 0.1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+--- !u!114 &1055799419692368383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5036787392607733086}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080ef2b2f62c09b4a96363bc34d3cbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!1 &9023238196424187277
 GameObject:
   m_ObjectHideFlags: 0

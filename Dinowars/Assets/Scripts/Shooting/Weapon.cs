@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-public class Weapon : MonoBehaviour
+public class Weapon : NetworkBehaviour
 {
-    //Gun stats
+
+    [SyncVar]
+    public Player Player;
+
     public GameObject bulletPrefab;
     public Transform firePoint;
-
 
     public int magazineSize = 0;
     public int damage = 0;
@@ -26,16 +28,18 @@ public class Weapon : MonoBehaviour
     //bools 
     bool readyToShoot, reloading;
 
-    //Reference
-    //public Camera fpsCam;
-
-    private void Awake()
+    public override void OnStartAuthority()
     {
         reloading = false;
         readyToShoot = true;
         bulletsLeft = magazineSize;
     }
-  
+
+    public override void OnStartClient()
+    {
+        transform.SetParent(Player.gameObject.transform.Find("PlayerBody").transform.Find("Hand"));
+    }
+
     public void Shoot()
     {
         if (bulletsLeft <= 0 && !reloading) Reload();
@@ -69,14 +73,13 @@ public class Weapon : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
         Destroy(bullet, 5f);
-
     }
-
 
     private void ResetShot()
     {
         readyToShoot = true;
     }
+
     private void Reload()
     {
         Debug.Log("Reloading...");
