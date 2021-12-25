@@ -10,6 +10,7 @@ public class PlayerMovementController : NetworkBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
 
+    private Player player;
 
     private float inputValue;
 
@@ -31,6 +32,7 @@ public class PlayerMovementController : NetworkBehaviour
         Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<float>());
         Controls.Player.Move.canceled += ctx => ResetMovement();
         Controls.Player.Jump.performed += ctx => Jump();
+        player = this.transform.GetComponent<Player>();
     }
 
     [ClientCallback]
@@ -57,7 +59,9 @@ public class PlayerMovementController : NetworkBehaviour
     [Client]
     private void Jump()
     {
-         rb.velocity = new Vector2(rb.velocity.x, jumpFactor);
+        rb.velocity = new Vector2(rb.velocity.x, jumpFactor);
+        player.CmdChangeHealth(player.health-10);
+        Debug.Log(player.health-10);
        
     }
 
