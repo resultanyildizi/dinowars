@@ -7,11 +7,10 @@ using Mirror;
 public class WeaponController : NetworkBehaviour
 {
     [SerializeField] Weapon weaponPrefab;
-
+    float MAX_ANGLE = 30f;
     private Weapon weapon;
 
-    private float gunOffsetX;
-    private float gunOffsetY;
+
 
     public override void OnStartClient()
     {
@@ -28,7 +27,7 @@ public class WeaponController : NetworkBehaviour
             }
         }
 
-        Debug.Log("WEAPON CREATED");
+       
     }
 
     [ClientCallback]
@@ -36,17 +35,28 @@ public class WeaponController : NetworkBehaviour
     {
         if (weapon == null) return;
         if (!hasAuthority) return;
-        var lookDirection = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - new Vector3(weapon.transform.parent.position.x, weapon.transform.parent.position.y);
-       var  lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+       
+        var lookDirection = (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - weapon.transform.parent.transform.parent.position).normalized;
+        
+        var  lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        weapon.transform.eulerAngles = new Vector3(0, 0, lookAngle);
 
-        if (lookDirection.x - weapon.transform.position.x >= 0)
+        Debug.Log(lookAngle);
+        Vector3 localScale = Vector3.one;
+        if (lookAngle>90 || lookAngle<-90)
         {
-            // if (lookAngle >= MAX_ANGLE) lookAngle = MAX_ANGLE;
-            this.weapon.transform.rotation = Quaternion.Euler(0, 0, lookAngle);
+            localScale.y = -1f;
+            
         }
         else
-        {  // if (lookAngle - Mathf.Sign(lookAngle) * 180 <= -MAX_ANGLE && hasAuthority) lookAngle = 180 - MAX_ANGLE;
-            this.weapon.transform.rotation = Quaternion.Euler(180f, 0, -lookAngle);
+        {
+            localScale.y = +1f;
         }
+
+        weapon.transform.localScale = localScale;
+
+
+
+
     }
 }

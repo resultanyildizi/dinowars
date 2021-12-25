@@ -7,10 +7,11 @@ using UnityEngine.InputSystem;
 public class PlayerDirectionController : NetworkBehaviour
 {
     [SerializeField] private GameObject playerBody;
-
+   
     public override void OnStartAuthority()
     {
         enabled = true;
+        
     }
 
     [ClientCallback]
@@ -21,6 +22,9 @@ public class PlayerDirectionController : NetworkBehaviour
         if (mousePos.x - playerBody.transform.position.x >= 0)
             playerBody.transform.localScale = new Vector3(1, 1, 1);
         else
+        {
             playerBody.transform.localScale = new Vector3(-1, 1, 1);
+            playerBody.transform.Find("Hands").transform.Find("Gun(Clone)").transform.localScale = new Vector3(-1, -1, 1);
+        }
     }
 }

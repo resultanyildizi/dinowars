@@ -68,7 +68,7 @@ public class PlayerMovementController : NetworkBehaviour
     [Client]
     private void Shoot()
     {
-        weapon.Shoot();
+        //weapon.Shoot();
     }
 
 

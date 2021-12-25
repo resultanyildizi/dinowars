@@ -21,7 +21,7 @@ public class GunDirection : NetworkBehaviour
     [ClientCallback]
     void Update()
     {
-        lookDirection = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - new Vector3(transform.parent.position.x, transform.parent.position.y);
+       /* lookDirection = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - new Vector3(transform.parent.position.x, transform.parent.position.y);
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
         if (lookDirection.x - transform.position.x >= 0)
@@ -32,7 +32,7 @@ public class GunDirection : NetworkBehaviour
         else
         {  // if (lookAngle - Mathf.Sign(lookAngle) * 180 <= -MAX_ANGLE && hasAuthority) lookAngle = 180 - MAX_ANGLE;
             firepoint.rotation = Quaternion.Euler(180f, 0, -lookAngle);
-        }
+        }*/
 
     }
 }
