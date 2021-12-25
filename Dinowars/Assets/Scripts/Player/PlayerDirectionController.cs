@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
@@ -7,9 +8,10 @@ using UnityEngine.InputSystem;
 public class PlayerDirectionController : NetworkBehaviour
 {
     [SyncVar(hook = nameof(OnDirectionChanged)) ]
-    int playerDirection;
+    int playerDirection = 1;
 
     [SerializeField] private GameObject playerBody;
+    [SerializeField] private GameObject hand;
 
     public override void OnStartAuthority()
     {
@@ -35,6 +37,10 @@ public class PlayerDirectionController : NetworkBehaviour
 
     private void OnDirectionChanged(int oldV, int newV)
     {
+        Debug.Log(newV * hand.transform.localPosition.x);
         playerBody.transform.localScale = new Vector3(newV, 1, 1);
-    } 
+        hand.transform.localPosition = new Vector3(Math.Abs(hand.transform.localPosition.x) * newV, hand.transform.localPosition.y, hand.transform.localPosition.z);
+        hand.transform.localScale = new Vector3(newV, 1, 1);
+
+    }
 }

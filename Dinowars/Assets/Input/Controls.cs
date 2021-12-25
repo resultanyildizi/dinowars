@@ -49,6 +49,22 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ShootByPressing"",
+                    ""type"": ""Button"",
+                    ""id"": ""970e452d-5241-4fad-af07-a07579ad4af4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ShootByHolding"",
+                    ""type"": ""Button"",
+                    ""id"": ""260ebbdf-118c-4cf3-bb52-bc01a7d75a52"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -117,6 +133,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6f1e284-de29-4427-b792-789190189733"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyborad & Mouse"",
+                    ""action"": ""ShootByPressing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""130c2bee-d0d9-4593-8f43-38307b976641"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Keyborad & Mouse"",
+                    ""action"": ""ShootByHolding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -146,6 +184,8 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_TakeDamage = m_Player.FindAction("TakeDamage", throwIfNotFound: true);
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
+        m_Player_ShootByPressing = m_Player.FindAction("ShootByPressing", throwIfNotFound: true);
+        m_Player_ShootByHolding = m_Player.FindAction("ShootByHolding", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -199,6 +239,8 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_TakeDamage;
     private readonly InputAction m_Player_Heal;
+    private readonly InputAction m_Player_ShootByPressing;
+    private readonly InputAction m_Player_ShootByHolding;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -207,6 +249,8 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @TakeDamage => m_Wrapper.m_Player_TakeDamage;
         public InputAction @Heal => m_Wrapper.m_Player_Heal;
+        public InputAction @ShootByPressing => m_Wrapper.m_Player_ShootByPressing;
+        public InputAction @ShootByHolding => m_Wrapper.m_Player_ShootByHolding;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -228,6 +272,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Heal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
                 @Heal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
                 @Heal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
+                @ShootByPressing.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootByPressing;
+                @ShootByPressing.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootByPressing;
+                @ShootByPressing.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootByPressing;
+                @ShootByHolding.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootByHolding;
+                @ShootByHolding.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootByHolding;
+                @ShootByHolding.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootByHolding;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -244,6 +294,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Heal.started += instance.OnHeal;
                 @Heal.performed += instance.OnHeal;
                 @Heal.canceled += instance.OnHeal;
+                @ShootByPressing.started += instance.OnShootByPressing;
+                @ShootByPressing.performed += instance.OnShootByPressing;
+                @ShootByPressing.canceled += instance.OnShootByPressing;
+                @ShootByHolding.started += instance.OnShootByHolding;
+                @ShootByHolding.performed += instance.OnShootByHolding;
+                @ShootByHolding.canceled += instance.OnShootByHolding;
             }
         }
     }
@@ -263,5 +319,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnTakeDamage(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
+        void OnShootByPressing(InputAction.CallbackContext context);
+        void OnShootByHolding(InputAction.CallbackContext context);
     }
 }

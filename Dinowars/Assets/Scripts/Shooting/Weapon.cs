@@ -24,80 +24,117 @@ public class Weapon : NetworkBehaviour
     private int bulletsShot;
     private int bulletsLeft;
 
-  
+
+    private Controls controls;
+
+    private Controls Controls
+    {
+        get
+        {
+            if (controls != null) { return controls; }
+            return controls = new Controls();
+        }
+    }
+
+
+
     //bools 
     bool readyToShoot, reloading;
 
     public override void OnStartAuthority()
     {
-        reloading = false;
-        readyToShoot = true;
-        bulletsLeft = magazineSize;
+        Debug.Log("Starting to shoot");
+        Controls.Enable();
+        Controls.Player.ShootByPressing.performed += ctx => Shoot();
+
+        //reloading = false;
+        //readyToShoot = true;
+        //bulletsLeft = magazineSize;
+    }
+
+    public override void OnStopAuthority()
+    {
+        Controls.Disable();
+        base.OnStopAuthority();
     }
 
     public override void OnStartClient()
     {
-        transform.SetParent(Player.gameObject.transform.Find("PlayerBody").transform.Find("Hand"));
+        transform.SetParent(Player.transform.Find("Hand"));
+        transform.localScale = new Vector3(2, 2, 2);
     }
 
+    [Command]
     public void Shoot()
     {
-        if (bulletsLeft <= 0 && !reloading) Reload();
+        var bullet = Instantiate(bulletPrefab, firePoint.transform.position, Quaternion.identity);
 
-        //Shoot
-        if (readyToShoot && !reloading && bulletsLeft > 0)
-        {
-            bulletsShot = bulletsPerTap;
-            readyToShoot = false;
+        
+        Debug.Log("I AM SHOOTING " + this.transform.parent.localScale.x);
+        bullet.transform.localScale = new Vector3(this.transform.parent.localScale.x, 1, 1);
+        bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * this.transform.parent.localScale.x * 200f, ForceMode2D.Force);
+        
+        NetworkServer.Spawn(bullet, connectionToClient);
 
-            FireABullet();
+        //NetworkServer.Destroy(bullet);
+        
 
-            bulletsLeft--;
-            bulletsShot--;
+        //if (bulletsLeft <= 0 && !reloading) Reload();
 
-            Invoke("ResetShot", timeBetweenShooting);
+        ////Shoot
+        //if (readyToShoot && !reloading && bulletsLeft > 0)
+        //{
+        //    bulletsShot = bulletsPerTap;
+        //    readyToShoot = false;
 
-            for (int i = 1; i <= bulletsShot; i++)
-            {
-                if (bulletsLeft > 0)
-                {
-                    bulletsLeft--;
-                    Invoke("FireABullet", timeBetweenShots * i);
-                }
-            }
+        //    FireABullet();
 
-        }
+        //    bulletsLeft--;
+        //    bulletsShot--;
+
+        //    Invoke("ResetShot", timeBetweenShooting);
+
+        //    for (int i = 1; i <= bulletsShot; i++)
+        //    {
+        //        if (bulletsLeft > 0)
+        //        {
+        //            bulletsLeft--;
+        //            Invoke("FireABullet", timeBetweenShots * i);
+        //        }
+        //    }
+
+        //}
     }
 
-    private void FireABullet()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
-        Destroy(bullet, 5f);
-    }
+    //private void FireABullet()
+    //{
+    //    GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
+    //    Destroy(bullet, 5f);
+    //}
 
-    private void ResetShot()
-    {
-        readyToShoot = true;
-    }
+    //private void ResetShot()
+    //{
+    //    readyToShoot = true;
+    //}
 
-    private void Reload()
-    {
-        Debug.Log("Reloading...");
-        reloading = true;
-        Invoke("ReloadFinished", reloadTime);
-    }
-    private void ReloadFinished()
-    {
-        Debug.Log("Reloaded");
-        bulletsLeft = magazineSize;
-        reloading = false;
-    }
+    //private void Reload()
+    //{
+    //    Debug.Log("Reloading...");
+    //    reloading = true;
+    //    Invoke("ReloadFinished", reloadTime);
+    //}
+    //private void ReloadFinished()
+    //{
+    //    Debug.Log("Reloaded");
+    //    bulletsLeft = magazineSize;
+    //    reloading = false;
+    //}
 
-    public bool GetInput()
-    {
-        if (allowButtonHold) return Input.GetKey(KeyCode.Mouse0);
-        else return Input.GetKeyDown(KeyCode.Mouse0);
-    }
+    //public bool GetInput()
+    //{
+    //    if (allowButtonHold) return Input.GetKey(KeyCode.Mouse0);
+    //    else return Input.GetKeyDown(KeyCode.Mouse0);
+    //}
 }
 
 

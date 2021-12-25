@@ -20,20 +20,10 @@ public class PlayerEquip : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        Debug.Log("I HAVE AUTGORITY");
-        StartCoroutine(ChangeWeaponCoroutine());
-    }
-
-    IEnumerator ChangeWeaponCoroutine()
-    {
-        yield return new WaitForSeconds(2);
         CmdChangeWeaponType(WeaponType.GUN);
     }
-
     private void OnWeaponChanged(WeaponType oldWeapon, WeaponType newWeapon)
     {
-        Debug.Log("Creating Weapon: " + hasAuthority);
-
         if (!hasAuthority) return;
         SpawnWeapon();
     }
@@ -41,10 +31,10 @@ public class PlayerEquip : NetworkBehaviour
     [Command]
     private void SpawnWeapon()
     {
-        var gunPoint = this.transform.Find("PlayerBody").transform.Find("Hand").transform;
+        var gunPoint = this.transform.transform.Find("Hand").transform;
 
         var gun = Instantiate(gunPrefab, gunPoint.position, Quaternion.identity);
-
+        gun.transform.localScale = new Vector3(2, 2, 2);
         var weapon = gun.GetComponent<Weapon>();
 
         weapon.Player = GetComponent<Player>();
