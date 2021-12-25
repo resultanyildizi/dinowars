@@ -8,6 +8,7 @@ TagManager:
   - Foot
   - Head
   - Body
+  - Lawa
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Platforms
   - 
   - 
   - 
