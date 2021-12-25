@@ -14,6 +14,8 @@ public class PlayerDirectionController : NetworkBehaviour
         
     }
 
+
+
     [ClientCallback]
     private void Update()
     {
@@ -24,7 +26,8 @@ public class PlayerDirectionController : NetworkBehaviour
         else
         {
             playerBody.transform.localScale = new Vector3(-1, 1, 1);
-            playerBody.transform.Find("Hands").transform.Find("Gun(Clone)").transform.localScale = new Vector3(-1, -1, 1);
+
+            
         }
     }
 }

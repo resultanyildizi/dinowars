@@ -259,7 +259,7 @@ MonoBehaviour:
   movementSpeed: 200
   jumpFactor: 10
   rigidbody2D: {fileID: 856116634289043693}
-  defaultWeapon: {fileID: 5757259086495246514, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
+  currWeapon: {fileID: 5757259086495246514, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
 --- !u!114 &4108026065834182613
 MonoBehaviour:
   m_ObjectHideFlags: 0

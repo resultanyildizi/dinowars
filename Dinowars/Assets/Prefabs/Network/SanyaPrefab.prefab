@@ -601,6 +601,7 @@ MonoBehaviour:
   movementSpeed: 160
   jumpFactor: 12
   rigidbody2D: {fileID: 856116634289043693, guid: 25d56fed8b8fd414abe0fbf7c34292e6, type: 3}
+  currWeapon: {fileID: 0}
 --- !u!114 &-72969005860567772
 MonoBehaviour:
   m_ObjectHideFlags: 0

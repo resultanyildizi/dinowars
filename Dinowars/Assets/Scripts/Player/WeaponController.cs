@@ -9,13 +9,14 @@ public class WeaponController : NetworkBehaviour
     [SerializeField] Weapon weaponPrefab;
     float MAX_ANGLE = 30f;
     private Weapon weapon;
+    float distance,mdistance;
 
 
 
     public override void OnStartClient()
-    {
-        weapon = Instantiate(weaponPrefab, this.transform.Find("PlayerBody").Find("Hands").transform.position, Quaternion.identity);
-        weapon.transform.parent = this.transform.Find("PlayerBody").Find("Hands").transform;
+    {   Vector3 spawnTransform = this.transform.Find("PlayerBody").Find("Hands").transform.position;
+        weapon = Instantiate(weaponPrefab,spawnTransform , Quaternion.identity);
+        weapon.transform.parent = this.transform;
 
         var ntChildren = transform.GetComponents<NetworkTransformChild>();
 
@@ -26,8 +27,9 @@ public class WeaponController : NetworkBehaviour
                 nt.target = weapon.transform;
             }
         }
-
-       
+        
+        distance = weapon.transform.parent.Find("PlayerBody").Find("Hands").transform.position.x - weapon.transform.parent.Find("PlayerBody").transform.position.x;
+        mdistance = distance * -1;
     }
 
     [ClientCallback]
@@ -35,25 +37,31 @@ public class WeaponController : NetworkBehaviour
     {
         if (weapon == null) return;
         if (!hasAuthority) return;
+
+
        
-        var lookDirection = (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - weapon.transform.parent.transform.parent.position).normalized;
+        var lookDirection = (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - weapon.transform.parent.position).normalized;
         
         var  lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
         weapon.transform.eulerAngles = new Vector3(0, 0, lookAngle);
 
-        Debug.Log(lookAngle);
+        
+        Debug.Log(weapon.transform.parent.Find("PlayerBody").Find("Hands").transform.localPosition);
         Vector3 localScale = Vector3.one;
+        Vector3 localPos = new Vector3(weapon.transform.localPosition.x , weapon.transform.localPosition.y, weapon.transform.localPosition.z);
         if (lookAngle>90 || lookAngle<-90)
         {
-            localScale.y = -1f;
-            
+            weapon.transform.localScale = new Vector3(1, -1, 1);
+            weapon.transform.localPosition = new Vector3( mdistance, weapon.transform.localPosition.y, weapon.transform.localPosition.z);
         }
         else
         {
-            localScale.y = +1f;
+            weapon.transform.localScale = new Vector3(1, 1, 1);
+            weapon.transform.localPosition = new Vector3(distance, weapon.transform.localPosition.y, weapon.transform.localPosition.z);
         }
+        
+      
 
-        weapon.transform.localScale = localScale;
 
 
 

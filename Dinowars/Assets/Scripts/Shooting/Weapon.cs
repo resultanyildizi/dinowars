@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-public class Weapon : MonoBehaviour
+public class Weapon : NetworkBehaviour
 {
     //Gun stats
     public GameObject bulletPrefab;
@@ -22,27 +22,32 @@ public class Weapon : MonoBehaviour
     private int bulletsShot;
     private int bulletsLeft;
 
-  
+
     //bools 
-    bool readyToShoot, reloading;
+    bool readyToShoot = true;
+    bool reloading;
 
     //Reference
     //public Camera fpsCam;
 
     private void Awake()
     {
+        
         reloading = false;
         readyToShoot = true;
         bulletsLeft = magazineSize;
     }
-  
+    
     public void Shoot()
     {
-        if (bulletsLeft <= 0 && !reloading) Reload();
-
-        //Shoot
-        if (readyToShoot && !reloading && bulletsLeft > 0)
+        FireABullet();
+        if (bulletsLeft <= 0 && !reloading)
         {
+            Reload();
+        }
+        else if (readyToShoot && !reloading && bulletsLeft > 0)
+        {
+            
             bulletsShot = bulletsPerTap;
             readyToShoot = false;
 
@@ -63,6 +68,7 @@ public class Weapon : MonoBehaviour
             }
 
         }
+        
     }
 
     private void FireABullet()

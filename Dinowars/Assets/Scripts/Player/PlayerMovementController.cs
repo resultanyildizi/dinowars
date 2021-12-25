@@ -8,7 +8,7 @@ public class PlayerMovementController : NetworkBehaviour
     [SerializeField] private float movementSpeed = 200f;
     [SerializeField] private float jumpFactor = 5f;
     [SerializeField] private Rigidbody2D rigidbody2D;
-    [SerializeField] Weapon defaultWeapon;
+    [SerializeField] Weapon currWeapon;
     Weapon weapon;
     private bool grounded;
     private float inputValue;
@@ -32,6 +32,9 @@ public class PlayerMovementController : NetworkBehaviour
         Controls.Player.Move.canceled += ctx => ResetMovement();
         Controls.Player.Jump.performed += ctx => Jump();
         Controls.Player.Shoot.performed += ctx => Shoot();
+       
+
+
     }
 
     public override void OnStartClient()
@@ -68,7 +71,8 @@ public class PlayerMovementController : NetworkBehaviour
     [Client]
     private void Shoot()
     {
-        //weapon.Shoot();
+       
+       
     }
 
 
