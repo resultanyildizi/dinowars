@@ -7,6 +7,8 @@ public class Player : NetworkBehaviour
     [SerializeField] private double maxHealth;
     [SerializeField] private double baseDamage;
     [SerializeField] private DinowarsNetworkRoomPlayer.Dino dino;
+    [SerializeField] private HealthBar hbar;
+    [SerializeField] private PlayerCanvas pCanv;
 
     [SyncVar]
     private DinowarsNetworkRoomPlayer.Team team;
@@ -14,17 +16,13 @@ public class Player : NetworkBehaviour
     private Color playerColor;
     [SyncVar]
     private string playerName;
+    [SyncVar(hook = nameof(OnHealthChanged))]
+    public double health;
     
-
+    
     public string PlayerName { get => playerName; set => playerName = value; }
     public Color PlayerColor { get => playerColor; set => playerColor = value; }
     public DinowarsNetworkRoomPlayer.Team Team { get => team; set => team = value; }
-
-    [SyncVar(hook = nameof(OnHealthChanged))]
-    private double health;
-
-    // Public ===================================================================
-    public event System.Action<double> OnHealthChangedEvent;
 
     public override void OnStartAuthority()
     {
@@ -33,25 +31,44 @@ public class Player : NetworkBehaviour
 
     public override void OnStartClient()
     {
-        var playerCanvas = GetComponentInChildren<PlayerCanvas>();
-        playerCanvas.PlayerNameText.text = playerName;
-        playerCanvas.PlayerNameText.color = playerColor;
+
+        pCanv.PlayerNameText.text = playerName;
+        pCanv.PlayerNameText.color = playerColor;
+        health = maxHealth;
+        hBar.SetHealth(health);
+        hBar.SetMaxHealth(health);
     }
 
 
-    private void OnHealthChanged(double _, double newHealth) { OnHealthChangedEvent?.Invoke(newHealth); }
+    public void OnHealthChanged(double oldHealth, double newHealth) {
+        hBar.SetHealth(this.health);
+    }
 
     public void Heal(double healingAmount)
     {
         this.health += healingAmount;
         Debug.Log(string.Format("My name is {0} - My new health is {1}", playerName, health));
+        CmdChangeHealth(this.health);
+    }
+
+    public void TakeDamage(double damage) {
+        this.health -= healingAmount;
+        Debug.Log(string.Format("My name is {0} - My new health is {1}", playerName, health));
+        CmdChangeHealth(this.health);
     }
 
     [Command]
-    private void CmdChangeHealth(double newHealth)
+    public void CmdChangeHealth(double newHealth)
     {
-        if (newHealth > maxHealth) this.health = this.maxHealth;
-        else this.health = newHealth;
+        if (newHealth > maxHealth)
+        {
+            this.health = newHealth;
+        } else if(newHealth < 0) {
+            this.heath = 0;
+        }
+        else { 
+            this.health = newHealth;
+        }
     }
 
 
