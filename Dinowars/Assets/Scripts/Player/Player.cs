@@ -43,11 +43,22 @@ public class Player : NetworkBehaviour
     public void OnHealthChanged(double oldHealth, double newHealth) {
         hbar.SetHealth(this.health);
     }
+<<<<<<< Updated upstream
+=======
+    public void takeDamage(double newHealth)
+    {
+
+        if (hBar != null)
+            hBar.SetHealth(this.health);
+      
+        CmdChangeHealth(newHealth);
+>>>>>>> Stashed changes
 
     public void Heal(double healingAmount)
     {
-        this.health += healingAmount;
+        hBar.SetHealth(this.health + healingAmount);
         Debug.Log(string.Format("My name is {0} - My new health is {1}", playerName, health));
+<<<<<<< Updated upstream
         CmdChangeHealth(this.health);
     }
 
@@ -55,6 +66,10 @@ public class Player : NetworkBehaviour
         this.health -= damage;
         Debug.Log(string.Format("My name is {0} - My new health is {1}", playerName, health));
         CmdChangeHealth(this.health);
+=======
+        CmdChangeHealth(this.health + healingAmount);
+        
+>>>>>>> Stashed changes
     }
 
     [Command]

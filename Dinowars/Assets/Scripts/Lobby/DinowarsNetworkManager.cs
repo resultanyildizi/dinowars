@@ -16,7 +16,7 @@ public class DinowarsNetworkManager : NetworkManager
     [SerializeField] private DinowarsNetworkRoomPlayer roomPlayerPrefab;
     [SerializeField] private DinowarsNetworkGamePlayer gamePlayerPrefab;
     [SerializeField] private DinowarsPlayerSpawnSystem cavePlayerSpawnSystemPrefab;
-
+    [SerializeField] private ObjectSpawner healthKitSpawner;
 
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
@@ -125,6 +125,7 @@ public class DinowarsNetworkManager : NetworkManager
             for (int i = TeamBRoomPlayers.Count - 1; i >= 0; i--)
                 RoomPlayerToGamePlayer(TeamBRoomPlayers[i]);
         }
+       
         base.ServerChangeScene(newSceneName);
     }
 
@@ -132,6 +133,7 @@ public class DinowarsNetworkManager : NetworkManager
     public override void OnClientSceneChanged(NetworkConnection conn)
     {
         base.OnClientSceneChanged(conn);
+        
     }
 
     public override void OnServerSceneChanged(string sceneName)
@@ -141,6 +143,8 @@ public class DinowarsNetworkManager : NetworkManager
             GameObject playerSpawnSystemInstance = Instantiate(cavePlayerSpawnSystemPrefab.gameObject, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(playerSpawnSystemInstance);
         }
+        GameObject HKSpawner = Instantiate(healthKitSpawner.gameObject, Vector3.zero, Quaternion.identity);
+        NetworkServer.Spawn(HKSpawner.gameObject);
     }
 
     private void RoomPlayerToGamePlayer(DinowarsNetworkRoomPlayer player)
@@ -152,6 +156,7 @@ public class DinowarsNetworkManager : NetworkManager
         gamePlayerInstance.SetPlayer(player.DisplayName, player.PlayerTeam, player.PlayerDino);
 
         NetworkServer.ReplacePlayerForConnection(conn, gamePlayerInstance.gameObject);
+
     }
 
     public void IsReadyToStart()
@@ -189,6 +194,7 @@ public class DinowarsNetworkManager : NetworkManager
         {
             ServerChangeScene(getSceneName());
         }
+        
     }
 
     public void AddGamePlayer(DinowarsNetworkGamePlayer player)
