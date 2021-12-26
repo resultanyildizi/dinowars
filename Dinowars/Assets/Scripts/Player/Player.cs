@@ -11,11 +11,11 @@ public class Player : NetworkBehaviour
     [SerializeField] private PlayerCanvas pCanv;
 
     [SyncVar]
-    private DinowarsNetworkRoomPlayer.Team team;
+    public DinowarsNetworkRoomPlayer.Team team;
     [SyncVar]
     private Color playerColor;
     [SyncVar]
-    private string playerName;
+    public string playerName;
     [SyncVar(hook = nameof(OnHealthChanged))]
     public double health;
     
@@ -53,7 +53,7 @@ public class Player : NetworkBehaviour
 
     public void TakeDamage(double damage) {
         this.health -= damage;
-        Debug.Log(string.Format("My name is {0} - My new health is {1}", playerName, health));
+        
         CmdChangeHealth(this.health);
     }
 
