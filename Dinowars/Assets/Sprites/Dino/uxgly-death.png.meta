@@ -1,25 +1,22 @@
 fileFormatVersion: 2
-guid: 84bd9363b86ed41859c7000e48f33284
+guid: 0e2ddad96261d413d97d0b7e7b787777
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3867011515026960549
-    second: sanya-skill_0
+      213: 6990974446037941017
+    second: uxgly-death_0
   - first:
-      213: 3735160528655214208
-    second: sanya-skill_1
+      213: -3942312902928152700
+    second: uxgly-death_1
   - first:
-      213: -6830940555562569347
-    second: sanya-skill_2
+      213: -7010008046416321929
+    second: uxgly-death_2
   - first:
-      213: -9068800956465450919
-    second: sanya-skill_3
+      213: -7196131357434707461
+    second: uxgly-death_3
   - first:
-      213: -8830937559825053610
-    second: sanya-skill_4
-  - first:
-      213: 7661465257373523057
-    second: sanya-skill_5
+      213: 7747095759162488579
+    second: uxgly-death_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sanya-skill_0
+      name: uxgly-death_0
       rect:
         serializedVersion: 2
         x: 0
@@ -123,14 +120,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5f0970f38d955ac0800000000000000
-      internalID: -3867011515026960549
+      spriteID: 91bbce9083ee40160800000000000000
+      internalID: 6990974446037941017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sanya-skill_1
+      name: uxgly-death_1
       rect:
         serializedVersion: 2
         x: 128
@@ -144,14 +141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 086ed8906b4f5d330800000000000000
-      internalID: 3735160528655214208
+      spriteID: 48747835d471a49c0800000000000000
+      internalID: -3942312902928152700
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sanya-skill_2
+      name: uxgly-death_2
       rect:
         serializedVersion: 2
         x: 256
@@ -165,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7132efa1cf9331a0800000000000000
-      internalID: -6830940555562569347
+      spriteID: 772a9b882d277be90800000000000000
+      internalID: -7010008046416321929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sanya-skill_3
+      name: uxgly-death_3
       rect:
         serializedVersion: 2
         x: 384
@@ -186,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95077232495252280800000000000000
-      internalID: -9068800956465450919
+      spriteID: bf10e0b38a4322c90800000000000000
+      internalID: -7196131357434707461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sanya-skill_4
+      name: uxgly-death_4
       rect:
         serializedVersion: 2
         x: 512
@@ -207,29 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65809f0e315327580800000000000000
-      internalID: -8830937559825053610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sanya-skill_5
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17cdeb43f0ef25a60800000000000000
-      internalID: 7661465257373523057
+      spriteID: 307b0dd0c86338b60800000000000000
+      internalID: 7747095759162488579
       vertices: []
       indices: 
       edges: []

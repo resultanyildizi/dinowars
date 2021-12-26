@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: dda92a11d2ac34d21af42c068db986d8
+guid: b322fdb404aa448799f44bf588ce809c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4141818676635973594
-    second: death-trex-0
+      213: 623925319219226972
+    second: rexT-idle_0
   - first:
-      213: -2866637401961647989
-    second: death-trex-1
+      213: -670398033448192142
+    second: rexT-idle_1
   - first:
-      213: 1128969952040544745
-    second: death-trex-2
+      213: -3030150746250008458
+    second: rexT-idle_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death-trex-0
+      name: rexT-idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,20 +108,20 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 628c80f9bdd4586c0800000000000000
-      internalID: -4141818676635973594
+      spriteID: c592f6aa5c0a8a800800000000000000
+      internalID: 623925319219226972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death-trex-1
+      name: rexT-idle_1
       rect:
         serializedVersion: 2
         x: 128
@@ -129,20 +129,20 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b803a349878a738d0800000000000000
-      internalID: -2866637401961647989
+      spriteID: 277333e5a8442b6f0800000000000000
+      internalID: -670398033448192142
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death-trex-2
+      name: rexT-idle_2
       rect:
         serializedVersion: 2
         x: 256
@@ -150,14 +150,14 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e967799038eaaf00800000000000000
-      internalID: 1128969952040544745
+      spriteID: 67822e163fdb2f5d0800000000000000
+      internalID: -3030150746250008458
       vertices: []
       indices: 
       edges: []

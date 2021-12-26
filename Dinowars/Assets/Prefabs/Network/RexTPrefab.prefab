@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 4108026065834182613}
   - component: {fileID: 3540902114217716481}
   - component: {fileID: 2622298275648865014}
+  - component: {fileID: 961676814802459957}
   m_Layer: 0
   m_Name: RexTPrefab
   m_TagString: Player
@@ -259,6 +260,7 @@ MonoBehaviour:
   jumpFactor: 10
   rb: {fileID: 856116634289043693}
   animator: {fileID: 7686828697863108772}
+  networkAnimator: {fileID: 0}
 --- !u!114 &4108026065834182613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +335,22 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+--- !u!114 &961676814802459957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920710836554502912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  animator: {fileID: 7686828697863108772}
 --- !u!1 &3294862295092549426
 GameObject:
   m_ObjectHideFlags: 0
