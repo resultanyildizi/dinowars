@@ -350,9 +350,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_FontSize: 16
+    m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
@@ -390,7 +390,7 @@ RectTransform:
   m_GameObject: {fileID: 6794541283417010725}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.84586, y: 0.84586, z: 0.84586}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.84586}
   m_Children:
   - {fileID: 4400233887184357960}
   - {fileID: 3836259609984801234}
@@ -573,6 +573,9 @@ MonoBehaviour:
   maxHealth: 1800
   baseDamage: 40
   dino: 1
+  hbar: {fileID: 6677030701981269352}
+  pCanv: {fileID: 3390074370678260963}
+  health: 0
 --- !u!114 &-9091225308004468989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -785,11 +788,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.3
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.3
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_LocalScale.z
@@ -825,11 +828,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -68
+      value: -77.9
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -862,3 +865,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
   m_PrefabInstance: {fileID: 6893768822724005299}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6677030701981269352 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 216738155432833243, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
+  m_PrefabInstance: {fileID: 6893768822724005299}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9906bfa67722f43aeedaed27fd33a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

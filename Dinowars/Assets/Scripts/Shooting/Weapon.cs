@@ -72,7 +72,7 @@ public class Weapon : NetworkBehaviour
         
         Debug.Log("I AM SHOOTING " + this.transform.parent.localScale.x);
         bullet.transform.localScale = new Vector3(this.transform.parent.localScale.x, 1, 1);
-        bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * this.transform.parent.localScale.x * 200f, ForceMode2D.Force);
+        bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * this.transform.parent.localScale.x * 400f, ForceMode2D.Force);
         
         NetworkServer.Spawn(bullet, connectionToClient);
 

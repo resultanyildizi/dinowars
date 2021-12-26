@@ -6,10 +6,17 @@ using UnityEngine;
 public class Bullet : NetworkBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private double damage = 30;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(this.connectionToClient.identity.netId);
+
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            var player = collision.gameObject.GetComponent<Player>();
+            player.TakeDamage(damage);
+        }
         Destroy();
     }
 

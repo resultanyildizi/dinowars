@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.8, y: -70}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7743349885636833337
@@ -66,9 +66,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_FontSize: 16
+    m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
@@ -241,6 +241,8 @@ MonoBehaviour:
   maxHealth: 1200
   baseDamage: 60
   dino: 0
+  hbar: {fileID: 3923602031011481491}
+  pCanv: {fileID: 3017978027639331122}
   health: 0
 --- !u!114 &5167140750946648801
 MonoBehaviour:
@@ -773,11 +775,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.3
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.3
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_LocalScale.z
@@ -813,11 +815,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -90
+      value: -96.2
       objectReference: {fileID: 0}
     - target: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -858,6 +860,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
   m_PrefabInstance: {fileID: 3850979511724685128}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3923602031011481491 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 216738155432833243, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
+  m_PrefabInstance: {fileID: 3850979511724685128}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9906bfa67722f43aeedaed27fd33a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3923602030586274172 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 216738155782510132, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}

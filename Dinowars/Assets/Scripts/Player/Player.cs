@@ -35,13 +35,13 @@ public class Player : NetworkBehaviour
         pCanv.PlayerNameText.text = playerName;
         pCanv.PlayerNameText.color = playerColor;
         health = maxHealth;
-        hBar.SetHealth(health);
-        hBar.SetMaxHealth(health);
+        hbar.SetHealth(health);
+        hbar.SetMaxHealth(health);
     }
 
 
     public void OnHealthChanged(double oldHealth, double newHealth) {
-        hBar.SetHealth(this.health);
+        hbar.SetHealth(this.health);
     }
 
     public void Heal(double healingAmount)
@@ -52,7 +52,7 @@ public class Player : NetworkBehaviour
     }
 
     public void TakeDamage(double damage) {
-        this.health -= healingAmount;
+        this.health -= damage;
         Debug.Log(string.Format("My name is {0} - My new health is {1}", playerName, health));
         CmdChangeHealth(this.health);
     }
@@ -64,7 +64,7 @@ public class Player : NetworkBehaviour
         {
             this.health = newHealth;
         } else if(newHealth < 0) {
-            this.heath = 0;
+            this.health = 0;
         }
         else { 
             this.health = newHealth;
