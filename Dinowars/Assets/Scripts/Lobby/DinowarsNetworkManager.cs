@@ -16,6 +16,7 @@ public class DinowarsNetworkManager : NetworkManager
     [SerializeField] private DinowarsNetworkRoomPlayer roomPlayerPrefab;
     [SerializeField] private DinowarsNetworkGamePlayer gamePlayerPrefab;
     [SerializeField] private DinowarsPlayerSpawnSystem cavePlayerSpawnSystemPrefab;
+    [SerializeField] private ObjectSpawner dinowarsHealthkitSpawner;
 
 
     public static event Action OnClientConnected;
@@ -140,6 +141,9 @@ public class DinowarsNetworkManager : NetworkManager
         {
             GameObject playerSpawnSystemInstance = Instantiate(cavePlayerSpawnSystemPrefab.gameObject, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(playerSpawnSystemInstance);
+
+            GameObject objectSpawner = Instantiate(dinowarsHealthkitSpawner.gameObject, Vector3.zero, Quaternion.identity);
+            NetworkServer.Spawn(objectSpawner);
         }
     }
 

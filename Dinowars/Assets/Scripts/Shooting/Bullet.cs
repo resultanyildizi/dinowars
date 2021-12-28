@@ -10,17 +10,20 @@ public class Bullet : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         if (collision.gameObject.CompareTag("Player"))
         {
-            var player = collision.gameObject.GetComponent<Player>();
-            player.TakeDamage(damage);
+            var ownerGo = GetGameObjectFromConnection();
+            if(ownerGo != null)
+            {
+                var ownerPlayer = ownerGo.GetComponent<Player>();
+                var playerGo = collision.gameObject;
+                var player = playerGo.GetComponent<Player>();
 
-            var owner = GetGameObjectFromConnection();
-            var ownerPlayer = owner.GetComponent<Player>();
+                if(!ownerPlayer.Team.Equals(player.Team))
+                    player.TakeDamage(damage);
 
-            Debug.Log(ownerPlayer.PlayerName + " damaged " + player.PlayerName + " by " + damage);
-
+                Debug.Log(ownerPlayer.PlayerName + " damaged " + player.PlayerName + " by " + damage);
+            }
         }
         Destroy();
     }

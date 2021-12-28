@@ -12,6 +12,7 @@ public class ObjectSpawner : NetworkBehaviour
     [SerializeField]
     private int spawnInterval;
 
+    //[SyncVar]
     private Dictionary<int, GameObject> healthKitMap;
 
     public override void OnStartServer()
@@ -20,12 +21,14 @@ public class ObjectSpawner : NetworkBehaviour
     }
 
 
+    [Command]
     private void InitHealthKitMap()
     {
         healthKitMap = new Dictionary<int, GameObject>();
         for (int i = 0; i < spawners.Length; i++)
         {
             healthKitMap[i] = Instantiate(objectPrefab, spawners[i].transform);
+            NetworkServer.Spawn(healthKitMap[i]);
             healthKitMap[i].SetActive(false);
         }
 
@@ -40,6 +43,7 @@ public class ObjectSpawner : NetworkBehaviour
         StartCoroutine(SpawnCoroutine());
     }
 
+    [ClientRpc]
     private void SpawnKit()
     { 
         List<int> avaliableSlots = FindEmptySlots();
