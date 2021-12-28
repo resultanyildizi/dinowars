@@ -10,12 +10,17 @@ public class Bullet : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(this.connectionToClient.identity.netId);
 
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             var player = collision.gameObject.GetComponent<Player>();
             player.TakeDamage(damage);
+
+            var owner = GetGameObjectFromConnection();
+            var ownerPlayer = owner.GetComponent<Player>();
+
+            Debug.Log(ownerPlayer.PlayerName + " damaged " + player.PlayerName + " by " + damage);
+
         }
         Destroy();
     }
@@ -26,6 +31,21 @@ public class Bullet : NetworkBehaviour
         NetworkServer.Destroy(this.gameObject);
         GameObject.Destroy(this.gameObject);
     }
+
+    private GameObject GetGameObjectFromConnection()
+    {
+        var allPlayers = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (var p in allPlayers)
+        {
+            var netId = p.GetComponent<NetworkIdentity>();
+            if (netId != null && netId.connectionToClient == this.connectionToClient)
+                return p;
+
+        }
+        return null;
+    }
+
 
 
 }

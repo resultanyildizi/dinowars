@@ -47,15 +47,24 @@ public class Player : NetworkBehaviour
     public void Heal(double healingAmount)
     {
         this.health += healingAmount;
-        Debug.Log(string.Format("My name is {0} - My new health is {1}", playerName, health));
         CmdChangeHealth(this.health);
     }
 
     public void TakeDamage(double damage) {
         this.health -= damage;
-        Debug.Log(string.Format("My name is {0} - My new health is {1}", playerName, health));
         CmdChangeHealth(this.health);
     }
+
+
+    private void Die()
+    {
+        // Set animation
+
+        // Disable rigidbody
+
+        // Spawn this again
+    }
+
 
     [Command]
     public void CmdChangeHealth(double newHealth)
@@ -63,8 +72,9 @@ public class Player : NetworkBehaviour
         if (newHealth > maxHealth)
         {
             this.health = newHealth;
-        } else if(newHealth < 0) {
+        } else if(newHealth <= 0) {
             this.health = 0;
+            Die();
         }
         else { 
             this.health = newHealth;
