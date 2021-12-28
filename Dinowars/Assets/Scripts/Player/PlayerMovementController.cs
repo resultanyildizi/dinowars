@@ -32,6 +32,7 @@ public class PlayerMovementController : NetworkBehaviour
         Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<float>());
         Controls.Player.Move.canceled += ctx => ResetMovement();
         Controls.Player.Jump.performed += ctx => Jump();
+        player = this.transform.GetComponent<Player>();
     }
 
     [ClientCallback]

@@ -36,6 +36,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ShootByPressing",
+                    "type": "Button",
+                    "id": "970e452d-5241-4fad-af07-a07579ad4af4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ShootByHolding",
+                    "type": "Button",
+                    "id": "260ebbdf-118c-4cf3-bb52-bc01a7d75a52",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -102,6 +118,28 @@
                     "processors": "",
                     "groups": "Keyborad & Mouse",
                     "action": "Heal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6f1e284-de29-4427-b792-789190189733",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Keyborad & Mouse",
+                    "action": "ShootByPressing",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "130c2bee-d0d9-4593-8f43-38307b976641",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Keyborad & Mouse",
+                    "action": "ShootByHolding",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

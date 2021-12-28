@@ -1406,6 +1406,8 @@ MonoBehaviour:
   - {fileID: 329315481692321905, guid: 338dbb47b51714005b5110f27a5c86c9, type: 3}
   - {fileID: 8426391120270462404, guid: c45cc9ee49d716e4daf655652fc2722d, type: 3}
   - {fileID: 7897285982622451290, guid: d8c6c1b3d52bbef4dbc95ff91cc7f500, type: 3}
+  - {fileID: 5036787392607733086, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
+  - {fileID: 1574140221129583771, guid: ae1839911513d4b61bf0c5b18efd99a0, type: 3}
   minPlayers: 1
   menuscene: MenuScene
   roomPlayerPrefab: {fileID: 7096191813189871744, guid: dee79c40dc73d41089d3b3225248dd7c, type: 3}

@@ -1,23 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : NetworkBehaviour
 {
-    public float bulletSpeed = 10f;
-
-    Rigidbody2D rb;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        Vector2 force = transform.right * bulletSpeed;
-        rb.AddForce(force, ForceMode2D.Force);
-    }
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private double damage = 30;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        Debug.Log(this.connectionToClient.identity.netId);
+
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            var player = collision.gameObject.GetComponent<Player>();
+            player.TakeDamage(damage);
+        }
+        Destroy();
+    }
+
+    [Server]
+    private void Destroy()
+    {
+        NetworkServer.Destroy(this.gameObject);
+        GameObject.Destroy(this.gameObject);
     }
 
 
