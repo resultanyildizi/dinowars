@@ -9,6 +9,7 @@ public class Player : NetworkBehaviour
     [SerializeField] private DinowarsNetworkRoomPlayer.Dino dino;
     [SerializeField] private HealthBar hbar;
     [SerializeField] private PlayerCanvas pCanv;
+    [SerializeField] private Animator animator;
 
     [SyncVar]
     private DinowarsNetworkRoomPlayer.Team team;
@@ -58,11 +59,11 @@ public class Player : NetworkBehaviour
 
     private void Die()
     {
-        // Set animation
+        animator.SetTrigger("Death");
 
-        // Disable rigidbody
+        Destroy(gameObject, 3.0f);
 
-        // Spawn this again
+
     }
 
 

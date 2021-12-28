@@ -244,6 +244,7 @@ MonoBehaviour:
   dino: 0
   hbar: {fileID: 3923602031011481491}
   pCanv: {fileID: 3017978027639331122}
+  animator: {fileID: 7686828697863108772}
   health: 0
 --- !u!114 &5167140750946648801
 MonoBehaviour:
@@ -263,7 +264,6 @@ MonoBehaviour:
   jumpFactor: 10
   rb: {fileID: 856116634289043693}
   animator: {fileID: 7686828697863108772}
-  networkAnimator: {fileID: 0}
 --- !u!114 &4108026065834182613
 MonoBehaviour:
   m_ObjectHideFlags: 0

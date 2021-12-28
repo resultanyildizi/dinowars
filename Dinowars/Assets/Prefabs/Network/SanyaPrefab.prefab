@@ -644,6 +644,7 @@ MonoBehaviour:
   dino: 2
   hbar: {fileID: 8094593469149627651}
   pCanv: {fileID: 8328662983844789248}
+  animator: {fileID: 5862909520031393395}
   health: 0
 --- !u!114 &-1226004902103015764
 MonoBehaviour:
