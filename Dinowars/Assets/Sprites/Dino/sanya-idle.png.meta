@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 3a88b53505a27479e820515e013ba897
+guid: 9ffe2103b9d0740f4af6863cdba6bf77
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -237003457656260199
-    second: jump-rex-t-0
+      213: -7484361053819434965
+    second: sanya-idle_0
   - first:
-      213: -6246270445556660389
-    second: jump-rex-t-1
+      213: 5852377888585688054
+    second: sanya-idle_1
   - first:
-      213: 7970506660426617927
-    second: jump-rex-t-2
+      213: -7685293428667501319
+    second: sanya-idle_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -55,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 90
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump-rex-t-0
+      name: sanya-idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,20 +108,20 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 999fbd76c9ef5bcf0800000000000000
-      internalID: -237003457656260199
+      spriteID: b2803508645322890800000000000000
+      internalID: -7484361053819434965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump-rex-t-1
+      name: sanya-idle_1
       rect:
         serializedVersion: 2
         x: 128
@@ -129,20 +129,20 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b570399bf1ac059a0800000000000000
-      internalID: -6246270445556660389
+      spriteID: 6f32084bea2d73150800000000000000
+      internalID: 5852377888585688054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump-rex-t-2
+      name: sanya-idle_2
       rect:
         serializedVersion: 2
         x: 256
@@ -150,14 +150,14 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7441d9ef39dec9e60800000000000000
-      internalID: 7970506660426617927
+      spriteID: 9f431a5585a585590800000000000000
+      internalID: -7685293428667501319
       vertices: []
       indices: 
       edges: []

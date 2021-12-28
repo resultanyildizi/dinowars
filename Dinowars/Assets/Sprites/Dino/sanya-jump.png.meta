@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0fedc7962f7ab43db9067485ec971ab1
+guid: a54cec22b2327414896e4a6c712f1eff
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -8,12 +8,6 @@ TextureImporter:
   - first:
       213: 578217105445925412
     second: sanya-jump_1
-  - first:
-      213: 9163819298016549029
-    second: sanya-jump_2
-  - first:
-      213: -8774748169231213746
-    second: sanya-jump_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -140,48 +134,6 @@ TextureImporter:
       bones: []
       spriteID: 422b825d46d360800800000000000000
       internalID: 578217105445925412
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sanya-jump_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a8552c791d6c2f70800000000000000
-      internalID: 9163819298016549029
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sanya-jump_3
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4bd67bd705d93680800000000000000
-      internalID: -8774748169231213746
       vertices: []
       indices: 
       edges: []

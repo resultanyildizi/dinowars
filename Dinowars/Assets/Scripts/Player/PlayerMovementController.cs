@@ -10,9 +10,9 @@ public class PlayerMovementController : NetworkBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
 
-    private Player player;
-
+    private bool onGround;
     private float inputValue;
+    private float horizontalMove;
 
     private Controls controls;
 
@@ -32,7 +32,6 @@ public class PlayerMovementController : NetworkBehaviour
         Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<float>());
         Controls.Player.Move.canceled += ctx => ResetMovement();
         Controls.Player.Jump.performed += ctx => Jump();
-        player = this.transform.GetComponent<Player>();
     }
 
     [ClientCallback]
@@ -52,23 +51,28 @@ public class PlayerMovementController : NetworkBehaviour
     private void Move()
     {
         rb.velocity = new Vector2( inputValue * movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
-        float horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
 
     [Client]
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpFactor);
-        player.CmdChangeHealth(player.health-10);
-        Debug.Log(player.health-10);
-       
+        if (onGround)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpFactor);
+            animator.SetBool("Jump", true);
+            onGround = false;
+        }
     }
 
-   private bool IsGrounded()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        return transform.Find("Foot").GetComponent<GroundCheck>().isGrounded;
+        if (collision.gameObject.tag == "Ground")
+        {
+            animator.SetBool("Jump", false);
+            onGround = true;
+        }
     }
 
 }

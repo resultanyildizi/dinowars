@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: 856ab197c52e54abe9ad61671d822446
+guid: e2d2f011a95f6461b9324acd816a86c7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1871617642374950457
-    second: "Uxgly o\u0308lu\u0308yor_0"
+      213: -2773937989914772446
+    second: ugxgly-idle_0
   - first:
-      213: -8387752354988541057
-    second: "Uxgly o\u0308lu\u0308yor_1"
+      213: -7376341511411147046
+    second: ugxgly-idle_1
   - first:
-      213: 6567524247632987791
-    second: "Uxgly o\u0308lu\u0308yor_2"
-  - first:
-      213: -2045657470075921734
-    second: "Uxgly o\u0308lu\u0308yor_3"
+      213: -94603919423259532
+    second: ugxgly-idle_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Uxgly o\u0308lu\u0308yor_0"
+      name: ugxgly-idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,14 +114,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93eec19545259f910800000000000000
-      internalID: 1871617642374950457
+      spriteID: 22c3b2a581ef089d0800000000000000
+      internalID: -2773937989914772446
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Uxgly o\u0308lu\u0308yor_1"
+      name: ugxgly-idle_1
       rect:
         serializedVersion: 2
         x: 128
@@ -138,14 +135,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7b36f06ca7b89b80800000000000000
-      internalID: -8387752354988541057
+      spriteID: adede561a78f1a990800000000000000
+      internalID: -7376341511411147046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Uxgly o\u0308lu\u0308yor_2"
+      name: ugxgly-idle_2
       rect:
         serializedVersion: 2
         x: 256
@@ -159,29 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f86cde9c188842b50800000000000000
-      internalID: 6567524247632987791
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Uxgly o\u0308lu\u0308yor_3"
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aba100c8e5d5c93e0800000000000000
-      internalID: -2045657470075921734
+      spriteID: 47cba6c8c36efaef0800000000000000
+      internalID: -94603919423259532
       vertices: []
       indices: 
       edges: []

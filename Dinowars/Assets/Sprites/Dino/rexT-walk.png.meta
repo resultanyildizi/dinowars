@@ -1,25 +1,28 @@
 fileFormatVersion: 2
-guid: 84bd9363b86ed41859c7000e48f33284
+guid: 41243a5b2d2c54e459adc09a23c511ac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3867011515026960549
-    second: sanya-skill_0
+      213: -4339363566647045668
+    second: rexT-walk_0
   - first:
-      213: 3735160528655214208
-    second: sanya-skill_1
+      213: 2154566734033896565
+    second: rexT-walk_1
   - first:
-      213: -6830940555562569347
-    second: sanya-skill_2
+      213: 4440581613156088561
+    second: rexT-walk_2
   - first:
-      213: -9068800956465450919
-    second: sanya-skill_3
+      213: 3903363681069674611
+    second: rexT-walk_3
   - first:
-      213: -8830937559825053610
-    second: sanya-skill_4
+      213: 6842297610737456040
+    second: rexT-walk_4
   - first:
-      213: 7661465257373523057
-    second: sanya-skill_5
+      213: -7495073044321156981
+    second: rexT-walk_5
+  - first:
+      213: 2029186890307855176
+    second: rexT-walk_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +112,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sanya-skill_0
+      name: rexT-walk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -123,14 +126,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5f0970f38d955ac0800000000000000
-      internalID: -3867011515026960549
+      spriteID: cd11bbab3db77c3c0800000000000000
+      internalID: -4339363566647045668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sanya-skill_1
+      name: rexT-walk_1
       rect:
         serializedVersion: 2
         x: 128
@@ -144,14 +147,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 086ed8906b4f5d330800000000000000
-      internalID: 3735160528655214208
+      spriteID: 574c6fa770f86ed10800000000000000
+      internalID: 2154566734033896565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sanya-skill_2
+      name: rexT-walk_2
       rect:
         serializedVersion: 2
         x: 256
@@ -165,14 +168,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7132efa1cf9331a0800000000000000
-      internalID: -6830940555562569347
+      spriteID: 1fabc40337d10ad30800000000000000
+      internalID: 4440581613156088561
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sanya-skill_3
+      name: rexT-walk_3
       rect:
         serializedVersion: 2
         x: 384
@@ -186,14 +189,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95077232495252280800000000000000
-      internalID: -9068800956465450919
+      spriteID: 370b15746988b2630800000000000000
+      internalID: 3903363681069674611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sanya-skill_4
+      name: rexT-walk_4
       rect:
         serializedVersion: 2
         x: 512
@@ -207,14 +210,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65809f0e315327580800000000000000
-      internalID: -8830937559825053610
+      spriteID: 8a39287cc69b4fe50800000000000000
+      internalID: 6842297610737456040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sanya-skill_5
+      name: rexT-walk_5
       rect:
         serializedVersion: 2
         x: 640
@@ -228,8 +231,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17cdeb43f0ef25a60800000000000000
-      internalID: 7661465257373523057
+      spriteID: b80c1abd6c62cf790800000000000000
+      internalID: -7495073044321156981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rexT-walk_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 843eda3c9be192c10800000000000000
+      internalID: 2029186890307855176
       vertices: []
       indices: 
       edges: []
