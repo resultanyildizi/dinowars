@@ -10,13 +10,12 @@ public class Bullet : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(this.connectionToClient.identity.netId);
-
         if(collision.gameObject.CompareTag("Player"))
         {
             var player = collision.gameObject.GetComponent<Player>();
             player.TakeDamage(damage);
         }
+
         Destroy();
     }
 
