@@ -14,13 +14,13 @@ public class Bullet : NetworkBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             var player = collision.gameObject.GetComponent<Player>();
+            var willDie = player.Health > 0 && player.Health - damage <= 0;
+
             player.TakeDamage(damage);
+            if (willDie) player.CRpcDie();
 
-            var owner = GetGameObjectFromConnection();
+            var owner = Utils.GetGameObjectFromConnection(connectionToClient);
             var ownerPlayer = owner.GetComponent<Player>();
-
-            Debug.Log(ownerPlayer.PlayerName + " damaged " + player.PlayerName + " by " + damage);
-
         }
         Destroy();
     }
@@ -28,22 +28,8 @@ public class Bullet : NetworkBehaviour
     [Server]
     private void Destroy()
     {
-        NetworkServer.Destroy(this.gameObject);
-        GameObject.Destroy(this.gameObject);
-    }
-
-    private GameObject GetGameObjectFromConnection()
-    {
-        var allPlayers = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach (var p in allPlayers)
-        {
-            var netId = p.GetComponent<NetworkIdentity>();
-            if (netId != null && netId.connectionToClient == this.connectionToClient)
-                return p;
-
-        }
-        return null;
+        NetworkServer.Destroy(gameObject);
+        GameObject.Destroy(gameObject);
     }
 
 
