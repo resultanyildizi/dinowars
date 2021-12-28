@@ -1,43 +1,7 @@
 fileFormatVersion: 2
-guid: d5740f47e942e406bb5cf81fa0a628a5
+guid: 7702ea64110b84d048e6987c2839c737
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 7013749029351703108
-    second: bataklik_0
-  - first:
-      213: -8563776052850467226
-    second: bataklik_1
-  - first:
-      213: -1500493813673730053
-    second: bataklik_2
-  - first:
-      213: -971097685269721342
-    second: bataklik_3
-  - first:
-      213: 6384490825918097910
-    second: bataklik_4
-  - first:
-      213: 6386062463765361214
-    second: bataklik_5
-  - first:
-      213: 525668158302053276
-    second: bataklik_6
-  - first:
-      213: -4093637326213795863
-    second: bataklik_7
-  - first:
-      213: 9155444422818376655
-    second: bataklik_8
-  - first:
-      213: -2115041463180019532
-    second: bataklik_9
-  - first:
-      213: -3895193721933985040
-    second: bataklik_10
-  - first:
-      213: 3534851324381258706
-    second: bataklik_11
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -77,12 +41,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 120
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -125,70 +89,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: bataklik_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 480
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 442cf3ee497d55160800000000000000
-      internalID: 7013749029351703108
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bataklik_1
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 480
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 66ed9d18d0b572980800000000000000
-      internalID: -8563776052850467226
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bataklik_2
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 480
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bff5e4093dc2d2be0800000000000000
-      internalID: -1500493813673730053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []

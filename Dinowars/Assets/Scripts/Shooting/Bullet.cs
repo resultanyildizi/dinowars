@@ -19,8 +19,12 @@ public class Bullet : NetworkBehaviour
                 var playerGo = collision.gameObject;
                 var player = playerGo.GetComponent<Player>();
 
-                if(!ownerPlayer.Team.Equals(player.Team))
+                var willDie = player.Health > 0 && player.Health - damage <= 0;
+
+                if(!ownerPlayer.Team.Equals(player.Team)) {
                     player.TakeDamage(damage);
+                    if (willDie) player.CRpcDie();
+                }
 
                 Debug.Log(ownerPlayer.PlayerName + " damaged " + player.PlayerName + " by " + damage);
             }
@@ -31,22 +35,8 @@ public class Bullet : NetworkBehaviour
     [Server]
     private void Destroy()
     {
-        NetworkServer.Destroy(this.gameObject);
-        GameObject.Destroy(this.gameObject);
-    }
-
-    private GameObject GetGameObjectFromConnection()
-    {
-        var allPlayers = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach (var p in allPlayers)
-        {
-            var netId = p.GetComponent<NetworkIdentity>();
-            if (netId != null && netId.connectionToClient == this.connectionToClient)
-                return p;
-
-        }
-        return null;
+        NetworkServer.Destroy(gameObject);
+        GameObject.Destroy(gameObject);
     }
 
 

@@ -37,31 +37,28 @@ public class Weapon : NetworkBehaviour
     }
 
 
+    public void OnEnable() => Controls.Enable();
 
-    //bools 
-    bool readyToShoot, reloading;
+    public void OnDisable() => Controls.Disable();
+
 
     public override void OnStartAuthority()
     {
-        Debug.Log("Starting to shoot");
-        Controls.Enable();
+        enabled = true;
         Controls.Player.ShootByPressing.performed += ctx => Shoot();
-
-        //reloading = false;
-        //readyToShoot = true;
-        //bulletsLeft = magazineSize;
     }
 
-    public override void OnStopAuthority()
-    {
-        Controls.Disable();
-        base.OnStopAuthority();
-    }
 
     public override void OnStartClient()
     {
         transform.SetParent(Player.transform.Find("Hand"));
         transform.localScale = new Vector3(2, 2, 2);
+    }
+
+    [ClientCallback]
+    public void Update()
+    {
+        
     }
 
     [Command]
@@ -75,35 +72,6 @@ public class Weapon : NetworkBehaviour
         bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * this.transform.parent.localScale.x * 400f, ForceMode2D.Force);
         
         NetworkServer.Spawn(bullet, connectionToClient);
-
-        //NetworkServer.Destroy(bullet);
-        
-
-        //if (bulletsLeft <= 0 && !reloading) Reload();
-
-        ////Shoot
-        //if (readyToShoot && !reloading && bulletsLeft > 0)
-        //{
-        //    bulletsShot = bulletsPerTap;
-        //    readyToShoot = false;
-
-        //    FireABullet();
-
-        //    bulletsLeft--;
-        //    bulletsShot--;
-
-        //    Invoke("ResetShot", timeBetweenShooting);
-
-        //    for (int i = 1; i <= bulletsShot; i++)
-        //    {
-        //        if (bulletsLeft > 0)
-        //        {
-        //            bulletsLeft--;
-        //            Invoke("FireABullet", timeBetweenShots * i);
-        //        }
-        //    }
-
-        //}
     }
 
     //private void FireABullet()

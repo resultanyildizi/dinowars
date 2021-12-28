@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
+using System.Collections;
 
 public class Player : NetworkBehaviour
 {
@@ -9,6 +10,7 @@ public class Player : NetworkBehaviour
     [SerializeField] private DinowarsNetworkRoomPlayer.Dino dino;
     [SerializeField] private HealthBar hbar;
     [SerializeField] private PlayerCanvas pCanv;
+    [SerializeField] private Animator animator;
 
     [SyncVar]
     private DinowarsNetworkRoomPlayer.Team team;
@@ -17,12 +19,12 @@ public class Player : NetworkBehaviour
     [SyncVar]
     private string playerName;
     [SyncVar(hook = nameof(OnHealthChanged))]
-    public double health;
-    
+    private double health;
     
     public string PlayerName { get => playerName; set => playerName = value; }
     public Color PlayerColor { get => playerColor; set => playerColor = value; }
     public DinowarsNetworkRoomPlayer.Team Team { get => team; set => team = value; }
+    public double Health { get => health; }
 
     public override void OnStartAuthority()
     {
@@ -31,7 +33,6 @@ public class Player : NetworkBehaviour
 
     public override void OnStartClient()
     {
-
         pCanv.PlayerNameText.text = playerName;
         pCanv.PlayerNameText.color = playerColor;
         health = maxHealth;
@@ -41,43 +42,53 @@ public class Player : NetworkBehaviour
 
 
     public void OnHealthChanged(double oldHealth, double newHealth) {
-        hbar.SetHealth(this.health);
+        hbar.SetHealth(newHealth);
     }
 
-    public void Heal(double healingAmount)
-    {
-        this.health += healingAmount;
-        CmdChangeHealth(this.health);
+    public void Heal(double healingAmount) {
+        CmdChangeHealth(health + healingAmount);
     }
 
     public void TakeDamage(double damage) {
-        this.health -= damage;
-        CmdChangeHealth(this.health);
+        Debug.Log("Take damage " + health);
+        CmdChangeHealth(health - damage);
     }
 
-
-    private void Die()
+    [ClientRpc]
+    public void CRpcDie()
     {
-        // Set animation
+        animator.SetTrigger("Death");
 
-        // Disable rigidbody
+        var body = transform.Find("PlayerBody");
+        var hand = transform.Find("Hand");
+        var head = body.Find("Head");
+        var foot = body.Find("Foot");
+        var belly = body.Find("Belly");
 
-        // Spawn this again
+        GetComponent<PlayerDirectionController>().enabled = false;
+        GetComponent<PlayerMovementController>().enabled = false;
+        GetComponent<NetworkAnimator>().enabled = false;
+        GetComponent<Rigidbody2D>().gravityScale = 0;
+
+        hand.gameObject.GetComponentInChildren<Weapon>().enabled = false;
+        head.gameObject.SetActive(false);
+        foot.gameObject.SetActive(false);
+        belly.gameObject.SetActive(false);
+        hand.gameObject.SetActive(false);
     }
 
 
-    [Command]
+    [Command(requiresAuthority = false)]
     public void CmdChangeHealth(double newHealth)
     {
         if (newHealth > maxHealth)
         {
-            this.health = newHealth;
+            health = maxHealth;
         } else if(newHealth <= 0) {
-            this.health = 0;
-            Die();
+            health = 0;
         }
         else { 
-            this.health = newHealth;
+            health = newHealth;
         }
     }
 
