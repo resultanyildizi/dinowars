@@ -86,12 +86,10 @@ public class Player : NetworkBehaviour
             health = maxHealth;
         } else if(newHealth <= 0) {
             health = 0;
+            CRpcDie();
         }
         else { 
             health = newHealth;
         }
     }
-
-
-
 }

@@ -12,21 +12,27 @@ public class Bullet : NetworkBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            var ownerGo = GetGameObjectFromConnection();
-            if(ownerGo != null)
+            var ownerGp = Utils.GetGameObjectFromConnection(connectionToClient);
+
+            if (ownerGp != null)
             {
-                var ownerPlayer = ownerGo.GetComponent<Player>();
-                var playerGo = collision.gameObject;
-                var player = playerGo.GetComponent<Player>();
+                var player = collision.gameObject.GetComponent<Player>();
+                var playerGp = Utils.GetGameObjectFromConnection(player.connectionToClient);
 
                 var willDie = player.Health > 0 && player.Health - damage <= 0;
 
-                if(!ownerPlayer.Team.Equals(player.Team)) {
+                if (!ownerGp.Team.Equals(player.Team))
+                {
                     player.TakeDamage(damage);
-                    if (willDie) player.CRpcDie();
+                    if (willDie)
+                    {
+                        playerGp.IncreaseDeath();
+                        ownerGp.IncreaseKill();
+                    }
+
                 }
 
-                Debug.Log(ownerPlayer.PlayerName + " damaged " + player.PlayerName + " by " + damage);
+
             }
         }
         Destroy();
@@ -39,19 +45,7 @@ public class Bullet : NetworkBehaviour
         GameObject.Destroy(gameObject);
     }
 
-    private GameObject GetGameObjectFromConnection()
-    {
-        var allPlayers = GameObject.FindGameObjectsWithTag("Player");
 
-        foreach (var p in allPlayers)
-        {
-            var netId = p.GetComponent<NetworkIdentity>();
-            if (netId != null && netId.connectionToClient == connectionToClient)
-                return p;
-
-        }
-        return null;
-    }
 
 
 

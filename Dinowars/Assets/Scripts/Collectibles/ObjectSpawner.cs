@@ -12,13 +12,11 @@ public class ObjectSpawner : NetworkBehaviour
     [SerializeField]
     private int spawnInterval;
 
-    //[SyncVar]
     private Dictionary<int, GameObject> healthKitMap;
 
     public override void OnStartServer()
     {
         InitHealthKitMap();
-        //DinowarsNetworkManager.OnServerReadied += (conn) => InitHealthKitMap();
     }
 
     public override void OnStopServer()
@@ -34,7 +32,7 @@ public class ObjectSpawner : NetworkBehaviour
 
         for (int i = 0; i < spawners.Length; i++)
             healthKitMap.Add(i, null);
-        
+
 
         StartCoroutine(SpawnCoroutine());
     }
@@ -73,24 +71,6 @@ public class ObjectSpawner : NetworkBehaviour
                 emptySlots.Add(key);
         }
 
-        
-
         return emptySlots;
     }
-
-    //private void PrintMap()
-    //{
-    //    string message = "";
-
-    //    message =  message + "Values =====================\n";
-    //    foreach(var key in healthKitMap.Keys)
-    //    {
-    //        message = message + string.Format("{0} - {1}", key, healthKitMap[key]) + "\n"; 
-    //    }
-    //    message = message + "=============================";
-
-    //    Debug.Log(message);
-    //}
-
-
 }

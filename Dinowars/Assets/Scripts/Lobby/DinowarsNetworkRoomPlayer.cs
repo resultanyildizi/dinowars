@@ -63,7 +63,7 @@ public class DinowarsNetworkRoomPlayer : NetworkBehaviour
 
     [Command]
     public void CmdChangeName(string name) => DisplayName = name;
-    
+
     [Command]
     public void CmdChangeTeam(Team team) => PlayerTeam = team;
 

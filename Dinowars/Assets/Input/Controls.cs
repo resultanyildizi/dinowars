@@ -157,6 +157,33 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Game"",
+            ""id"": ""3a0011a6-1252-45e0-a9a4-8fc4fd2e04c9"",
+            ""actions"": [
+                {
+                    ""name"": ""ScoreBoard"",
+                    ""type"": ""Button"",
+                    ""id"": ""ff0ac4c0-aa0c-4b48-8540-fa144bf8cd43"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""78f5cb6c-4298-424b-9cba-58de62780256"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Keyborad & Mouse"",
+                    ""action"": ""ScoreBoard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -186,6 +213,9 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
         m_Player_ShootByPressing = m_Player.FindAction("ShootByPressing", throwIfNotFound: true);
         m_Player_ShootByHolding = m_Player.FindAction("ShootByHolding", throwIfNotFound: true);
+        // Game
+        m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
+        m_Game_ScoreBoard = m_Game.FindAction("ScoreBoard", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +334,39 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Game
+    private readonly InputActionMap m_Game;
+    private IGameActions m_GameActionsCallbackInterface;
+    private readonly InputAction m_Game_ScoreBoard;
+    public struct GameActions
+    {
+        private @Controls m_Wrapper;
+        public GameActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ScoreBoard => m_Wrapper.m_Game_ScoreBoard;
+        public InputActionMap Get() { return m_Wrapper.m_Game; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GameActions set) { return set.Get(); }
+        public void SetCallbacks(IGameActions instance)
+        {
+            if (m_Wrapper.m_GameActionsCallbackInterface != null)
+            {
+                @ScoreBoard.started -= m_Wrapper.m_GameActionsCallbackInterface.OnScoreBoard;
+                @ScoreBoard.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnScoreBoard;
+                @ScoreBoard.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnScoreBoard;
+            }
+            m_Wrapper.m_GameActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ScoreBoard.started += instance.OnScoreBoard;
+                @ScoreBoard.performed += instance.OnScoreBoard;
+                @ScoreBoard.canceled += instance.OnScoreBoard;
+            }
+        }
+    }
+    public GameActions @Game => new GameActions(this);
     private int m_KeyboradMouseSchemeIndex = -1;
     public InputControlScheme KeyboradMouseScheme
     {
@@ -321,5 +384,9 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnHeal(InputAction.CallbackContext context);
         void OnShootByPressing(InputAction.CallbackContext context);
         void OnShootByHolding(InputAction.CallbackContext context);
+    }
+    public interface IGameActions
+    {
+        void OnScoreBoard(InputAction.CallbackContext context);
     }
 }

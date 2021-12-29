@@ -144,6 +144,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Game",
+            "id": "3a0011a6-1252-45e0-a9a4-8fc4fd2e04c9",
+            "actions": [
+                {
+                    "name": "ScoreBoard",
+                    "type": "Button",
+                    "id": "ff0ac4c0-aa0c-4b48-8540-fa144bf8cd43",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "78f5cb6c-4298-424b-9cba-58de62780256",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Keyborad & Mouse",
+                    "action": "ScoreBoard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

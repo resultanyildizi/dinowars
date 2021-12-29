@@ -16,7 +16,7 @@ public class DinowarsNetworkManager : NetworkManager
     [SerializeField] private DinowarsNetworkRoomPlayer roomPlayerPrefab;
     [SerializeField] private DinowarsNetworkGamePlayer gamePlayerPrefab;
     [SerializeField] private DinowarsPlayerSpawnSystem cavePlayerSpawnSystemPrefab;
-    [SerializeField] private ObjectSpawner dinowarsHealthkitSpawner;
+    [SerializeField] private ObjectSpawner healthkitSpawnerPrefab;
 
 
     public static event Action OnClientConnected;
@@ -34,6 +34,9 @@ public class DinowarsNetworkManager : NetworkManager
     public List<DinowarsNetworkGamePlayer> TeamBGamePlayers { get; } = new List<DinowarsNetworkGamePlayer>();
     public List<DinowarsNetworkGamePlayer> TeamAGamePlayers { get; } = new List<DinowarsNetworkGamePlayer>();
 
+    // public Dictionary<DinowarsNetworkGamePlayer, Tuple<int, int>> TeamAScores = new Dictionary<DinowarsNetworkGamePlayer, Tuple<int, int>>();
+    // public Dictionary<DinowarsNetworkGamePlayer, Tuple<int, int>> TeamBScores = new Dictionary<DinowarsNetworkGamePlayer, Tuple<int, int>>();
+
 
     private int maxTeamAPlayerCount;
     private int maxTeamBPlayerCount;
@@ -43,12 +46,6 @@ public class DinowarsNetworkManager : NetworkManager
     public int mapIndexValue;
     public String roomName;
     public String roomDesc;
-
-    
-    public override void OnStartServer()
-    {
-        Debug.Log("Server started");
-    }
 
     public override void OnStartClient()
     {
@@ -122,9 +119,13 @@ public class DinowarsNetworkManager : NetworkManager
         if (SceneManager.GetActiveScene().name.Equals(menuscene) && newSceneName.StartsWith(getSceneName()))
         {
             for (int i = TeamARoomPlayers.Count - 1; i >= 0; i--)
+            {
                 RoomPlayerToGamePlayer(TeamARoomPlayers[i]);
+            }
             for (int i = TeamBRoomPlayers.Count - 1; i >= 0; i--)
+            {
                 RoomPlayerToGamePlayer(TeamBRoomPlayers[i]);
+            }
         }
         base.ServerChangeScene(newSceneName);
     }
@@ -132,6 +133,7 @@ public class DinowarsNetworkManager : NetworkManager
 
     public override void OnClientSceneChanged(NetworkConnection conn)
     {
+
         base.OnClientSceneChanged(conn);
     }
 
@@ -142,14 +144,14 @@ public class DinowarsNetworkManager : NetworkManager
             GameObject playerSpawnSystemInstance = Instantiate(cavePlayerSpawnSystemPrefab.gameObject, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(playerSpawnSystemInstance);
 
-            GameObject objectSpawner = Instantiate(dinowarsHealthkitSpawner.gameObject, Vector3.zero, Quaternion.identity);
+            GameObject objectSpawner = Instantiate(healthkitSpawnerPrefab.gameObject, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(objectSpawner);
         }
     }
 
     private void RoomPlayerToGamePlayer(DinowarsNetworkRoomPlayer player)
     {
-        
+
         var conn = player.connectionToClient;
         var gamePlayerInstance = Instantiate(gamePlayerPrefab);
 
@@ -202,6 +204,14 @@ public class DinowarsNetworkManager : NetworkManager
         else if (player.Team == DinowarsNetworkRoomPlayer.Team.TeamB)
             TeamBGamePlayers.Add(player);
     }
+
+    // public void InitPlayerScore(DinowarsNetworkGamePlayer player)
+    // {
+    //     if (player.Team == DinowarsNetworkRoomPlayer.Team.TeamA)
+    //         TeamAScores[player] = new Tuple<int, int>(0, 0);
+    //     else if (player.Team == DinowarsNetworkRoomPlayer.Team.TeamB)
+    //         TeamBScores[player] = new Tuple<int, int>(0, 0);
+    // }
 
     public bool AddPlayerToTeam(DinowarsNetworkRoomPlayer player)
     {
@@ -275,21 +285,48 @@ public class DinowarsNetworkManager : NetworkManager
         OnServerReadied?.Invoke(conn);
     }
 
+    // public void PlayerKillsPlayer(DinowarsNetworkGamePlayer killed, DinowarsNetworkGamePlayer killer)
+    // {
+    //     Debug.Log("Calculating new scores");
+    //     if (killed.Team == DinowarsNetworkRoomPlayer.Team.TeamA && killer.Team == DinowarsNetworkRoomPlayer.Team.TeamB)
+    //     {
+    //         var killedScr = TeamAScores[killed];
+    //         var killerScr = TeamBScores[killer];
+
+    //         TeamAScores[killed] = new Tuple<int, int>(killedScr.Item1, killedScr.Item2 + 1);
+    //         TeamBScores[killer] = new Tuple<int, int>(killerScr.Item1 + 1, killerScr.Item2);
+    //         return;
+    //     }
+
+    //     if (killed.Team == DinowarsNetworkRoomPlayer.Team.TeamB && killer.Team == DinowarsNetworkRoomPlayer.Team.TeamA)
+    //     {
+    //         var killedScr = TeamBScores[killed];
+    //         var killerScr = TeamAScores[killer];
+
+    //         TeamBScores[killed] = new Tuple<int, int>(killedScr.Item1, killedScr.Item2 + 1);
+    //         TeamAScores[killer] = new Tuple<int, int>(killerScr.Item1 + 1, killerScr.Item2);
+    //         return;
+    //     }
+    // }
+
+
+
     private String getSceneName()
     {
-        if(mapIndexValue == 0)
+        if (mapIndexValue == 0)
         {
             return "CaveScene";
         }
         else if (mapIndexValue == 1)
         {
             return "ForestScene";
-        }else
+        }
+        else
         {
             return "CaveScene";
         }
     }
 
-   
+
 }
 

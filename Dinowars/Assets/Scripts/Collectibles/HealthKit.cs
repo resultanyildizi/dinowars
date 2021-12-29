@@ -26,6 +26,4 @@ public class HealthKit : NetworkBehaviour
             GameObject.Destroy(gameObject);
         }
     }
-
-
 }

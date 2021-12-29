@@ -10,6 +10,8 @@ TagManager:
   - Body
   - Lawa
   - Gun
+  - HealthKit
+  - GamePlayer
   layers:
   - Default
   - TransparentFX

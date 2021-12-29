@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 7392260226769944064}
   - component: {fileID: 7392260226769944066}
   - component: {fileID: 7392260226769944067}
+  - component: {fileID: 3389887259575501551}
   m_Layer: 5
   m_Name: TeamMemberB
   m_TagString: Untagged
@@ -156,6 +157,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3389887259575501551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392260226769944065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8fa72b1a48144ca8dd60c613a80361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 7392260227805916448}
+  killText: {fileID: 7392260227522364838}
+  deathText: {fileID: 7392260227431856577}
 --- !u!1 &7392260227431856639
 GameObject:
   m_ObjectHideFlags: 0
