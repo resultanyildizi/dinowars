@@ -39,6 +39,20 @@ public class Bullet : NetworkBehaviour
         GameObject.Destroy(gameObject);
     }
 
+    private GameObject GetGameObjectFromConnection()
+    {
+        var allPlayers = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (var p in allPlayers)
+        {
+            var netId = p.GetComponent<NetworkIdentity>();
+            if (netId != null && netId.connectionToClient == connectionToClient)
+                return p;
+
+        }
+        return null;
+    }
+
 
 
 }

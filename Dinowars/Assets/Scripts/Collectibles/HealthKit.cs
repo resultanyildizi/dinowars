@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class HealthKit : MonoBehaviour
+public class HealthKit : NetworkBehaviour
 {
     [SerializeField]
     private double healingAmount;
@@ -19,13 +20,12 @@ public class HealthKit : MonoBehaviour
         if (collision.CompareTag("Body") || collision.CompareTag("Foot"))
         {
             Player player = collision.GetComponentInParent<Player>();
-            PickedUp(player);
+            player.Heal(healingAmount);
+
+            NetworkServer.Destroy(gameObject);
+            GameObject.Destroy(gameObject);
         }
     }
 
-    private void PickedUp(Player player)
-    {
-        gameObject.SetActive(false);
-        player.Heal(healingAmount);
-    }
+
 }

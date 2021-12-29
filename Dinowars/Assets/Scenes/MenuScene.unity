@@ -1408,14 +1408,14 @@ MonoBehaviour:
   - {fileID: 7897285982622451290, guid: d8c6c1b3d52bbef4dbc95ff91cc7f500, type: 3}
   - {fileID: 5036787392607733086, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
   - {fileID: 1574140221129583771, guid: ae1839911513d4b61bf0c5b18efd99a0, type: 3}
-  - {fileID: 5653451558149043009, guid: 0d3c8c1001709fc498282bea1d009858, type: 3}
+  - {fileID: 6447305878461276849, guid: 0d3c8c1001709fc498282bea1d009858, type: 3}
   - {fileID: 7591861740679962128, guid: b29b3bc8e45d36d4580473f5bfd5f173, type: 3}
   minPlayers: 1
   menuscene: MenuScene
   roomPlayerPrefab: {fileID: 7096191813189871744, guid: dee79c40dc73d41089d3b3225248dd7c, type: 3}
   gamePlayerPrefab: {fileID: 3346931993463819939, guid: e15eeb430ab42434fb56f9822e049889, type: 3}
   cavePlayerSpawnSystemPrefab: {fileID: 6250838871268673869, guid: 338dbb47b51714005b5110f27a5c86c9, type: 3}
-  dinowarsHealthkitSpawner: {fileID: 5653451558149043010, guid: 0d3c8c1001709fc498282bea1d009858, type: 3}
+  dinowarsHealthkitSpawner: {fileID: 1802952355840816633, guid: 0d3c8c1001709fc498282bea1d009858, type: 3}
   timeValue: 0
   roundValue: 0
   modeIndexValue: 0

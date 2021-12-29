@@ -272,7 +272,6 @@ public class DinowarsNetworkManager : NetworkManager
     public override void OnServerReady(NetworkConnection conn)
     {
         base.OnServerReady(conn);
-
         OnServerReadied?.Invoke(conn);
     }
 

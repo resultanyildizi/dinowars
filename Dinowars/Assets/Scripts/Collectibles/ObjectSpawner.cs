@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObjectSpawner : NetworkBehaviour
 {
     [SerializeField]
-    private Transform[] spawners;
+    private Vector3[] spawners;
     [SerializeField]
     private GameObject objectPrefab;
     [SerializeField]
@@ -18,19 +18,23 @@ public class ObjectSpawner : NetworkBehaviour
     public override void OnStartServer()
     {
         InitHealthKitMap();
+        //DinowarsNetworkManager.OnServerReadied += (conn) => InitHealthKitMap();
+    }
+
+    public override void OnStopServer()
+    {
+        DinowarsNetworkManager.OnServerReadied -= (conn) => InitHealthKitMap();
     }
 
 
-    [Command]
+    [Server]
     private void InitHealthKitMap()
     {
         healthKitMap = new Dictionary<int, GameObject>();
+
         for (int i = 0; i < spawners.Length; i++)
-        {
-            healthKitMap[i] = Instantiate(objectPrefab, spawners[i].transform);
-            NetworkServer.Spawn(healthKitMap[i]);
-            healthKitMap[i].SetActive(false);
-        }
+            healthKitMap.Add(i, null);
+        
 
         StartCoroutine(SpawnCoroutine());
     }
@@ -43,16 +47,19 @@ public class ObjectSpawner : NetworkBehaviour
         StartCoroutine(SpawnCoroutine());
     }
 
-    [ClientRpc]
     private void SpawnKit()
-    { 
+    {
         List<int> avaliableSlots = FindEmptySlots();
 
-        if(avaliableSlots.Count > 0)
+        Debug.Log("AVALIABLE SLOTS : " + avaliableSlots.Count);
+
+        if (avaliableSlots.Count > 0)
         {
             int randomSlotIndex = Random.Range(0, avaliableSlots.Count - 1);
             int randomPointIndex = avaliableSlots[randomSlotIndex];
-            healthKitMap[randomPointIndex].SetActive(true);
+            healthKitMap[randomPointIndex] = Instantiate(objectPrefab, spawners[randomPointIndex], Quaternion.identity);
+            NetworkServer.Spawn(healthKitMap[randomPointIndex]);
+
         }
     }
 
@@ -60,28 +67,30 @@ public class ObjectSpawner : NetworkBehaviour
     {
         List<int> emptySlots = new List<int>();
 
-        foreach(int key in healthKitMap.Keys)
+        foreach (int key in healthKitMap.Keys)
         {
-            if (!healthKitMap[key].activeSelf)
+            if (healthKitMap[key] == null)
                 emptySlots.Add(key);
         }
+
+        
 
         return emptySlots;
     }
 
-    private void PrintMap()
-    {
-        string message = "";
+    //private void PrintMap()
+    //{
+    //    string message = "";
 
-        message =  message + "Values =====================\n";
-        foreach(var key in healthKitMap.Keys)
-        {
-            message = message + string.Format("{0} - {1}", key, healthKitMap[key]) + "\n"; 
-        }
-        message = message + "=============================";
+    //    message =  message + "Values =====================\n";
+    //    foreach(var key in healthKitMap.Keys)
+    //    {
+    //        message = message + string.Format("{0} - {1}", key, healthKitMap[key]) + "\n"; 
+    //    }
+    //    message = message + "=============================";
 
-        Debug.Log(message);
-    }
+    //    Debug.Log(message);
+    //}
 
 
 }
