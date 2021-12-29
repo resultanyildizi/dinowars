@@ -1,18 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
 
 public class TimeController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+{ 
+    public static TimeController instance;
+
+    public Text timeController;
+
+    private TimeSpan timeplaying;
+    private bool timeGoing;
+
+    private float elapsedTime;
+
+    private void Awake()
     {
-        
+       instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        timeController.text = "00:00";
+        timeGoing = false;
+    }
+
+    public void BeginTimer()
+    {
+        timeGoing = true;
+        elapsedTime = 0f;
+
+        StartCoroutine(UpdateTimer());
+    }
+    
+    public void EndTimer()
+    {
+        timeGoing =false;
+    }
+    private IEnumerator UpdateTimer()
+    {
+        while (timeGoing)
+        {
+            elapsedTime += Time.deltaTime;
+            timeplaying = TimeSpan.FromSeconds(elapsedTime);
+            string timePlayingStr = timeplaying.ToString("mm':'ss");
+            Debug.Log(timePlayingStr);
+            timeController.text = timePlayingStr;
+      
+            yield return null;
+        }
     }
 }
