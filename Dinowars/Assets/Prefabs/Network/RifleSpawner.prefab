@@ -66,7 +66,5 @@ MonoBehaviour:
   spawners:
   - {x: -4.15, y: -1, z: 0}
   - {x: 4.15, y: -1, z: 0}
-  - {x: 6, y: -2, z: 0}
-  - {x: -6, y: -2, z: 0}
   objectPrefab: {fileID: 2044022532985162810, guid: 2867f2d259aab2c4ebefb25f86e271b9, type: 3}
   spawnInterval: 15

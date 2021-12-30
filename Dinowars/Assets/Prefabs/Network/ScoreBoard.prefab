@@ -383,7 +383,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: 0
 --- !u!1 &8387292467864125128
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +689,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 23
+  m_Text: '0
+
+'
 --- !u!1 &8387292468651811202
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeamMemberB
       objectReference: {fileID: 0}
+    - target: {fileID: 7392260227697549525, guid: b5c8541381b678145b808b34171e5c8a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f54484ddf47bc36418d789c879e4dcf6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5c8541381b678145b808b34171e5c8a, type: 3}
 --- !u!224 &8387292468020135619 stripped
@@ -977,6 +983,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeamMemberA
       objectReference: {fileID: 0}
+    - target: {fileID: 4350685457088995497, guid: 0d52ae150ff9ee64f93a0b77c6e98674, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f54484ddf47bc36418d789c879e4dcf6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d52ae150ff9ee64f93a0b77c6e98674, type: 3}
 --- !u!114 &7651756808737670100 stripped
@@ -1195,7 +1205,7 @@ PrefabInstance:
     - target: {fileID: 7392260227697549525, guid: b5c8541381b678145b808b34171e5c8a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: da0f12579eafeda4b8e206e2d4470f4b, type: 3}
+      objectReference: {fileID: 21300000, guid: f54484ddf47bc36418d789c879e4dcf6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5c8541381b678145b808b34171e5c8a, type: 3}
 --- !u!224 &1365491793711086979 stripped
@@ -1309,6 +1319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeamMemberB4
       objectReference: {fileID: 0}
+    - target: {fileID: 7392260227697549525, guid: b5c8541381b678145b808b34171e5c8a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f54484ddf47bc36418d789c879e4dcf6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5c8541381b678145b808b34171e5c8a, type: 3}
 --- !u!224 &1365491792748471505 stripped
@@ -1554,7 +1568,7 @@ PrefabInstance:
     - target: {fileID: 7392260227697549525, guid: b5c8541381b678145b808b34171e5c8a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 43446c56eca1fa74a9580ad653807903, type: 3}
+      objectReference: {fileID: 21300000, guid: f54484ddf47bc36418d789c879e4dcf6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5c8541381b678145b808b34171e5c8a, type: 3}
 --- !u!224 &1365491793121583750 stripped
@@ -1671,7 +1685,7 @@ PrefabInstance:
     - target: {fileID: 4350685457088995497, guid: 0d52ae150ff9ee64f93a0b77c6e98674, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b95d19e9839664a439740dd816015e48, type: 3}
+      objectReference: {fileID: 21300000, guid: f54484ddf47bc36418d789c879e4dcf6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d52ae150ff9ee64f93a0b77c6e98674, type: 3}
 --- !u!224 &5189584179342674347 stripped
@@ -1788,7 +1802,7 @@ PrefabInstance:
     - target: {fileID: 4350685457088995497, guid: 0d52ae150ff9ee64f93a0b77c6e98674, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 43446c56eca1fa74a9580ad653807903, type: 3}
+      objectReference: {fileID: 21300000, guid: f54484ddf47bc36418d789c879e4dcf6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d52ae150ff9ee64f93a0b77c6e98674, type: 3}
 --- !u!224 &5189584179711008505 stripped
