@@ -24,6 +24,7 @@ public class TimeController : MonoBehaviour
     {
         timeController.text = "00:00";
         timeGoing = false;
+        //BeginTimer();
     }
 
     public void BeginTimer()
@@ -45,7 +46,6 @@ public class TimeController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             timeplaying = TimeSpan.FromSeconds(elapsedTime);
             string timePlayingStr = timeplaying.ToString("mm':'ss");
-            Debug.Log(timePlayingStr);
             timeController.text = timePlayingStr;
       
             yield return null;
