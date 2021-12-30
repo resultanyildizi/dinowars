@@ -18,6 +18,8 @@ public class PlayerEquip : NetworkBehaviour
     [SyncVar(hook = nameof(OnWeaponChanged))]
     public WeaponType weaponType = WeaponType.NONE;
 
+    private GameObject currentWeapon = null;
+
 
     public override void OnStartAuthority()
     {
@@ -30,52 +32,35 @@ public class PlayerEquip : NetworkBehaviour
     }
     public void riflePickedUp()
     {
-
         if (!hasAuthority) return;
         CmdChangeWeaponType(WeaponType.RIFLE);
-
-
     }
 
 
     [Command]
     private void SpawnWeapon()
     {
+        var gunPoint = this.transform.transform.Find("Hand").transform;
+
+        var dir = transform.Find("PlayerBody").localScale.x > 0 ? 1 : -1;
 
         if (weaponType == WeaponType.GUN)
         {
-
-
-            var gunPoint = this.transform.transform.Find("Hand").transform;
-            var gun = Instantiate(gunPrefab, gunPoint.position, Quaternion.identity);
-            gun.transform.localScale = new Vector3(2, 2, 2);
-
-            var weapon = gun.GetComponent<Weapon>();
-            weapon.Player = GetComponent<Player>();
-            NetworkServer.Spawn(gun.gameObject, connectionToClient);
-
-            
+            currentWeapon = Instantiate(gunPrefab.gameObject, gunPoint.position, Quaternion.identity);
+            currentWeapon.GetComponent<Weapon>().Player = GetComponent<Player>();
+            currentWeapon.transform.localScale = new Vector3( dir * 2, 2, 2);
+            NetworkServer.Spawn(currentWeapon.gameObject, connectionToClient);
+            return;
         }
         if (weaponType == WeaponType.RIFLE)
         {
-
-
-            var gunPoint = this.transform.transform.Find("Hand").transform;
-            var gun = Instantiate(riflePrefab, gunPoint.position, Quaternion.identity);
-            gun.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            
-            var weapon = gun.GetComponent<Weapon>();
-            weapon.Player = GetComponent<Player>();
-            NetworkServer.Spawn(gun.gameObject, connectionToClient);
-            
-            NetworkServer.Destroy(this.transform.GetChild(0).Find("Gun(Clone)").gameObject); // Rifle aldýðýnda elindeki pistolu yok eden kod
-
+            NetworkServer.Destroy(currentWeapon.gameObject);
+            currentWeapon = Instantiate(riflePrefab.gameObject, gunPoint.position, Quaternion.identity);
+            currentWeapon.GetComponent<Weapon>().Player = GetComponent<Player>();
+            currentWeapon.transform.localScale = new Vector3(dir * .2f, .2f, .2f);
+            NetworkServer.Spawn(currentWeapon.gameObject, connectionToClient);
+            return;
         }
-       /* if (this.transform.GetChild(0).transform.childCount>0)
-        {
-
-        }       
-        Debug.Log("Mevcut Silah: " + this.transform.GetChild(0).Find("Gun(Clone)"));*/
 
     }
 

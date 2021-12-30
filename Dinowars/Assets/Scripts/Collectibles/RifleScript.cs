@@ -19,9 +19,13 @@ public class RifleScript : NetworkBehaviour
         {
             Player player = collision.GetComponentInParent<Player>();
             onEquip = player.GetComponent<PlayerEquip>();
+
+
             onEquip.riflePickedUp();
+
             GameObject.Destroy(gameObject);
-            
+            NetworkServer.Destroy(gameObject);
+
             /*onEquip = player.GetComponent<PlayerEquip>();
             onEquip.OnWeaponChanged(WeaponType.NONE,WeaponType.RIFLE);
             NetworkServer.Destroy(gameObject);

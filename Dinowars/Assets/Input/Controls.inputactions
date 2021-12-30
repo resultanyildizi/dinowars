@@ -11,7 +11,8 @@
                     "id": "b67c7fe6-08b8-4a71-afd2-b9bd949ea1f9",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Move",
@@ -19,7 +20,8 @@
                     "id": "d5685280-5da3-47e6-8a58-1c0bf4db648a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "TakeDamage",
@@ -27,7 +29,8 @@
                     "id": "eb03807e-86a0-4f46-bd76-55efc8f25c09",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Heal",
@@ -35,7 +38,8 @@
                     "id": "9acab1c4-1c21-43d8-9b69-eabbd4f344d7",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ShootByPressing",
@@ -43,7 +47,8 @@
                     "id": "970e452d-5241-4fad-af07-a07579ad4af4",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ShootByHolding",
@@ -51,7 +56,8 @@
                     "id": "260ebbdf-118c-4cf3-bb52-bc01a7d75a52",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -136,7 +142,7 @@
                     "name": "",
                     "id": "130c2bee-d0d9-4593-8f43-38307b976641",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Hold",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Keyborad & Mouse",
                     "action": "ShootByHolding",
@@ -155,7 +161,8 @@
                     "id": "ff0ac4c0-aa0c-4b48-8540-fa144bf8cd43",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [

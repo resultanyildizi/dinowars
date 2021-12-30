@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 7143560672338582118}
   - component: {fileID: 2078922653198066911}
   m_Layer: 0
-  m_Name: Belly
+  m_Name: Body
   m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4422123038030238295
 MonoBehaviour:
@@ -285,6 +285,7 @@ MonoBehaviour:
   syncInterval: 0.1
   gunPrefab: {fileID: 5757259086495246514, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
   riflePrefab: {fileID: 6265329063951604665, guid: 1c4b1e0a17049184297369c547769587, type: 3}
+  weaponType: 0
 --- !u!114 &2622298275648865014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -863,22 +864,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
---- !u!224 &3923602031011481489 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
-  m_PrefabInstance: {fileID: 3850979511724685128}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3923602031011481491 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 216738155432833243, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
-  m_PrefabInstance: {fileID: 3850979511724685128}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9906bfa67722f43aeedaed27fd33a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &3923602030586274172 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 216738155782510132, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
@@ -893,5 +878,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &3923602031011481489 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 216738155432833241, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
+  m_PrefabInstance: {fileID: 3850979511724685128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3923602031011481491 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 216738155432833243, guid: 9b4e438e5e2f57749a6e294d44aa8744, type: 3}
+  m_PrefabInstance: {fileID: 3850979511724685128}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9906bfa67722f43aeedaed27fd33a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

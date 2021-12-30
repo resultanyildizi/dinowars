@@ -12,6 +12,8 @@ TagManager:
   - Gun
   - HealthKit
   - GamePlayer
+  - Bullet
+  - Spawnable
   layers:
   - Default
   - TransparentFX

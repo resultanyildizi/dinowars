@@ -68,7 +68,6 @@ MonoBehaviour:
   sanyaPlayerPrefab: {fileID: 4589536422845662624, guid: c45cc9ee49d716e4daf655652fc2722d, type: 3}
   uxgylPlayerPrefab: {fileID: 8976496496461179692, guid: d8c6c1b3d52bbef4dbc95ff91cc7f500, type: 3}
   rextPlayerPrefab: {fileID: 4422123038030238295, guid: 25d56fed8b8fd414abe0fbf7c34292e6, type: 3}
-  gunPrebaf: {fileID: 5757259086495246514, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
   teamASpawnPoint: {fileID: 5181600769343297068}
   teamBSpawnPoint: {fileID: 4760139125196928637}
 --- !u!1 &2315266779218937262

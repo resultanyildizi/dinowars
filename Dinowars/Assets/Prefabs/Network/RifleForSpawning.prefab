@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7845333356609237919}
   m_Layer: 0
   m_Name: RifleForSpawning
-  m_TagString: Untagged
+  m_TagString: Spawnable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

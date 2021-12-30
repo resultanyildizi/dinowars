@@ -118,16 +118,12 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   Player: {fileID: 0}
+  weaponType: 2
   bulletPrefab: {fileID: 1574140221129583771, guid: ae1839911513d4b61bf0c5b18efd99a0, type: 3}
   firePoint: {fileID: 7975774819435699856}
-  magazineSize: 7
   damage: 400
-  bulletsPerTap: 3
   timeBetweenShooting: 1
-  range: 0
-  reloadTime: 0
   timeBetweenShots: 0.3
-  allowButtonHold: 0
 --- !u!114 &2866227624681676339
 MonoBehaviour:
   m_ObjectHideFlags: 0

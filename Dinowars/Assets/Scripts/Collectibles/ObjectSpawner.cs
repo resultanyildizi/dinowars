@@ -47,6 +47,7 @@ public class ObjectSpawner : NetworkBehaviour
 
     private void SpawnKit()
     {
+        if (Random.Range(0, 1) > 0.4) return; 
         List<int> avaliableSlots = FindEmptySlots();
 
         if (avaliableSlots.Count > 0)

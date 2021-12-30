@@ -21,6 +21,7 @@ public class PlayerDirectionController : NetworkBehaviour
     [ClientCallback]
     private void Update()
     {
+        if (hand.transform.childCount == 0) return;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
         if (mousePos.x - playerBody.transform.position.x >= 0)
@@ -37,10 +38,8 @@ public class PlayerDirectionController : NetworkBehaviour
 
     private void OnDirectionChanged(int oldV, int newV)
     {
-       
         playerBody.transform.localScale = new Vector3(newV, 1, 1);
-        hand.transform.localPosition = new Vector3(Math.Abs(hand.transform.localPosition.x) * newV, hand.transform.localPosition.y, hand.transform.localPosition.z);
         hand.transform.localScale = new Vector3(newV, 1, 1);
-
+        hand.transform.localPosition = new Vector3(Math.Abs(hand.transform.localPosition.x) * newV, hand.transform.localPosition.y, 1);
     }
 }

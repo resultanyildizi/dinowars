@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5202708873120445619}
   m_Layer: 0
   m_Name: HealthKitPrefab
-  m_TagString: HealthKit
+  m_TagString: Spawnable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1112a5447bb720841bd1e6ad29717a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   healingAmount: 15
 --- !u!61 &9179888315258990535
 BoxCollider2D:

@@ -59,22 +59,20 @@ public class Player : NetworkBehaviour
     {
         animator.SetTrigger("Death");
 
-        var body = transform.Find("PlayerBody");
+        var pbody = transform.Find("PlayerBody");
         var hand = transform.Find("Hand");
-        var head = body.Find("Head");
-        var foot = body.Find("Foot");
-        var belly = body.Find("Belly");
+        var head = pbody.Find("Head");
+        var body = pbody.Find("Body");
+
 
         GetComponent<PlayerDirectionController>().enabled = false;
         GetComponent<PlayerMovementController>().enabled = false;
         GetComponent<NetworkAnimator>().enabled = false;
-        GetComponent<Rigidbody2D>().gravityScale = 0;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
 
         hand.gameObject.GetComponentInChildren<Weapon>().enabled = false;
         head.gameObject.SetActive(false);
-        foot.gameObject.SetActive(false);
-        belly.gameObject.SetActive(false);
+        body.gameObject.SetActive(false);
         hand.gameObject.SetActive(false);
     }
 

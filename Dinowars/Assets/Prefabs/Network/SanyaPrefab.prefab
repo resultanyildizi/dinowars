@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 3285679852222416422}
   - component: {fileID: 8717034219556219655}
   m_Layer: 0
-  m_Name: Belly
+  m_Name: Body
   m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,7 +623,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4589536422845662624
 MonoBehaviour:
@@ -693,8 +693,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  gunPrefab: {fileID: 5036787392607733086, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
-  riflePrefab: {fileID: 6634025321397432687, guid: 1c4b1e0a17049184297369c547769587, type: 3}
+  gunPrefab: {fileID: 5757259086495246514, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
+  riflePrefab: {fileID: 6265329063951604665, guid: 1c4b1e0a17049184297369c547769587, type: 3}
   weaponType: 0
 --- !u!114 &-79564366624132707
 MonoBehaviour:
