@@ -1410,12 +1410,16 @@ MonoBehaviour:
   - {fileID: 1574140221129583771, guid: ae1839911513d4b61bf0c5b18efd99a0, type: 3}
   - {fileID: 7591861740679962128, guid: b29b3bc8e45d36d4580473f5bfd5f173, type: 3}
   - {fileID: 6447305878461276849, guid: 0d3c8c1001709fc498282bea1d009858, type: 3}
+  - {fileID: 2857618953354355696, guid: c771119caf0002a44b3dcd754e0bf914, type: 3}
+  - {fileID: 6634025321397432687, guid: 1c4b1e0a17049184297369c547769587, type: 3}
+  - {fileID: 2044022532985162810, guid: 2867f2d259aab2c4ebefb25f86e271b9, type: 3}
   minPlayers: 1
   menuscene: MenuScene
   roomPlayerPrefab: {fileID: 7096191813189871744, guid: dee79c40dc73d41089d3b3225248dd7c, type: 3}
   gamePlayerPrefab: {fileID: 3346931993463819939, guid: e15eeb430ab42434fb56f9822e049889, type: 3}
   cavePlayerSpawnSystemPrefab: {fileID: 6250838871268673869, guid: 338dbb47b51714005b5110f27a5c86c9, type: 3}
   healthkitSpawnerPrefab: {fileID: 1802952355840816633, guid: 0d3c8c1001709fc498282bea1d009858, type: 3}
+  rifleSpawnerPrefab: {fileID: 7464267864825824374, guid: c771119caf0002a44b3dcd754e0bf914, type: 3}
   timeValue: 0
   roundValue: 0
   modeIndexValue: 0

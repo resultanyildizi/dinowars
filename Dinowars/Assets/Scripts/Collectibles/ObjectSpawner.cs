@@ -49,8 +49,6 @@ public class ObjectSpawner : NetworkBehaviour
     {
         List<int> avaliableSlots = FindEmptySlots();
 
-        Debug.Log("AVALIABLE SLOTS : " + avaliableSlots.Count);
-
         if (avaliableSlots.Count > 0)
         {
             int randomSlotIndex = Random.Range(0, avaliableSlots.Count - 1);

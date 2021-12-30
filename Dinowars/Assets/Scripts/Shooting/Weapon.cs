@@ -53,8 +53,9 @@ public class Weapon : NetworkBehaviour
     {
         transform.SetParent(Player.transform.Find("Hand"));
         transform.localScale = new Vector3(2, 2, 2);
+        Debug.Log("Bunun çalýþmamasý lazýmdý");
     }
-
+   
     [ClientCallback]
     public void Update()
     {
@@ -67,7 +68,7 @@ public class Weapon : NetworkBehaviour
         var bullet = Instantiate(bulletPrefab, firePoint.transform.position, Quaternion.identity);
 
         
-        Debug.Log("I AM SHOOTING " + this.transform.parent.localScale.x);
+       
         bullet.transform.localScale = new Vector3(this.transform.parent.localScale.x, 1, 1);
         bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * this.transform.parent.localScale.x * 400f, ForceMode2D.Force);
         
