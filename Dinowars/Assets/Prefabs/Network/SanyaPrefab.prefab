@@ -693,7 +693,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  gunPrefab: {fileID: 5757259086495246514, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
+  gunPrefab: {fileID: 5036787392607733086, guid: 12784c08fcf17254c8744b01014374b7, type: 3}
+  riflePrefab: {fileID: 6634025321397432687, guid: 1c4b1e0a17049184297369c547769587, type: 3}
+  weaponType: 0
 --- !u!114 &-79564366624132707
 MonoBehaviour:
   m_ObjectHideFlags: 0

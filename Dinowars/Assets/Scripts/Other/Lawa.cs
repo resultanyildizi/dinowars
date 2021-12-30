@@ -10,7 +10,7 @@ public class Lawa : MonoBehaviour
         {
             var playerGo = collision.gameObject;
             var player = playerGo.GetComponent<Player>();
-            player.TakeDamage(10e5);
+            player.TakeDamage(100);
         }
     }
 }
