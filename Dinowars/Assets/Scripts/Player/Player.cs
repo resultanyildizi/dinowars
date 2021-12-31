@@ -15,8 +15,8 @@ public class Player : NetworkBehaviour
     [SerializeField] private PlayerCanvas pCanv;
     [SerializeField] private Animator animator;
 
-
-    private Transform respawnPoint;
+    [SyncVar]
+    private Vector3 respawnPoint;
     [SyncVar]
     private DinowarsNetworkRoomPlayer.Team team;
     [SyncVar]
@@ -30,7 +30,7 @@ public class Player : NetworkBehaviour
     public Color PlayerColor { get => playerColor; set => playerColor = value; }
     public DinowarsNetworkRoomPlayer.Team Team { get => team; set => team = value; }
     public double Health { get => health; }
-    public Transform RespawnPoint { set => respawnPoint = value; }
+    public Vector3 RespawnPoint { set => respawnPoint = value; }
 
     public override void OnStartAuthority()
     {
@@ -70,9 +70,12 @@ public class Player : NetworkBehaviour
         var head = pbody.Find("Head");
         var body = pbody.Find("Body");
 
-        pdc.enabled = false;
-        pmc.enabled = false;
-        rb.velocity = new Vector2(0,0);
+        if(hasAuthority)
+        {
+            pdc.enabled = false;
+            pmc.enabled = false;
+        }
+        rb.velocity = new Vector2(0, 0);
 
         hand.gameObject.GetComponentInChildren<Weapon>().enabled = false;
         head.gameObject.SetActive(false);
@@ -83,21 +86,24 @@ public class Player : NetworkBehaviour
     [ClientRpc]
     public void CRpcRespawn()
     {
-        animator.SetTrigger("Death");
+        animator.SetTrigger("Idle");
 
         var pbody = transform.Find("PlayerBody");
         var hand = transform.Find("Hand");
         var head = pbody.Find("Head");
         var body = pbody.Find("Body");
 
-        pdc.enabled = false;
-        pmc.enabled = false;
-        rb.velocity = new Vector2(0, 0);
+        if (hasAuthority)
+        {
+            pdc.enabled = true;
+            pmc.enabled = true;
+        }
+        rb.position = respawnPoint;
 
-        hand.gameObject.GetComponentInChildren<Weapon>().enabled = false;
-        head.gameObject.SetActive(false);
-        body.gameObject.SetActive(false);
-        hand.gameObject.SetActive(false);
+        hand.gameObject.GetComponentInChildren<Weapon>().enabled = true;
+        head.gameObject.SetActive(true);
+        body.gameObject.SetActive(true);
+        hand.gameObject.SetActive(true);
     }
 
 
@@ -105,6 +111,7 @@ public class Player : NetworkBehaviour
     {
         yield return new WaitForSeconds(5);
         CRpcRespawn();
+        health = maxHealth * .75;
     }
 
 
@@ -118,7 +125,6 @@ public class Player : NetworkBehaviour
             health = 0;
             CRpcDie();
             StartCoroutine(RespawnRoutine());
-            health = maxHealth * .75;
         }
         else { 
             health = newHealth;
