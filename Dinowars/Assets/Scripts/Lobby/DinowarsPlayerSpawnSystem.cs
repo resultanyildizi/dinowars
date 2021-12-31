@@ -41,9 +41,15 @@ public class DinowarsPlayerSpawnSystem : NetworkBehaviour
         if(playerPrefab != null)
         {
             if(gamePlayer.Team == DinowarsNetworkRoomPlayer.Team.TeamA)
+            {
                 playerInstance = Instantiate(playerPrefab, teamASpawnPoint.position, Quaternion.AngleAxis(0, Vector3.up));
+                playerInstance.RespawnPoint = teamASpawnPoint;
+            }
             else
+            {
                 playerInstance = Instantiate(playerPrefab, teamBSpawnPoint.position, Quaternion.AngleAxis(0, Vector3.up));
+                playerInstance.RespawnPoint = teamBSpawnPoint;
+            }
 
             SetPlayer(playerInstance, gamePlayer);
             NetworkServer.Spawn(playerInstance.gameObject, conn);         

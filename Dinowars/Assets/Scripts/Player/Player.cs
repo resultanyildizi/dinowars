@@ -8,10 +8,15 @@ public class Player : NetworkBehaviour
     [SerializeField] private double maxHealth;
     [SerializeField] private double baseDamage;
     [SerializeField] private DinowarsNetworkRoomPlayer.Dino dino;
+    [SerializeField] private PlayerDirectionController pdc;
+    [SerializeField] private PlayerMovementController pmc;
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private HealthBar hbar;
     [SerializeField] private PlayerCanvas pCanv;
     [SerializeField] private Animator animator;
 
+
+    private Transform respawnPoint;
     [SyncVar]
     private DinowarsNetworkRoomPlayer.Team team;
     [SyncVar]
@@ -25,6 +30,7 @@ public class Player : NetworkBehaviour
     public Color PlayerColor { get => playerColor; set => playerColor = value; }
     public DinowarsNetworkRoomPlayer.Team Team { get => team; set => team = value; }
     public double Health { get => health; }
+    public Transform RespawnPoint { set => respawnPoint = value; }
 
     public override void OnStartAuthority()
     {
@@ -64,15 +70,41 @@ public class Player : NetworkBehaviour
         var head = pbody.Find("Head");
         var body = pbody.Find("Body");
 
-
-        GetComponent<PlayerDirectionController>().enabled = false;
-        GetComponent<PlayerMovementController>().enabled = false;
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+        pdc.enabled = false;
+        pmc.enabled = false;
+        rb.velocity = new Vector2(0,0);
 
         hand.gameObject.GetComponentInChildren<Weapon>().enabled = false;
         head.gameObject.SetActive(false);
         body.gameObject.SetActive(false);
         hand.gameObject.SetActive(false);
+    }
+
+    [ClientRpc]
+    public void CRpcRespawn()
+    {
+        animator.SetTrigger("Death");
+
+        var pbody = transform.Find("PlayerBody");
+        var hand = transform.Find("Hand");
+        var head = pbody.Find("Head");
+        var body = pbody.Find("Body");
+
+        pdc.enabled = false;
+        pmc.enabled = false;
+        rb.velocity = new Vector2(0, 0);
+
+        hand.gameObject.GetComponentInChildren<Weapon>().enabled = false;
+        head.gameObject.SetActive(false);
+        body.gameObject.SetActive(false);
+        hand.gameObject.SetActive(false);
+    }
+
+
+    IEnumerator RespawnRoutine()
+    {
+        yield return new WaitForSeconds(5);
+        CRpcRespawn();
     }
 
 
@@ -85,6 +117,8 @@ public class Player : NetworkBehaviour
         } else if(newHealth <= 0) {
             health = 0;
             CRpcDie();
+            StartCoroutine(RespawnRoutine());
+            health = maxHealth * .75;
         }
         else { 
             health = newHealth;

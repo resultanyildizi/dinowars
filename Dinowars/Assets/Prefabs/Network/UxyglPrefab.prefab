@@ -574,6 +574,9 @@ MonoBehaviour:
   maxHealth: 1800
   baseDamage: 40
   dino: 1
+  pdc: {fileID: 4161732344591259304}
+  pmc: {fileID: -9091225308004468989}
+  rb: {fileID: -3203353538253499940}
   hbar: {fileID: 6677030701981269352}
   pCanv: {fileID: 3390074370678260963}
   animator: {fileID: 4813172576250498335}
