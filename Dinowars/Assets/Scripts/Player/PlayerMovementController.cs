@@ -64,8 +64,14 @@ public class PlayerMovementController : NetworkBehaviour
             animator.SetBool("Jump", true);
             onGround = false;
 
-            FindObjectOfType<AudioController>().Play("Jump");
+            CRpcPlayJumpSound();
         }
+    }
+
+    [ClientRpc]
+    private void CRpcPlayJumpSound()
+    {
+        FindObjectOfType<AudioController>().Play("Jump");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

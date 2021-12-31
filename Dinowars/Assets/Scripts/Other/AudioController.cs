@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioController : MonoBehaviour
+public class AudioController : NetworkBehaviour
 {
     public Sound[] sounds;
 
