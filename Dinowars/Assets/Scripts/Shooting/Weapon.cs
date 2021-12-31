@@ -90,8 +90,20 @@ public class Weapon : NetworkBehaviour
         bullet.transform.localScale = new Vector3(this.transform.parent.localScale.x, 1, 1);
         bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * this.transform.parent.localScale.x * 400f, ForceMode2D.Force);
         NetworkServer.Spawn(bullet, connectionToClient);
+        CRpcPlayShootSound();
     }
-
+    [ClientRpc]
+    private void CRpcPlayShootSound()
+    {
+        if (weaponType == WeaponType.GUN)
+        {
+            FindObjectOfType<AudioController>().Play("Pistol");
+        }
+        else if (weaponType == WeaponType.RIFLE)
+        {
+            FindObjectOfType<AudioController>().Play("Rifle");
+        }
+    }
 
 
     //IEnumerator WaitShootTime() {

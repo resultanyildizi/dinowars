@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
@@ -53,6 +54,17 @@ public class PlayerMovementController : NetworkBehaviour
         rb.velocity = new Vector2( inputValue * movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
         horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        CmdPlayMoveSound();
+    }
+    [Command]
+    private void CmdPlayMoveSound()
+    {
+        CRpcPlayMoveSound();
+    }
+    [ClientRpc]
+    private void CRpcPlayMoveSound()
+    {
+        FindObjectOfType<AudioController>().Play("Move");
     }
 
     [Client]
