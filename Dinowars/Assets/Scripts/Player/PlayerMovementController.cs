@@ -64,8 +64,14 @@ public class PlayerMovementController : NetworkBehaviour
             animator.SetBool("Jump", true);
             onGround = false;
 
-            CRpcPlayJumpSound();
+            CmdPlayJumpSound();
         }
+    }
+
+    [Command]
+    private void CmdPlayJumpSound()
+    {
+        CRpcPlayJumpSound();
     }
 
     [ClientRpc]
