@@ -63,6 +63,8 @@ public class PlayerMovementController : NetworkBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpFactor);
             animator.SetBool("Jump", true);
             onGround = false;
+
+            FindObjectOfType<AudioController>().Play("Jump");
         }
     }
 

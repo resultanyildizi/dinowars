@@ -1,14 +1,15 @@
-using UnityEngine.Audio;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
-public partial class AudioManager : MonoBehaviour
+public class AudioController : MonoBehaviour
 {
-
     public Sound[] sounds;
 
-    public static AudioManager instance;
-    
+    public static AudioController instance;
+
 
     void Awake()
     {
@@ -32,6 +33,11 @@ public partial class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+    }
+
+    private void Start()
+    {
+        Play("MenuTheme");
     }
 
     public void Play(string name)
