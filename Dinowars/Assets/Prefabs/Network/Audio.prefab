@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f8756509643c44598a73a2fcc30c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   sounds:
   - name: MenuTheme
     clip: {fileID: 8300000, guid: 72412b444fc03d4419323edf54511a4b, type: 3}
@@ -54,7 +56,7 @@ MonoBehaviour:
   - name: BackgroundSound
     clip: {fileID: 8300000, guid: 2ae6e32396c65b34cbe99d6a917cbd47, type: 3}
     volume: 0.5
-    pitch: 1
+    pitch: 0.5
     loop: 1
     source: {fileID: 0}
   - name: GameOver
@@ -70,22 +72,22 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Move
-    clip: {fileID: 8300000, guid: 88ee440f38b82844fb7d015e9739a388, type: 3}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: 256bc01978e6dc142a4c86b6f75c0303, type: 3}
+    volume: 0.401
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: Pistol
-    clip: {fileID: 8300000, guid: e09cd7e8689b8614c85d906fc44a1f08, type: 3}
+    clip: {fileID: 8300000, guid: ba21d080430458943a088d2d9106f861, type: 3}
     volume: 0.5
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: Rifle
-    clip: {fileID: 8300000, guid: 975f170c6c2c9ff4e8fcf460b8090875, type: 3}
+    clip: {fileID: 8300000, guid: 1d7eee3085ed90744bfe518a3fabaf1f, type: 3}
     volume: 0.5
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: WinSound
     clip: {fileID: 8300000, guid: 8c47d2a3cfc55734493cc00a85ca33f4, type: 3}
