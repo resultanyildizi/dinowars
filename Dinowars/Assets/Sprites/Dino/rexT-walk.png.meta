@@ -45,6 +45,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -268,6 +269,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      rexT-walk_3: 3903363681069674611
+      rexT-walk_6: 2029186890307855176
+      rexT-walk_5: -7495073044321156981
+      rexT-walk_1: 2154566734033896565
+      rexT-walk_2: 4440581613156088561
+      rexT-walk_0: -4339363566647045668
+      rexT-walk_4: 6842297610737456040
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
