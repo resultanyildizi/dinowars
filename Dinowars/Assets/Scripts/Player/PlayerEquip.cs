@@ -36,6 +36,12 @@ public class PlayerEquip : NetworkBehaviour
         CmdChangeWeaponType(WeaponType.RIFLE);
     }
 
+    [ClientRpc]
+    private void CRpcPlayEquip()
+    {
+        FindObjectOfType<AudioController>().Play("EquipWeapon");
+    }
+
 
     [Command]
     private void SpawnWeapon()
@@ -69,6 +75,7 @@ public class PlayerEquip : NetworkBehaviour
     public void CmdChangeWeaponType(WeaponType type)
     {
         weaponType = type;
+        CRpcPlayEquip();
     }
 }
 

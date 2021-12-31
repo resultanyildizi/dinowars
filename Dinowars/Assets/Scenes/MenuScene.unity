@@ -15117,25 +15117,55 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Move
-    clip: {fileID: 8300000, guid: 88ee440f38b82844fb7d015e9739a388, type: 3}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: 256bc01978e6dc142a4c86b6f75c0303, type: 3}
+    volume: 0.2
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: Pistol
-    clip: {fileID: 8300000, guid: e09cd7e8689b8614c85d906fc44a1f08, type: 3}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: ba21d080430458943a088d2d9106f861, type: 3}
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Rifle
-    clip: {fileID: 8300000, guid: 975f170c6c2c9ff4e8fcf460b8090875, type: 3}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: 1d7eee3085ed90744bfe518a3fabaf1f, type: 3}
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: WinSound
     clip: {fileID: 8300000, guid: 8c47d2a3cfc55734493cc00a85ca33f4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: 8782278f95cc14e14924880bbe37fc83, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EquipWeapon
+    clip: {fileID: 8300000, guid: 4dd0eff780c4645f28e6862eae5394a9, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: RextHurt
+    clip: {fileID: 8300000, guid: 607c7faad2c0646999af91fb1a737eb9, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: UxgylHurt
+    clip: {fileID: 8300000, guid: 607c7faad2c0646999af91fb1a737eb9, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SanyaHurt
+    clip: {fileID: 8300000, guid: 30d9b0a730ec84e17abc3ae2dcf5aaa1, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

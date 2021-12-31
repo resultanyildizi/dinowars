@@ -92,11 +92,13 @@ public class Weapon : NetworkBehaviour
         NetworkServer.Spawn(bullet, connectionToClient);
         CRpcPlayShootSound();
     }
+
     [ClientRpc]
     private void CRpcPlayShootSound()
     {
         if (weaponType == WeaponType.GUN)
         {
+            Debug.Log("Why dont you play");
             FindObjectOfType<AudioController>().Play("Pistol");
         }
         else if (weaponType == WeaponType.RIFLE)

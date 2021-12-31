@@ -43,10 +43,18 @@ public class PlayerMovementController : NetworkBehaviour
     private void FixedUpdate() => Move();
 
     [Client]
-    private void SetMovement(float value) => inputValue = value;
+    private void SetMovement(float value)
+    {
+        inputValue = value;
+        CmdPlayStopMoveSound(true);
+    }
 
     [Client]
-    private void ResetMovement() => inputValue = 0;
+    private void ResetMovement()
+    {
+        inputValue = 0;
+        CmdPlayStopMoveSound(false);
+    }
 
     [Client]
     private void Move()
@@ -54,17 +62,30 @@ public class PlayerMovementController : NetworkBehaviour
         rb.velocity = new Vector2( inputValue * movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
         horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-        CmdPlayMoveSound();
+      
     }
+
+
     [Command]
-    private void CmdPlayMoveSound()
+    private void CmdPlayStopMoveSound(bool isPlay)
     {
-        CRpcPlayMoveSound();
+        if (isPlay)
+            CRpcPlayMoveSound();
+        else
+            CRpcStopMoveSound();
+
     }
+
     [ClientRpc]
     private void CRpcPlayMoveSound()
     {
         FindObjectOfType<AudioController>().Play("Move");
+    }
+
+    [ClientRpc]
+    private void CRpcStopMoveSound()
+    {
+        FindObjectOfType<AudioController>().Stop("Move");
     }
 
     [Client]

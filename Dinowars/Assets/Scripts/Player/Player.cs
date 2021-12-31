@@ -114,10 +114,41 @@ public class Player : NetworkBehaviour
         health = maxHealth * .75;
     }
 
+    [ClientRpc]
+    private void CRpcPlayHeal()
+    {
+        FindObjectOfType<AudioController>().Play("Heal");
+    }
+
+
+    [ClientRpc]
+    private void CRpcPlayAuch()
+    {
+        switch(dino)
+        {
+            case DinowarsNetworkRoomPlayer.Dino.Sanya:
+                FindObjectOfType<AudioController>().Play("SanyaHurt");
+                break;
+            case DinowarsNetworkRoomPlayer.Dino.RexT:
+                FindObjectOfType<AudioController>().Play("RextHurt");
+                break;
+            case DinowarsNetworkRoomPlayer.Dino.Uxgyl:
+                FindObjectOfType<AudioController>().Play("UxgylHurt");
+                break;
+
+        }
+    }
+
+
 
     [Command(requiresAuthority = false)]
     public void CmdChangeHealth(double newHealth)
     {
+        if (newHealth > health)
+            CRpcPlayHeal();
+        else if (newHealth < health)
+            CRpcPlayAuch();
+
         if (newHealth > maxHealth)
         {
             health = maxHealth;

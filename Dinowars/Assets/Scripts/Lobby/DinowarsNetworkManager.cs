@@ -120,7 +120,7 @@ public class DinowarsNetworkManager : NetworkManager
         if (SceneManager.GetActiveScene().name.Equals(menuscene) && newSceneName.StartsWith(getSceneName()))
         {
             FindObjectOfType<AudioController>().Stop("MenuTheme");
-            FindObjectOfType<AudioController>().Play("BackgroundSound");
+            //FindObjectOfType<AudioController>().Play("BackgroundSound");
             for (int i = TeamARoomPlayers.Count - 1; i >= 0; i--)
             {
                 RoomPlayerToGamePlayer(TeamARoomPlayers[i]);
@@ -211,14 +211,6 @@ public class DinowarsNetworkManager : NetworkManager
             TeamBGamePlayers.Add(player);
     }
 
-    // public void InitPlayerScore(DinowarsNetworkGamePlayer player)
-    // {
-    //     if (player.Team == DinowarsNetworkRoomPlayer.Team.TeamA)
-    //         TeamAScores[player] = new Tuple<int, int>(0, 0);
-    //     else if (player.Team == DinowarsNetworkRoomPlayer.Team.TeamB)
-    //         TeamBScores[player] = new Tuple<int, int>(0, 0);
-    // }
-
     public bool AddPlayerToTeam(DinowarsNetworkRoomPlayer player)
     {
         switch (player.PlayerTeam)
@@ -290,32 +282,6 @@ public class DinowarsNetworkManager : NetworkManager
         base.OnServerReady(conn);
         OnServerReadied?.Invoke(conn);
     }
-
-    // public void PlayerKillsPlayer(DinowarsNetworkGamePlayer killed, DinowarsNetworkGamePlayer killer)
-    // {
-    //     Debug.Log("Calculating new scores");
-    //     if (killed.Team == DinowarsNetworkRoomPlayer.Team.TeamA && killer.Team == DinowarsNetworkRoomPlayer.Team.TeamB)
-    //     {
-    //         var killedScr = TeamAScores[killed];
-    //         var killerScr = TeamBScores[killer];
-
-    //         TeamAScores[killed] = new Tuple<int, int>(killedScr.Item1, killedScr.Item2 + 1);
-    //         TeamBScores[killer] = new Tuple<int, int>(killerScr.Item1 + 1, killerScr.Item2);
-    //         return;
-    //     }
-
-    //     if (killed.Team == DinowarsNetworkRoomPlayer.Team.TeamB && killer.Team == DinowarsNetworkRoomPlayer.Team.TeamA)
-    //     {
-    //         var killedScr = TeamBScores[killed];
-    //         var killerScr = TeamAScores[killer];
-
-    //         TeamBScores[killed] = new Tuple<int, int>(killedScr.Item1, killedScr.Item2 + 1);
-    //         TeamAScores[killer] = new Tuple<int, int>(killerScr.Item1 + 1, killerScr.Item2);
-    //         return;
-    //     }
-    // }
-
-
 
     private String getSceneName()
     {
