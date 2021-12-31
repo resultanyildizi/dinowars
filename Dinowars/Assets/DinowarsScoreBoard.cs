@@ -21,18 +21,22 @@ public class DinowarsScoreBoard : MonoBehaviour
 
     private void UpdateTeamScores()
     {
-        
+        int newTotalAScore = 0;
         for (int i = 0; i < DinowarsNetworkManager.Instance.TeamAGamePlayers.Count; i++)
         {
             var gamePlayer = DinowarsNetworkManager.Instance.TeamAGamePlayers[i];
-            teamATotalScore += gamePlayer.Killed;
+            newTotalAScore += gamePlayer.Killed;
         }
 
+        int newTotalBScore = 0;
         for (int i = 0; i < DinowarsNetworkManager.Instance.TeamBGamePlayers.Count; i++)
         {
             var gamePlayer = DinowarsNetworkManager.Instance.TeamBGamePlayers[i];
-            teamBTotalScore += gamePlayer.Killed;
+            newTotalBScore += gamePlayer.Killed;
         }
+
+        teamATotalScore = newTotalAScore;
+        teamBTotalScore = newTotalBScore;
 
         teamAScore.text = teamATotalScore.ToString();
         teamBScore.text = teamBTotalScore.ToString();

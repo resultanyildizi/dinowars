@@ -67,7 +67,6 @@ public class Player : NetworkBehaviour
 
         GetComponent<PlayerDirectionController>().enabled = false;
         GetComponent<PlayerMovementController>().enabled = false;
-        GetComponent<NetworkAnimator>().enabled = false;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
 
         hand.gameObject.GetComponentInChildren<Weapon>().enabled = false;

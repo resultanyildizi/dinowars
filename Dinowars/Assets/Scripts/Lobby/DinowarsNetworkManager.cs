@@ -119,6 +119,7 @@ public class DinowarsNetworkManager : NetworkManager
     {
         if (SceneManager.GetActiveScene().name.Equals(menuscene) && newSceneName.StartsWith(getSceneName()))
         {
+            FindObjectOfType<AudioController>().Stop("MenuTheme");
             for (int i = TeamARoomPlayers.Count - 1; i >= 0; i--)
             {
                 RoomPlayerToGamePlayer(TeamARoomPlayers[i]);
