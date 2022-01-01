@@ -16,7 +16,8 @@ public class DinowarsNetworkManager : NetworkManager
     [Header("Room")]
     [SerializeField] private DinowarsNetworkRoomPlayer roomPlayerPrefab;
     [SerializeField] private DinowarsNetworkGamePlayer gamePlayerPrefab;
-    [SerializeField] private DinowarsPlayerSpawnSystem cavePlayerSpawnSystemPrefab;
+    [SerializeField] private DinowarsPlayerSpawnSystem spawnSystemPrefab;
+    [SerializeField] private DinowarsGameResult gameResultPrefab;
 
     [SerializeField] private ObjectSpawner healthkitSpawnerPrefab;
     [SerializeField] private ObjectSpawner rifleSpawnerPrefab;
@@ -120,16 +121,15 @@ public class DinowarsNetworkManager : NetworkManager
             FindObjectOfType<AudioController>().Stop("MenuTheme");
             //FindObjectOfType<AudioController>().Play("BackgroundSound");
             for (int i = TeamARoomPlayers.Count - 1; i >= 0; i--)
-            {
                 RoomPlayerToGamePlayer(TeamARoomPlayers[i]);
-            }
             for (int i = TeamBRoomPlayers.Count - 1; i >= 0; i--)
-            {
                 RoomPlayerToGamePlayer(TeamBRoomPlayers[i]);
-            }
-        } else if(SceneManager.GetActiveScene().name.Equals(getSceneName()) && newSceneName.StartsWith("GameOverScene"))
+        } else if(SceneManager.GetActiveScene().name.Equals(getSceneName()) && newSceneName.StartsWith("LastScene"))
         {
-
+            for (int i = TeamAGamePlayers.Count - 1; i >= 0; i--)
+                GamePlayerToGameResult(TeamAGamePlayers[i]);
+            for (int i = TeamBGamePlayers.Count - 1; i >= 0; i--)
+                GamePlayerToGameResult(TeamBGamePlayers[i]);
         }
         base.ServerChangeScene(newSceneName);
     }
@@ -138,7 +138,7 @@ public class DinowarsNetworkManager : NetworkManager
     {
         if (sceneName.Equals(getSceneName()))
         {
-            GameObject playerSpawnSystemInstance = Instantiate(cavePlayerSpawnSystemPrefab.gameObject, Vector3.zero, Quaternion.identity);
+            GameObject playerSpawnSystemInstance = Instantiate(spawnSystemPrefab.gameObject, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(playerSpawnSystemInstance);
 
             GameObject objectSpawner = Instantiate(healthkitSpawnerPrefab.gameObject, Vector3.zero, Quaternion.identity);
@@ -147,7 +147,7 @@ public class DinowarsNetworkManager : NetworkManager
             GameObject rifleSpawner = Instantiate(rifleSpawnerPrefab.gameObject, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(rifleSpawner);
 
-            currentTime = gameTime * 60;
+            currentTime = gameTime * 10;
             StartCoroutine(StartTimer());
         }
     }
@@ -158,6 +158,22 @@ public class DinowarsNetworkManager : NetworkManager
         var gamePlayerInstance = Instantiate(gamePlayerPrefab);
         gamePlayerInstance.SetPlayer(player.DisplayName, player.PlayerTeam, player.PlayerDino);
         NetworkServer.ReplacePlayerForConnection(conn, gamePlayerInstance.gameObject);
+    }
+
+    private void GamePlayerToGameResult(DinowarsNetworkGamePlayer player)
+    {
+        var conn = player.connectionToClient;
+        var gameResultInstance = Instantiate(gameResultPrefab);
+
+        var teamAScore = calculateTeamScore(DinowarsNetworkRoomPlayer.Team.TeamA);
+        var teamBScore = calculateTeamScore(DinowarsNetworkRoomPlayer.Team.TeamB);
+
+        var isWinner = calculateWinner() == player.Team;
+
+        gameResultInstance.SetPlayer(isWinner, teamAScore, teamBScore);
+        
+        NetworkServer.ReplacePlayerForConnection(conn, gameResultInstance.gameObject);
+        NetworkServer.Destroy(player.gameObject);
     }
 
     public void IsReadyToStart()
@@ -308,8 +324,42 @@ public class DinowarsNetworkManager : NetworkManager
                 break;
         }
 
-        ServerChangeScene("GameOverScene");
+        ServerChangeScene("LastScene");
     }
+
+    private DinowarsNetworkRoomPlayer.Team calculateWinner()
+    {
+        var teamAScore = calculateTeamScore(DinowarsNetworkRoomPlayer.Team.TeamA);
+        var teamBScore = calculateTeamScore(DinowarsNetworkRoomPlayer.Team.TeamB);
+
+       if(teamAScore > teamBScore)
+            return DinowarsNetworkRoomPlayer.Team.TeamA;
+       else if(teamAScore < teamBScore)
+            return DinowarsNetworkRoomPlayer.Team.TeamB;
+       else
+            return DinowarsNetworkRoomPlayer.Team.None;
+    }
+
+    private int calculateTeamScore(DinowarsNetworkRoomPlayer.Team team)
+    {
+        if (team == DinowarsNetworkRoomPlayer.Team.None) return -999;
+
+        List<DinowarsNetworkGamePlayer> gamePlayers;
+
+        if (team == DinowarsNetworkRoomPlayer.Team.TeamA)
+            gamePlayers = TeamAGamePlayers;
+        else
+            gamePlayers = TeamBGamePlayers;
+
+        int score = 0;
+        foreach(var gp in gamePlayers)
+            score += gp.Killed * 10 - gp.Death * 5;
+        
+
+        return score;
+    }
+
+
 
 }
 

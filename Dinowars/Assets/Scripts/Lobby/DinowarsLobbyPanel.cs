@@ -22,7 +22,6 @@ public class DinowarsLobbyPanel : MonoBehaviour
     [SerializeField] private Text roomNameValue;
     [SerializeField] private Text mapTextValue;
     [SerializeField] private Text modeTextValue;
-    [SerializeField] private Text roundTextValue;
     [SerializeField] private Text timeTextValue;
     [SerializeField] private Text roomDescTextValue;
     [SerializeField] private Text errorText;
@@ -32,12 +31,11 @@ public class DinowarsLobbyPanel : MonoBehaviour
     private void Start()
     {
         instance = DinowarsNetworkManager.Instance;
-        roomNameValue.text = instance.roomName;
-        roomDescTextValue.text = instance.roomDesc;
+        roomNameValue.text = instance.RoomName;
+        roomDescTextValue.text = instance.RoomDesc;
         mapTextValue.text = getMapName();
-        modeTextValue.text = getModeName();
-        roundTextValue.text = instance.roundValue.ToString();
-        timeTextValue.text = instance.timeValue.ToString();
+        modeTextValue.text = "Death Match";
+        timeTextValue.text = instance.GameTime.ToString();
     }
 
 
@@ -162,33 +160,17 @@ public class DinowarsLobbyPanel : MonoBehaviour
 
     private String getMapName()
     {
-        if (instance.mapIndexValue == 0)
+        if (instance.MapIndexValue == 0)
         {
             return "Mikshen Cave";
         }
-        else if (instance.mapIndexValue == 1)
+        else if (instance.MapIndexValue == 1)
         {
             return "Platesomya Valley";
         }
         else
         {
             return "Mikshen Cave";
-        }
-    }
-
-    private String getModeName()
-    {
-        if (instance.modeIndexValue == 0)
-        {
-            return "Death Match";
-        }
-        else if (instance.modeIndexValue == 1)
-        {
-            return "Team Match";
-        }
-        else
-        {
-            return "Death Match";
         }
     }
 

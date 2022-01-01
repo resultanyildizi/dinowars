@@ -1571,19 +1571,15 @@ MonoBehaviour:
   - {fileID: 2857618953354355696, guid: c771119caf0002a44b3dcd754e0bf914, type: 3}
   - {fileID: 6634025321397432687, guid: 1c4b1e0a17049184297369c547769587, type: 3}
   - {fileID: 2044022532985162810, guid: 2867f2d259aab2c4ebefb25f86e271b9, type: 3}
+  - {fileID: 818391779459531400, guid: 63fda0d3899c54eb2b8c9c64a8894b97, type: 3}
   minPlayers: 1
   menuscene: MenuScene
   roomPlayerPrefab: {fileID: 7096191813189871744, guid: dee79c40dc73d41089d3b3225248dd7c, type: 3}
   gamePlayerPrefab: {fileID: 3346931993463819939, guid: e15eeb430ab42434fb56f9822e049889, type: 3}
-  cavePlayerSpawnSystemPrefab: {fileID: 6250838871268673869, guid: 338dbb47b51714005b5110f27a5c86c9, type: 3}
+  spawnSystemPrefab: {fileID: 6250838871268673869, guid: 338dbb47b51714005b5110f27a5c86c9, type: 3}
+  gameResultPrefab: {fileID: 7708833606097087033, guid: 63fda0d3899c54eb2b8c9c64a8894b97, type: 3}
   healthkitSpawnerPrefab: {fileID: 1802952355840816633, guid: 0d3c8c1001709fc498282bea1d009858, type: 3}
   rifleSpawnerPrefab: {fileID: 7464267864825824374, guid: c771119caf0002a44b3dcd754e0bf914, type: 3}
-  timeValue: 0
-  roundValue: 0
-  modeIndexValue: 0
-  mapIndexValue: 0
-  roomName: 
-  roomDesc: 
 --- !u!4 &271759434
 Transform:
   m_ObjectHideFlags: 0
@@ -6254,13 +6250,10 @@ MonoBehaviour:
   settingPanelUI: {fileID: 0}
   timeTextValue: {fileID: 0}
   timeSlider: {fileID: 0}
-  roundTextValue: {fileID: 1946237623}
-  roundSlider: {fileID: 0}
   maxPlayerTextValue: {fileID: 0}
   maxPlayerSlider: {fileID: 0}
   roomNameField: {fileID: 0}
   roomDescField: {fileID: 0}
-  modeDropdown: {fileID: 0}
   mapDropdown: {fileID: 0}
   forestMap: {fileID: 0}
   caveMap: {fileID: 0}
@@ -10018,13 +10011,10 @@ MonoBehaviour:
   settingPanelUI: {fileID: 558582658}
   timeTextValue: {fileID: 945069509}
   timeSlider: {fileID: 358705464}
-  roundTextValue: {fileID: 0}
-  roundSlider: {fileID: 0}
   maxPlayerTextValue: {fileID: 1082114991}
   maxPlayerSlider: {fileID: 331243941}
   roomNameField: {fileID: 1902762993}
   roomDescField: {fileID: 331718855}
-  modeDropdown: {fileID: 607194845}
   mapDropdown: {fileID: 1320588057}
   forestMap: {fileID: 21300000, guid: a7c24307377024dacb4bc8ae56db2a45, type: 3}
   caveMap: {fileID: 21300000, guid: 781333e154f2144b79cb65654c2923b1, type: 3}
@@ -13154,7 +13144,6 @@ MonoBehaviour:
   roomNameValue: {fileID: 1946237623}
   mapTextValue: {fileID: 1552832795}
   modeTextValue: {fileID: 143918097}
-  roundTextValue: {fileID: 37892879}
   timeTextValue: {fileID: 1997700018}
   roomDescTextValue: {fileID: 1689913864}
   errorText: {fileID: 88410460}
