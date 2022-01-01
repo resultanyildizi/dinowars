@@ -17,6 +17,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
     [SerializeField] private Button uxgylButton;
     [SerializeField] private Button sanyaButton;
 
+    [SerializeField] private GameObject errorTextPanel;
 
     [SerializeField] private Text roomNameValue;
     [SerializeField] private Text mapTextValue;
@@ -24,6 +25,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
     [SerializeField] private Text roundTextValue;
     [SerializeField] private Text timeTextValue;
     [SerializeField] private Text roomDescTextValue;
+    [SerializeField] private Text errorText;
 
     private DinowarsNetworkManager instance;
 
@@ -102,6 +104,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
         temp.a = 0.5f;
         uxgylButton.GetComponent<Image>().color = temp;
         sanyaButton.GetComponent<Image>().color = temp;
+        resetErrorText();
     }
 
     public void SelectUxgylDino()
@@ -114,6 +117,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
         temp.a = 0.5f;
         rexTButton.GetComponent<Image>().color = temp;
         sanyaButton.GetComponent<Image>().color = temp;
+        resetErrorText();
     }
 
     public void SelectSanyaDino()
@@ -126,13 +130,19 @@ public class DinowarsLobbyPanel : MonoBehaviour
         temp.a = 0.5f;
         rexTButton.GetComponent<Image>().color = temp;
         uxgylButton.GetComponent<Image>().color = temp;
-           
+        resetErrorText();
+
     }
 
     public void ToggleReady()
     {
         if (RoomPlayer.PlayerDino == DinowarsNetworkRoomPlayer.Dino.None)
+        {
+            errorTextPanel.SetActive(true);
+            errorText.text = "* Please select your dinosaur";
             return;
+        }
+            
 
         bool isReady = RoomPlayer.IsReady;
         RoomPlayer.CmdChangeReady(!isReady);
@@ -180,6 +190,12 @@ public class DinowarsLobbyPanel : MonoBehaviour
         {
             return "Death Match";
         }
+    }
+
+    private void resetErrorText()
+    {
+        errorTextPanel.gameObject.SetActive(false);
+        errorText.text = "";
     }
 }
 
