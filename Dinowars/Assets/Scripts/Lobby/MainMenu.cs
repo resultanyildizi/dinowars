@@ -15,13 +15,10 @@ public class MainMenu : MonoBehaviour
     [Header("Settings")]
     [SerializeField] Text timeTextValue = null;
     [SerializeField] Slider timeSlider = null;
-    [SerializeField] Text roundTextValue = null;
-    [SerializeField] Slider roundSlider = null;
     [SerializeField] Text maxPlayerTextValue = null;
     [SerializeField] Slider maxPlayerSlider = null;
     [SerializeField] InputField roomNameField = null;
     [SerializeField] InputField roomDescField = null;
-    [SerializeField] Dropdown modeDropdown = null;
     [SerializeField] Dropdown mapDropdown = null;
     [SerializeField] Sprite forestMap = null;
     [SerializeField] Sprite caveMap = null;
@@ -32,13 +29,9 @@ public class MainMenu : MonoBehaviour
         if(mapDropdown != null)
         {
             if (mapDropdown.value == 0)
-            {
-                this.settingPanelUI.GetComponent<Image>().sprite = caveMap;
-            }
+                settingPanelUI.GetComponent<Image>().sprite = caveMap;
             else if (mapDropdown.value == 1)
-            {
-                this.settingPanelUI.GetComponent<Image>().sprite = forestMap;
-            }
+                settingPanelUI.GetComponent<Image>().sprite = forestMap;
         }
        
     }
@@ -46,11 +39,6 @@ public class MainMenu : MonoBehaviour
     public void setTime(float time)
     {
         timeTextValue.text = time.ToString("0");
-    }
-
-    public void setRound(float round)
-    {
-        roundTextValue.text = round.ToString("0");
     }
 
     public void setMaxPlayer(float playerCount)
@@ -61,22 +49,18 @@ public class MainMenu : MonoBehaviour
     public void HostLobby()
     {
         float timeValue = timeSlider.value;
-        float roundValue = roundSlider.value;
         float maxPlayerValue = maxPlayerSlider.value;
         String roomName = roomNameField.text;
         String roomDesc = roomDescField.text;
-        int mode = modeDropdown.value;
         int map = mapDropdown.value;
 
         var instance = DinowarsNetworkManager.Instance;
 
-        instance.timeValue = (int) Math.Round(timeValue);
-        instance.roundValue = (int) Math.Round(roundValue);
+        instance.GameTime = (int) Math.Round(timeValue);
         instance.maxConnections = (int) Math.Round(maxPlayerValue);
-        instance.roomName = roomName;
-        instance.roomDesc = roomDesc;
-        instance.modeIndexValue = mode;
-        instance.mapIndexValue = map;
+        instance.RoomName = roomName;
+        instance.RoomDesc = roomDesc;
+        instance.MapIndexValue = map;
 
         instance.StartHost();
         landingPanelUI.SetActive(false);

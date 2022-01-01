@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ForestScene.unity
     guid: 526bff8c107d24f0183e7f03b6ca9cf7
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: be5dd4fc71b834bc9a0715c3f33b6703
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 2a6fb99ed9c09422cb6f3abea021f45d, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 73690c606c43744c694013db6366e547, type: 2}
