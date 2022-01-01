@@ -22,6 +22,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Dropdown mapDropdown = null;
     [SerializeField] Sprite forestMap = null;
     [SerializeField] Sprite caveMap = null;
+    [SerializeField] Text errorText = null;
+    [SerializeField] GameObject errorTextPanel = null;
 
 
     private void Update()
@@ -48,6 +50,11 @@ public class MainMenu : MonoBehaviour
 
     public void HostLobby()
     {
+        if (!hasAnyError())
+        {
+            return;
+        }
+
         float timeValue = timeSlider.value;
         float maxPlayerValue = maxPlayerSlider.value;
         String roomName = roomNameField.text;
@@ -65,5 +72,26 @@ public class MainMenu : MonoBehaviour
         instance.StartHost();
         landingPanelUI.SetActive(false);
         lobbyPanelUI.SetActive(true);
+    }
+
+    private bool hasAnyError()
+    {
+        if (roomNameField.text.Equals("")){
+            errorTextPanel.SetActive(true);
+            errorText.text = "* Please enter room name";
+            return false;
+        }
+        else if (roomDescField.text.Equals(""))
+        {
+            errorTextPanel.SetActive(true);
+            errorText.text = "* Please enter room description";
+            return false;
+        }
+        else
+        {
+            errorTextPanel.SetActive(false);
+            errorText.text = "";
+            return true;
+        }
     }
 }

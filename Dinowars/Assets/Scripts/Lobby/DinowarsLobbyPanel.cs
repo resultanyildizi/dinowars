@@ -17,6 +17,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
     [SerializeField] private Button uxgylButton;
     [SerializeField] private Button sanyaButton;
 
+    [SerializeField] private GameObject errorTextPanel;
 
     [SerializeField] private Text roomNameValue;
     [SerializeField] private Text mapTextValue;
@@ -24,16 +25,19 @@ public class DinowarsLobbyPanel : MonoBehaviour
     [SerializeField] private Text roundTextValue;
     [SerializeField] private Text timeTextValue;
     [SerializeField] private Text roomDescTextValue;
+    [SerializeField] private Text errorText;
 
     private DinowarsNetworkManager instance;
 
     private void Start()
     {
         instance = DinowarsNetworkManager.Instance;
-        roomNameValue.text = instance.RoomName;
-        roomDescTextValue.text = instance.RoomDesc;
+        roomNameValue.text = instance.roomName;
+        roomDescTextValue.text = instance.roomDesc;
         mapTextValue.text = getMapName();
-        modeTextValue.text = "Death Match";
+        modeTextValue.text = getModeName();
+        roundTextValue.text = instance.roundValue.ToString();
+        timeTextValue.text = instance.timeValue.ToString();
     }
 
 
@@ -100,6 +104,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
         temp.a = 0.5f;
         uxgylButton.GetComponent<Image>().color = temp;
         sanyaButton.GetComponent<Image>().color = temp;
+        resetErrorText();
     }
 
     public void SelectUxgylDino()
@@ -112,6 +117,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
         temp.a = 0.5f;
         rexTButton.GetComponent<Image>().color = temp;
         sanyaButton.GetComponent<Image>().color = temp;
+        resetErrorText();
     }
 
     public void SelectSanyaDino()
@@ -124,13 +130,19 @@ public class DinowarsLobbyPanel : MonoBehaviour
         temp.a = 0.5f;
         rexTButton.GetComponent<Image>().color = temp;
         uxgylButton.GetComponent<Image>().color = temp;
-           
+        resetErrorText();
+
     }
 
     public void ToggleReady()
     {
         if (RoomPlayer.PlayerDino == DinowarsNetworkRoomPlayer.Dino.None)
+        {
+            errorTextPanel.SetActive(true);
+            errorText.text = "* Please select your dinosaur";
             return;
+        }
+            
 
         bool isReady = RoomPlayer.IsReady;
         RoomPlayer.CmdChangeReady(!isReady);
@@ -150,11 +162,11 @@ public class DinowarsLobbyPanel : MonoBehaviour
 
     private String getMapName()
     {
-        if (instance.MapIndexValue == 0)
+        if (instance.mapIndexValue == 0)
         {
             return "Mikshen Cave";
         }
-        else if (instance.MapIndexValue == 1)
+        else if (instance.mapIndexValue == 1)
         {
             return "Platesomya Valley";
         }
@@ -162,6 +174,28 @@ public class DinowarsLobbyPanel : MonoBehaviour
         {
             return "Mikshen Cave";
         }
+    }
+
+    private String getModeName()
+    {
+        if (instance.modeIndexValue == 0)
+        {
+            return "Death Match";
+        }
+        else if (instance.modeIndexValue == 1)
+        {
+            return "Team Match";
+        }
+        else
+        {
+            return "Death Match";
+        }
+    }
+
+    private void resetErrorText()
+    {
+        errorTextPanel.gameObject.SetActive(false);
+        errorText.text = "";
     }
 }
 
