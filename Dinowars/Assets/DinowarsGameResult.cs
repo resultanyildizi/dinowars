@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class DinowarsGameResult : NetworkBehaviour
 {
+    public enum Result
+    {
+        WIN, LOSE, DRAW
+    }
+
     [SyncVar]
     private int teamAScore;
 
@@ -13,21 +18,22 @@ public class DinowarsGameResult : NetworkBehaviour
     private int teamBScore;
 
     [SyncVar]
-    private bool isWinner;
+    private Result result;
 
 
     [SerializeField] private GameObject winText;
     [SerializeField] private GameObject confetties;
     [SerializeField] private GameObject loseText;
+    [SerializeField] private GameObject drawText;
     [SerializeField] private GameObject uxgylSad;
     [SerializeField] private GameObject rextSad;
 
     [SerializeField] private Text teamAScoreText;
     [SerializeField] private Text teamBScoreText;
 
-    public void SetPlayer(bool isWinner, int teamAScore, int teamBScore)
+    public void SetPlayer(Result result, int teamAScore, int teamBScore)
     {
-        this.isWinner = isWinner;
+        this.result = result;
         this.teamAScore = teamAScore;
         this.teamBScore = teamBScore;
     }
@@ -48,12 +54,14 @@ public class DinowarsGameResult : NetworkBehaviour
         }
         gameObject.SetActive(hasAuthority);
 
-        winText.SetActive(isWinner);
-        confetties.SetActive(isWinner);
+        winText.SetActive(result == Result.WIN);
+        confetties.SetActive(result == Result.WIN);
 
-        loseText.SetActive(!isWinner);
-        uxgylSad.SetActive(!isWinner);
-        rextSad.SetActive(!isWinner);
+        loseText.SetActive(result == Result.LOSE);
+        uxgylSad.SetActive(result == Result.LOSE);
+        rextSad.SetActive(result == Result.LOSE);
+
+        drawText.SetActive(result == Result.DRAW);
 
         teamAScoreText.text = teamAScore.ToString();
         teamBScoreText.text = teamBScore.ToString();

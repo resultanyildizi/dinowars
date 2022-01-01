@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using Mirror;
 using System.Collections.Generic;
 using System.Collections;
+using static DinowarsGameResult;
 
 public class DinowarsNetworkManager : NetworkManager
 {
@@ -168,9 +169,12 @@ public class DinowarsNetworkManager : NetworkManager
         var teamAScore = calculateTeamScore(DinowarsNetworkRoomPlayer.Team.TeamA);
         var teamBScore = calculateTeamScore(DinowarsNetworkRoomPlayer.Team.TeamB);
 
-        var isWinner = calculateWinner() == player.Team;
+        var winner = calculateWinner();
 
-        gameResultInstance.SetPlayer(isWinner, teamAScore, teamBScore);
+        var gameResult = winner == DinowarsNetworkRoomPlayer.Team.None ? Result.DRAW:
+                                    player.Team == winner ? Result.WIN : Result.LOSE;
+
+        gameResultInstance.SetPlayer(gameResult, teamAScore, teamBScore);
         
         NetworkServer.ReplacePlayerForConnection(conn, gameResultInstance.gameObject);
         NetworkServer.Destroy(player.gameObject);
