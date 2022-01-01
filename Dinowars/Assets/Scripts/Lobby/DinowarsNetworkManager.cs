@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Mirror;
 using System.Collections.Generic;
+using System.Collections;
 
 public class DinowarsNetworkManager : NetworkManager
 {
@@ -26,27 +27,24 @@ public class DinowarsNetworkManager : NetworkManager
     public static event Action<bool> OnReadyStateChanged;
     public static event Action<NetworkConnection> OnServerReadied;
 
-
-
     public List<DinowarsNetworkRoomPlayer> TeamBRoomPlayers { get; } = new List<DinowarsNetworkRoomPlayer>();
     public List<DinowarsNetworkRoomPlayer> TeamARoomPlayers { get; } = new List<DinowarsNetworkRoomPlayer>();
-
 
     public List<DinowarsNetworkGamePlayer> TeamBGamePlayers { get; } = new List<DinowarsNetworkGamePlayer>();
     public List<DinowarsNetworkGamePlayer> TeamAGamePlayers { get; } = new List<DinowarsNetworkGamePlayer>();
 
-    // public Dictionary<DinowarsNetworkGamePlayer, Tuple<int, int>> TeamAScores = new Dictionary<DinowarsNetworkGamePlayer, Tuple<int, int>>();
-    // public Dictionary<DinowarsNetworkGamePlayer, Tuple<int, int>> TeamBScores = new Dictionary<DinowarsNetworkGamePlayer, Tuple<int, int>>();
-
+    public string RoomName { get => roomName; set => roomName = value; }
+    public string RoomDesc { get => roomDesc; set => roomDesc = value; }
+    public int MapIndexValue { get => mapIndexValue; set => mapIndexValue = value; }
+    public int GameTime { get => gameTime; set => gameTime = value; }
 
     private int maxTeamAPlayerCount;
     private int maxTeamBPlayerCount;
-    public int timeValue;
-    public int roundValue;
-    public int modeIndexValue;
-    public int mapIndexValue;
-    public String roomName;
-    public String roomDesc;
+    private int gameTime;
+    private int currentTime;
+    private int mapIndexValue;
+    private String roomName;
+    private String roomDesc;
 
     public override void OnStartClient()
     {
@@ -129,15 +127,11 @@ public class DinowarsNetworkManager : NetworkManager
             {
                 RoomPlayerToGamePlayer(TeamBRoomPlayers[i]);
             }
+        } else if(SceneManager.GetActiveScene().name.Equals(getSceneName()) && newSceneName.StartsWith("GameOverScene"))
+        {
+
         }
         base.ServerChangeScene(newSceneName);
-    }
-
-
-    public override void OnClientSceneChanged(NetworkConnection conn)
-    {
-
-        base.OnClientSceneChanged(conn);
     }
 
     public override void OnServerSceneChanged(string sceneName)
@@ -152,17 +146,17 @@ public class DinowarsNetworkManager : NetworkManager
 
             GameObject rifleSpawner = Instantiate(rifleSpawnerPrefab.gameObject, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(rifleSpawner);
+
+            currentTime = gameTime * 60;
+            StartCoroutine(StartTimer());
         }
     }
 
     private void RoomPlayerToGamePlayer(DinowarsNetworkRoomPlayer player)
     {
-
         var conn = player.connectionToClient;
         var gamePlayerInstance = Instantiate(gamePlayerPrefab);
-
         gamePlayerInstance.SetPlayer(player.DisplayName, player.PlayerTeam, player.PlayerDino);
-
         NetworkServer.ReplacePlayerForConnection(conn, gamePlayerInstance.gameObject);
     }
 
@@ -198,9 +192,7 @@ public class DinowarsNetworkManager : NetworkManager
     public void StartGame()
     {
         if (SceneManager.GetActiveScene().name.Equals(menuscene))
-        {
             ServerChangeScene(getSceneName());
-        }
     }
 
     public void AddGamePlayer(DinowarsNetworkGamePlayer player)
@@ -285,11 +277,11 @@ public class DinowarsNetworkManager : NetworkManager
 
     private String getSceneName()
     {
-        if (mapIndexValue == 0)
+        if (MapIndexValue == 0)
         {
             return "CaveScene";
         }
-        else if (mapIndexValue == 1)
+        else if (MapIndexValue == 1)
         {
             return "ForestScene";
         }
@@ -299,6 +291,25 @@ public class DinowarsNetworkManager : NetworkManager
         }
     }
 
+    IEnumerator StartTimer()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1);
+            currentTime -= 1;
+
+            foreach (var gp in TeamAGamePlayers)
+                gp.GameTime = currentTime;
+
+            foreach (var gp in TeamBGamePlayers)
+                gp.GameTime = currentTime;
+
+            if (currentTime <= 0)
+                break;
+        }
+
+        ServerChangeScene("GameOverScene");
+    }
 
 }
 

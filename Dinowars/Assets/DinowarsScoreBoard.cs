@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class DinowarsScoreBoard : MonoBehaviour
 {
     [SerializeField] private Text teamAScore;
     [SerializeField] private Text teamBScore;
+    [SerializeField] private Text timer;
     [SerializeField] private TeamScoreCard[] teamAScoreCards;
     [SerializeField] private TeamScoreCard[] teamBScoreCards;
 
@@ -17,7 +19,20 @@ public class DinowarsScoreBoard : MonoBehaviour
     {
         UpdateScoreCards();
         UpdateTeamScores();
+        UpdateTimer();
     }
+
+    private void UpdateTimer()
+    {
+        var gp =  Utils.GetGameObjectFromConnection(NetworkClient.localPlayer.connectionToClient);
+        gp.TimerChanged += ChangeTimerText;
+    }
+
+    private void ChangeTimerText(int time)
+    {
+        timer.text = time.ToString();
+    }
+
 
     private void UpdateTeamScores()
     {
