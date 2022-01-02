@@ -72,4 +72,4 @@ MonoBehaviour:
   - {x: -4.15, y: -1.2, z: 0}
   - {x: 0, y: -4, z: 0}
   objectPrefab: {fileID: 7591861740679962128, guid: b29b3bc8e45d36d4580473f5bfd5f173, type: 3}
-  spawnInterval: 5
+  spawnInterval: 30
