@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  healingAmount: 100
+  healingAmount: 300
 --- !u!61 &9179888315258990535
 BoxCollider2D:
   m_ObjectHideFlags: 0
