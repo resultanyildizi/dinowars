@@ -67,7 +67,6 @@ public class Player : NetworkBehaviour
 
         var pbody = transform.Find("PlayerBody");
         var hand = transform.Find("Hand");
-        var head = pbody.Find("Head");
         var body = pbody.Find("Body");
 
         if(hasAuthority)
@@ -78,7 +77,6 @@ public class Player : NetworkBehaviour
         rb.velocity = new Vector2(0, 0);
 
         hand.gameObject.GetComponentInChildren<Weapon>().enabled = false;
-        head.gameObject.SetActive(false);
         body.gameObject.SetActive(false);
         hand.gameObject.SetActive(false);
     }
@@ -90,7 +88,6 @@ public class Player : NetworkBehaviour
 
         var pbody = transform.Find("PlayerBody");
         var hand = transform.Find("Hand");
-        var head = pbody.Find("Head");
         var body = pbody.Find("Body");
 
         if (hasAuthority)
@@ -101,7 +98,6 @@ public class Player : NetworkBehaviour
         rb.position = respawnPoint;
 
         hand.gameObject.GetComponentInChildren<Weapon>().enabled = true;
-        head.gameObject.SetActive(true);
         body.gameObject.SetActive(true);
         hand.gameObject.SetActive(true);
     }

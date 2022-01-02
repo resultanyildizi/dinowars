@@ -15,7 +15,7 @@ public class RifleScript : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Body") || collision.CompareTag("Foot") )
+        if (collision.CompareTag("Body"))
         {
             Player player = collision.GetComponentInParent<Player>();
             onEquip = player.GetComponent<PlayerEquip>();

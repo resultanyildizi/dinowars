@@ -148,7 +148,7 @@ public class DinowarsNetworkManager : NetworkManager
             GameObject rifleSpawner = Instantiate(rifleSpawnerPrefab.gameObject, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(rifleSpawner);
 
-            currentTime = gameTime * 10;
+            currentTime = gameTime * 60;
             StartCoroutine(StartTimer());
         }
     }
