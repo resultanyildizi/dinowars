@@ -6,7 +6,9 @@ using UnityEngine;
 public class ObjectSpawner : NetworkBehaviour
 {
     [SerializeField]
-    private Vector3[] spawners;
+    private Vector3[] caveMapSpawners;
+    [SerializeField]
+    private Vector3[] forestMapSpawners;
     [SerializeField]
     private GameObject objectPrefab;
     [SerializeField]
@@ -14,8 +16,25 @@ public class ObjectSpawner : NetworkBehaviour
 
     private Dictionary<int, GameObject> healthKitMap;
 
+    private DinowarsNetworkManager instance;
+
+    private Vector3[] spawners;
+
+
     public override void OnStartServer()
     {
+        instance = DinowarsNetworkManager.Instance;
+
+        if (instance.MapIndexValue == 0)
+        {
+            spawners = caveMapSpawners;
+        }
+        else if (instance.MapIndexValue == 1)
+        {
+            spawners = forestMapSpawners;
+        }
+        
+
         InitHealthKitMap();
     }
 
@@ -49,6 +68,8 @@ public class ObjectSpawner : NetworkBehaviour
     {
         if (Random.Range(0, 1) > 0.4) return; 
         List<int> avaliableSlots = FindEmptySlots();
+
+       
 
         if (avaliableSlots.Count > 0)
         {
