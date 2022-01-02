@@ -63,8 +63,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  spawners:
+  caveMapSpawners:
   - {x: -4.15, y: -1, z: 0}
   - {x: 4.15, y: -1, z: 0}
+  forestMapSpawners:
+  - {x: 3, y: 0.8, z: 0}
+  - {x: -3, y: 0.8, z: 0}
   objectPrefab: {fileID: 2044022532985162810, guid: 2867f2d259aab2c4ebefb25f86e271b9, type: 3}
-  spawnInterval: 15
+  spawnInterval: 5
