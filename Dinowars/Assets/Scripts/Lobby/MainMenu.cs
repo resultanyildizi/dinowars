@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,6 +70,12 @@ public class MainMenu : MonoBehaviour
         instance.RoomDesc = roomDesc;
         instance.MapIndexValue = map;
 
+        string hostName = Dns.GetHostName(); // Retrive the Name of HOST
+
+        string myIP = Dns.GetHostEntry(hostName).AddressList[0].ToString();
+
+        instance.IpAddress = myIP;
+       
         instance.StartHost();
         landingPanelUI.SetActive(false);
         lobbyPanelUI.SetActive(true);

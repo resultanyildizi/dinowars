@@ -39,7 +39,9 @@ public class DinowarsNetworkManager : NetworkManager
     public string RoomDesc { get => roomDesc; set => roomDesc = value; }
     public int MapIndexValue { get => mapIndexValue; set => mapIndexValue = value; }
     public int GameTime { get => gameTime; set => gameTime = value; }
+    public string IpAddress { get => ipAddress; set => ipAddress = value; }
 
+    private String ipAddress;
     private int maxTeamAPlayerCount;
     private int maxTeamBPlayerCount;
     private int gameTime;
@@ -148,7 +150,7 @@ public class DinowarsNetworkManager : NetworkManager
             GameObject rifleSpawner = Instantiate(rifleSpawnerPrefab.gameObject, Vector3.zero, Quaternion.identity);
             NetworkServer.Spawn(rifleSpawner);
 
-            currentTime = gameTime * 10;
+            currentTime = gameTime * 60;
             StartCoroutine(StartTimer());
         }
     }

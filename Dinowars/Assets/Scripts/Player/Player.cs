@@ -31,6 +31,7 @@ public class Player : NetworkBehaviour
     public DinowarsNetworkRoomPlayer.Team Team { get => team; set => team = value; }
     public double Health { get => health; }
     public Vector3 RespawnPoint { set => respawnPoint = value; }
+    public DinowarsNetworkRoomPlayer.Dino Dino { get => dino; }
 
     public override void OnStartAuthority()
     {

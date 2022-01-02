@@ -16,6 +16,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
     [SerializeField] private Button rexTButton;
     [SerializeField] private Button uxgylButton;
     [SerializeField] private Button sanyaButton;
+    [SerializeField] private Button copyButton;
 
     [SerializeField] private GameObject errorTextPanel;
 
@@ -25,6 +26,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
     [SerializeField] private Text timeTextValue;
     [SerializeField] private Text roomDescTextValue;
     [SerializeField] private Text errorText;
+    [SerializeField] private Text ipAddressText;
 
     private DinowarsNetworkManager instance;
 
@@ -36,6 +38,7 @@ public class DinowarsLobbyPanel : MonoBehaviour
         mapTextValue.text = getMapName();
         modeTextValue.text = "Death Match";
         timeTextValue.text = instance.GameTime.ToString();
+        ipAddressText.text = instance.IpAddress;
     }
 
 
@@ -157,6 +160,11 @@ public class DinowarsLobbyPanel : MonoBehaviour
         }
     }
 
+    public void CopyIpAddress()
+    {
+        GUIUtility.systemCopyBuffer = instance.IpAddress;
+    }
+
 
     private String getMapName()
     {
@@ -179,6 +187,8 @@ public class DinowarsLobbyPanel : MonoBehaviour
         errorTextPanel.gameObject.SetActive(false);
         errorText.text = "";
     }
+
+  
 }
 
 

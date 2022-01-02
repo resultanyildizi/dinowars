@@ -141,8 +141,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""eeae6e76-4ebd-4982-a35c-9f1caa1a5690"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Keyborad & Mouse"",
                     ""action"": ""Heal"",
